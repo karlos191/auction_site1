@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auctions in {{ category.name }}</title>
+</head>
+<body>
+    <h1>Auctions in {{ category.name }}</h1>
+    <ul>
+        {% for auction in auctions %}
+            <li>
+                <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
+                <p>{{ auction.description }}</p>
+                <p>Minimum Amount: {{ auction.minimum_amount }}</p>
+                <p>Buy Now Amount: {{ auction.buy_now_amount }}</p>
+                <p>Location: {{ auction.location }}</p>
+                <p>Start Date: {{ auction.start_date }}</p>
+                <p>End Date: {{ auction.end_date }}</p>
+            </li>
+        {% empty %}
+            <li>No auctions available in this category.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

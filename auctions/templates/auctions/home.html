@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Auction Site</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Auction Site</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Recent Auctions</h2>
+            <ul>
+                {% for auction in recent_auctions %}
+                    <li>
+                        <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
+                        <p><strong>Starting Price:</strong> {{ auction.starting_price }}</p>
+                        <p><strong>Current Price:</strong> {{ auction.current_price }}</p>
+                    </li>
+                {% empty %}
+                    <li>No auctions found.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Auction Site</p>
+    </footer>
+</body>
+</html>
+
+
+
+
+
+
