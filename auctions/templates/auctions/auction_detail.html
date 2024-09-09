@@ -102,7 +102,9 @@
             {% endif %}
             <p><strong>Current Highest Bid:</strong>
                 {% if auction.bids.exists %}
-                    ${{ auction.bids.order_by('-amount').first.amount }}
+                    {% with auction.bids.all|dictsortreversed:"amount" as sorted_bids %}
+                        {{ sorted_bids.0.amount }}
+                    {% endwith %}
                 {% else %}
                     No bids yet
                 {% endif %}
@@ -133,11 +135,13 @@
         <section>
             <h2>Bids</h2>
             <ul class="bids-list">
-                {% for bid in auction.bids.order_by('-amount') %}
-                    <li>{{ bid.user.username }}: ${{ bid.amount }} on {{ bid.created_at }}</li>
-                {% empty %}
-                    <li>No bids have been placed yet.</li>
-                {% endfor %}
+                {% with auction.bids.all|dictsortreversed:"amount" as sorted_bids %}
+                    {% for bid in sorted_bids %}
+                        <li>{{ bid.user.username }}: ${{ bid.amount }} on {{ bid.created_at }}</li>
+                    {% empty %}
+                        <li>No bids have been placed yet.</li>
+                    {% endfor %}
+                {% endwith %}
             </ul>
         </section>
     </main>
