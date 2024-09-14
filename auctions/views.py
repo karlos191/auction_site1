@@ -25,7 +25,6 @@ def auction_detail(request, pk):
 
     if request.method == 'POST' and form.is_valid():
         amount = form.cleaned_data['amount']
-        # Ensure the bid amount is greater than current price
         if amount > auction.current_price:
             Bid.objects.create(auction=auction, user=request.user, amount=amount)
             auction.current_price = amount
