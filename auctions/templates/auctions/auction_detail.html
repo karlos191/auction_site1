@@ -101,7 +101,7 @@
                 <p><strong>Buy Now Price:</strong> ${{ auction.buy_now_price }}</p>
             {% endif %}
             <p><strong>Current Highest Bid:</strong>
-                {% if auction.bids.0 %}
+                {% if auction.bids.exists %}
                     {% with auction.bids.all|dictsortreversed:"amount" as sorted_bids %}
                         {{ sorted_bids.0.amount }}
                     {% endwith %}
@@ -116,7 +116,7 @@
                 <form method="post" action="{% url 'place_bid' pk=auction.pk %}">
                     {% csrf_token %}
                     <label for="amount">Your Bid:</label>
-                    <input> type="number" name="amount" step="0.01" min="{{ auction.minimum_amount }}" required>
+                    <input type="number" name="amount" step="0.01" min="{{ auction.minimum_amount }}" required>
                     <button type="submit">Place Bid</button>
                 </form>
 
