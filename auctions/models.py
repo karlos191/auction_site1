@@ -12,7 +12,6 @@ class Category(models.Model):
         return self.name
 
 
-# User Profile Model
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     city = models.CharField(max_length=255)
@@ -43,7 +42,7 @@ class Auction(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __init__(self, *args, **kwargs):
-        super().__init__(args, kwargs)
+        super().__init__(*args, **kwargs)
         self.buy_now_price = None
 
     def __str__(self):
