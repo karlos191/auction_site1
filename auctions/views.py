@@ -62,9 +62,13 @@ def custom_login(request):
     return render(request, 'login.html', {'form': form})
 
 
+@login_required
 def custom_logout(request):
-    logout(request)
-    return redirect('home')  # Redirect to the home page or another page
+    if request.method == 'POST':  # Ensures it's a POST request
+        logout(request)
+        return redirect('home')  # Redirect to home or another page after logout
+    else:
+        return redirect('home')  # Redirect if it's not a POST request
 
 
 @login_required
