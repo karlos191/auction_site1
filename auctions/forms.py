@@ -10,10 +10,10 @@ class AuctionForm(forms.ModelForm):
                   'end_date']
 
 
-class BidForm(forms.ModelForm):
-    class Meta:
-        model = Bid
-        fields = ['amount']
-        widgets = {
-            'amount': forms.NumberInput(attrs={'placeholder': 'Enter your bid amount'}),
-        }
+class BidForm(forms.Form):
+    amount = forms.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        label='Bid Amount',
+        help_text='Enter your bid amount.'
+    )

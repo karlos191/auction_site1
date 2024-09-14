@@ -75,17 +75,18 @@ def custom_logout(request):
 def place_bid(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
     if request.method == 'POST':
-        amount = request.POST.get('amount')
-        try:
-            bid_amount = float(amount)
-            if bid_amount > auction.current_price:
-                Bid.objects.create(auction=auction, user=request.user, amount=bid_amount)
-                auction.current_price = bid_amount
+        form = BidForm(request.POST)
+        if form.is_valid():
+            amount = form.cleaned_data['amount']
+            if amount > auction.current_price:
+                Bid.objects.create(auction=auction, user=request.user, amount=amount)
+                auction.current_price = amount
                 auction.save()
                 messages.success(request, 'Bid placed successfully!')
+                return redirect('auction_detail', pk=pk)
             else:
                 messages.error(request, 'Bid amount must be higher than the current price.')
-        except ValueError:
-            messages.error(request, 'Invalid bid amount.')
-        return redirect('auction_detail', pk=pk)
-    return render(request, 'auctions/auction_detail.html', {'auction': auction})
+    else:
+        form = BidForm()
+    return render(request, 'auctions/place_bid.html', {'auction': auction, 'form': form})
+

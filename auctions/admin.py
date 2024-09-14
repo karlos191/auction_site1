@@ -9,8 +9,8 @@ admin.site.register(UserProfile)
 
 @admin.register(Auction)
 class AuctionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'minimum_amount', 'end_date')  # Customize as needed
-    search_fields = ('title',)  # Add fields to search
+    list_display = ('title', 'starting_price', 'current_price', 'minimum_amount', 'start_date', 'end_date')  # Customize as needed
+    search_fields = ('title', 'starting_price', 'current_price', 'start_date', 'end_date')  # Add fields to search
 
 
 @admin.register(Bid)

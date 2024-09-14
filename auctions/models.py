@@ -32,6 +32,8 @@ class Auction(models.Model):
     description = models.TextField()
     photos = models.ImageField(upload_to='auction_photos/', blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    starting_price = models.DecimalField(max_digits=10, decimal_places=2, )
+    current_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     minimum_amount = models.DecimalField(max_digits=10, decimal_places=2)
     buy_now_amount = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     promoted = models.BooleanField(default=False)
