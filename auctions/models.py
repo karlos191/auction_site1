@@ -1,5 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser, BaseUserManager, PermissionsMixin, AbstractBaseUser
+from django.conf import settings
 
 
 # Category Model
@@ -12,22 +13,66 @@ class Category(models.Model):
         return self.name
 
 
-class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    city = models.CharField(max_length=255)
-    address = models.CharField(max_length=255)
-    account_creation_date = models.DateTimeField(auto_now_add=True)
-    account_status = models.CharField(max_length=10,
-                                      choices=[('ACTIVE', 'Active'), ('INACTIVE', 'Inactive'), ('BLOCKED', 'Blocked')])
-    avatar = models.ImageField(upload_to='avatars/', blank=True, null=True)
-    type = models.CharField(max_length=10, choices=[('NORMAL', 'Normal'), ('PREMIUM', 'Premium')])
+class CustomUserManager(BaseUserManager):
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError('The Email field must be set')
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+        return self.create_user(email, password, **extra_fields)
+
+
+class CustomUser(AbstractBaseUser, PermissionsMixin):
+    profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
+    email = models.EmailField(unique=True)
+    username = models.CharField(max_length=255)
+    city = models.CharField(max_length=100, null=True, blank=True)
+    address = models.CharField(max_length=255, null=True, blank=True)
+    date_joined = models.DateTimeField(auto_now_add=True)
+    account_status = models.CharField(
+        max_length=10, choices=[('ACTIVE', 'Active'), ('INACTIVE', 'Inactive'), ('BLOCKED', 'Blocked')]
+    )
+    account_type = models.CharField(
+        max_length=10, choices=[('NORMAL', 'Normal'), ('PREMIUM', 'Premium')]
+    )
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
+    objects = CustomUserManager()
+
+    groups = models.ManyToManyField(
+        'auth.Group',
+        related_name='customer_set',
+        blank=True,
+        help_text='The groups this user belongs to.',
+        verbose_name='groups',
+    )
+
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        related_name='customer_set',
+        blank=True,
+        help_text='Specific permissions for this user.',
+        verbose_name='user permissions',
+    )
 
     def __str__(self):
-        return self.user.username
+        return self.email
 
 
 # Auction Model
 class Auction(models.Model):
+    User = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.TextField()
     photos = models.ImageField(upload_to='auction_photos/', blank=True, null=True)
@@ -41,7 +86,6 @@ class Auction(models.Model):
     start_date = models.DateTimeField(auto_now_add=True)
     end_date = models.DateTimeField()
     num_visits = models.IntegerField(default=0)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -53,7 +97,7 @@ class Auction(models.Model):
 
 class Bid(models.Model):
     auction = models.ForeignKey(Auction, on_delete=models.CASCADE, related_name='bids')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
 

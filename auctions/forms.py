@@ -1,13 +1,22 @@
 from django import forms
-from .models import Auction
-from .models import Bid
+from django.contrib.auth.forms import UserCreationForm
+from .models import CustomUser
+from django.conf import settings
 
 
-class AuctionForm(forms.ModelForm):
+class CustomUserCreationForm(UserCreationForm):
     class Meta:
-        model = Auction
-        fields = ['title', 'description', 'photos', 'category', 'minimum_amount', 'buy_now_amount', 'promoted',
-                  'end_date']
+        model = CustomUser
+        fields = ['username', 'email', 'password1', 'password2', 'city', 'address', 'profile_image', 'account_type']
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].label = "User name (presented on the account profile)"
+        self.fields['email'].label = "Login (email used for communication and notifications)"
+        self.fields['city'].label = "City"
+        self.fields['address'].label = "Address (street, house number, ZIP code)"
+        self.fields['profile_image'].label = "Logotype / thumbnail / avatar"
+        self.fields['account_type'].label = "Type (NORMAL / PREMIUM)"
 
 
 class BidForm(forms.Form):

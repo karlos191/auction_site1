@@ -11,6 +11,7 @@ urlpatterns = [
     path('login/', views.custom_login, name='login'),
     path('logout/', custom_logout, name='custom_logout'),
     path('place_bid/<int:pk>/', views.place_bid, name='place_bid'),
+    path('profile/', views.profile, name='profile'),
     # Other URL patterns
 ]
 
