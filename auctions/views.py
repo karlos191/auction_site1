@@ -1,12 +1,12 @@
-from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.utils import timezone
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from .models import Auction, Bid
+from django.contrib.auth.forms import AuthenticationForm
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BidForm
+from .forms import CustomUserCreationForm
+from .models import Auction, Bid
 
 
 def home(request):
@@ -39,13 +39,13 @@ def auction_detail(request, pk):
 
 def register(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
-            messages.success(request, "Your account has been created successfully. You can now log in.")
-            return redirect('login')
+            user = form.save()
+            login(request, user)
+            return redirect('home')
     else:
-        form = UserCreationForm()
+        form = CustomUserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
 
 
@@ -90,3 +90,17 @@ def place_bid(request, pk):
         form = BidForm()
     return render(request, 'auctions/place_bid.html', {'auction': auction, 'form': form})
 
+
+def profile(request):
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = CustomUserCreationForm(instance=request.user)
+    return render(request, 'registration/profile.html', {'form': form})
+
+#def user_profile_view(request):
+#    user = CustomUser.objects.get(pk=request.user.pk)
+#    return render(request, 'profile.html', {'user': user})
