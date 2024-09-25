@@ -62,8 +62,6 @@
 - [x] form to set up an account
 - [x] page (available after logging in) for editing account details
 - [ ] just like on the main page, there should appear lists of auctions: observed, started, auctioned (also lost) and completed (won as well as those which did not receive the minimum amount)
-- [ ] (optional) presentation of ratings and comments of an auction
-- [ ] (optional) adding an administrator role, which can block an account
 
 ##Auction start
 - [ ] a form for starting the auction and determining its parameters
@@ -79,8 +77,8 @@
 ##Bid and buy
 - [x] a logged in user can bid on an auction
 - [x] can input any amount to pay
-- [ ] can immediately choose Buy now
-- [ ] can only bid on ongoing auctions
+- [x] can immediately choose Buy now
+- [x] can only bid on ongoing auctions
 - [ ] the highest bid or Buy now becomes Purchase
 - [ ] if the minimum amount has not been reached, there is no winner
 - [ ] Warning! For simplicity, you need to write a mechanism, that will be triggered each time you enter the site and will "close" auctions, that have ended (since the last visit to the site) and will select winners
