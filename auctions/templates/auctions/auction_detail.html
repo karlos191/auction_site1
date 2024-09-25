@@ -62,7 +62,7 @@
             color: #fff;
             text-align: center;
             padding: 10px 0;
-            position: absolute;
+            position: relative;
             bottom: 0;
             width: 100%;
         }
@@ -87,9 +87,9 @@
             <a href="{% url 'auctions_list' %}">All Auctions</a>
             {% if user.is_authenticated %}
                 <form method="POST" action="{% url 'custom_logout' %}">
-        {% csrf_token %}
-        <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">Logout</button>
-    </form>
+                    {% csrf_token %}
+                    <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">Logout</button>
+                </form>
             {% else %}
                 <a href="{% url 'login' %}">Login</a>
             {% endif %}
@@ -99,10 +99,8 @@
         <section>
             <h2>Auction Details</h2>
             <p><strong>Description:</strong> {{ auction.description }}</p>
+            <p><strong>Current Time:</strong> {{ now }}</p>
             <p><strong>Starting Price:</strong> ${{ auction.minimum_amount }}</p>
-            {% if auction.buy_now_price %}
-                <p><strong>Buy Now Price:</strong> ${{ auction.buy_now_price }}</p>
-            {% endif %}
             <p><strong>Current Highest Bid:</strong>
                 {% if auction.bids.exists %}
                     {% with auction.bids.all|dictsortreversed:"amount" as sorted_bids %}
@@ -115,20 +113,23 @@
             <p><strong>End Date:</strong> {{ auction.end_date }}</p>
 
             {% if user.is_authenticated %}
-                <!-- Place Bid Form -->
-                <form method="post" action="{% url 'place_bid' pk=auction.pk %}">
-                    {% csrf_token %}
-                    <label for="amount">Your Bid:</label>
-                    <input type="number" name="amount" step="0.01" min="{{ auction.minimum_amount }}" required>
-                    <button type="submit">Place Bid</button>
-                </form>
+                {% if auction.end_date > now and not auction.is_closed %}  <!-- Only show forms if auction is active -->
+                    <!-- Place Bid Form -->
+                    <form method="post" action="{% url 'place_bid' pk=auction.pk %}">
+                        {% csrf_token %}
+                        <label for="amount">Your Bid:</label>
+                        <input type="number" name="amount" step="0.01" min="{{ auction.minimum_amount }}" required>
+                        <button type="submit">Place Bid</button>
+                    </form>
 
                 <!-- Buy Now Button -->
-                {% if auction.buy_now_price %}
-                    <form method="post" action="{% url 'buy_now' pk=auction.pk %}">
-                        {% csrf_token %}
-                        <button type="submit">Buy Now for ${{ auction.buy_now_price }}</button>
-                    </form>
+                {% if auction.buy_now_price and not auction_has_ended %}
+    <form method="post" action="{% url 'buy_now' pk=auction.pk %}">
+        {% csrf_token %}
+        <button type="submit">Buy Now for ${{ auction.buy_now_price }}</button>
+    </form>
+{% endif %}{% else %}
+                    <p>This auction has ended. No bids can be placed.</p>
                 {% endif %}
             {% else %}
                 <p>You need to be logged in to place a bid or buy now.</p>

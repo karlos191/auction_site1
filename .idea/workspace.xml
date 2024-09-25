@@ -4,22 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="uprava chyby na main site">
-      <change afterPath="$PROJECT_DIR$/auctions/templates/registration/profile.html" afterDir="false" />
+    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="added buy now button, not done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auction_site/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/auction_site/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auction_site/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/auction_site/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/migrations/0002_alter_auction_category_alter_category_description.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/migrations/0003_remove_bid_auction_remove_bid_user_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/migrations/0004_bid.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/templates/registration/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/registration/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +34,18 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;karlos191&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/karlos191/auction_site.git&quot;,
+    &quot;accountId&quot;: &quot;2bd0618c-50dc-4d5e-b57d-fc29bcc09914&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -78,8 +78,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\karel\PycharmProjects\auction_site\auctions\templates" />
       <recent name="C:\Users\karel\PycharmProjects\auction_site\auctions\templates\registration" />
+      <recent name="C:\Users\karel\PycharmProjects\auction_site\auctions\templates" />
       <recent name="C:\Users\karel\PycharmProjects\auction_site\auctions\templates\auctions" />
     </key>
   </component>
@@ -129,7 +129,10 @@
       <workItem from="1725698503399" duration="13718000" />
       <workItem from="1725776195323" duration="12931000" />
       <workItem from="1726385112408" duration="4953000" />
-      <workItem from="1726562246784" duration="6362000" />
+      <workItem from="1726562246784" duration="6861000" />
+      <workItem from="1726985209635" duration="2710000" />
+      <workItem from="1727248043817" duration="6503000" />
+      <workItem from="1727269373591" duration="1567000" />
     </task>
     <task id="LOCAL-00001" summary="uprava chyby na main site">
       <option name="closed" value="true" />
@@ -147,7 +150,31 @@
       <option name="project" value="LOCAL" />
       <updated>1726308496052</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added CustomUser with city&#10;&#10;address (street, house number, ZIP code)&#10;&#10;account creation date">
+      <option name="closed" value="true" />
+      <created>1726568920709</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726568920709</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added CustomUser with city&#10;&#10;address (street, house number, ZIP code)&#10;&#10;account creation date">
+      <option name="closed" value="true" />
+      <created>1726569064144</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726569064144</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added buy now button, not done">
+      <option name="closed" value="true" />
+      <created>1727267365575</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1727267365575</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,19 +185,7 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="develop" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -178,7 +193,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="uprava chyby na main site" />
-    <option name="LAST_COMMIT_MESSAGE" value="uprava chyby na main site" />
+    <MESSAGE value="added CustomUser with city&#10;&#10;address (street, house number, ZIP code)&#10;&#10;account creation date" />
+    <MESSAGE value="added buy now button, not done" />
+    <option name="LAST_COMMIT_MESSAGE" value="added buy now button, not done" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/auction_site$views.coverage" NAME="views Coverage Results" MODIFIED="1725785704661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auctions" />
