@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User, AbstractUser, BaseUserManager, PermissionsMixin, AbstractBaseUser
 from django.conf import settings
+from django.utils import timezone
+from django.contrib.auth import get_user_model
 
 
 # Category Model
@@ -72,24 +74,21 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 # Auction Model
 class Auction(models.Model):
-    User = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     description = models.TextField()
     photos = models.ImageField(upload_to='auction_photos/', blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    is_closed = models.BooleanField(default=False)
     starting_price = models.DecimalField(max_digits=10, decimal_places=2, )
     current_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
     minimum_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    buy_now_amount = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    buy_now_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     promoted = models.BooleanField(default=False)
     location = models.CharField(max_length=255)
-    start_date = models.DateTimeField(auto_now_add=True)
+    start_date = models.DateTimeField(default=timezone.now, editable=False)
     end_date = models.DateTimeField()
     num_visits = models.IntegerField(default=0)
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.buy_now_price = None
 
     def __str__(self):
         return self.title

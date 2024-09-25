@@ -42,6 +42,19 @@
             </ul>
         </section>
     </main>
+    <main>
+        <!-- Messages display block -->
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <div class="{% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</div>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </main>
     <footer>
         <p>&copy; 2024 Auction Site</p>
     </footer>
