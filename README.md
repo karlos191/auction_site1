@@ -17,7 +17,7 @@
 - [x] photos (optional)
 - [x] category
 - [x] minimum amount to pay
-- [] Buy Now amount ( it disappears if an auction has started) - dodělat aby zmizelo po začátku
+- [x] Buy Now amount ( it disappears if an auction has started) 
 - [ ] promoted (it can be assumed, that a premium account can promote e.g. 10 auctions a month) -- **omezit na 10 použiti**
 - [ ] location (corresponds to the location of the user account)
 - [x] auction start date
