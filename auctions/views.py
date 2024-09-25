@@ -23,6 +23,8 @@ def auctions_list(request):
 def auction_detail(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
     form = BidForm(request.POST or None)
+    now = timezone.now()
+    auction_has_ended = auction.end_date < now
 
     if request.method == 'POST' and form.is_valid():
         amount = form.cleaned_data['amount']
@@ -35,7 +37,8 @@ def auction_detail(request, pk):
             messages.error(request, 'Bid amount must be higher than the current price.')
         return redirect('auction_detail', pk=pk)
 
-    return render(request, 'auctions/auction_detail.html', {'auction': auction, 'form': form})
+    return render(request, 'auctions/auction_detail.html',
+                  {'auction': auction, 'form': form, 'now': now, 'auction_has_ended': auction_has_ended})
 
 
 def register(request):
@@ -81,6 +84,10 @@ def place_bid(request, pk):
         messages.error(request, "This auction has already ended. You cannot place a bid.")
         return redirect('auction_detail', pk=pk)
 
+    if auction.end_date < timezone.now() or auction.is_closed:
+        messages.error(request, "This auction has already ended. You can no longer place bids.")
+        return redirect('auction_detail', pk=pk)
+
     if request.method == 'POST':
         form = BidForm(request.POST)
         if form.is_valid():
@@ -116,32 +123,33 @@ def buy_now(request, pk):
     # Get the auction object; if it doesn't exist, return a 404 error.
     auction = get_object_or_404(Auction, pk=pk)
 
-    # Check if the auction is already ended or if there's no buy now price.
+    # Check if the auction is already ended.
     if auction.end_date < timezone.now():
         messages.error(request, "This auction has already ended.")
         return redirect('auction_detail', pk=pk)
 
+    # Check if there's no buy now price.
     if auction.buy_now_price is None:
         messages.error(request, "This auction does not have a 'Buy Now' price.")
         return redirect('auction_detail', pk=pk)
 
-    # Ensure the user is not trying to buy their own auction
+    # Ensure the user is not trying to buy their own auction.
     if auction.user == request.user:
         messages.error(request, "You cannot buy your own auction.")
         return redirect('auction_detail', pk=pk)
 
-    # Create a new Bid for the Buy Now action
-    # You can customize this part depending on how you want to handle the purchase
     try:
-        # Optionally, you can create a bid record to track the buy now transaction.
+        # Create a bid with the buy now price
         Bid.objects.create(auction=auction, user=request.user, amount=auction.buy_now_price)
 
-        # Optionally, mark the auction as sold or inactive (add a sold field in the Auction model if needed)
+        # Mark the auction as sold or closed
         auction.current_price = auction.buy_now_price
+        auction.is_closed = True  # Ensure you have this field in your model
         auction.save()
 
         messages.success(request, f"You have successfully bought '{auction.title}' for ${auction.buy_now_price}!")
         return redirect('auction_detail', pk=pk)
+
     except Exception as e:
         messages.error(request, f"An error occurred while processing your purchase: {str(e)}")
         return redirect('auction_detail', pk=pk)
