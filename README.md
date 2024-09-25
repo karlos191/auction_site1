@@ -60,7 +60,7 @@
 
 ##User account management
 - [x] form to set up an account
-- [ ] page (available after logging in) for editing account details
+- [x] page (available after logging in) for editing account details
 - [ ] just like on the main page, there should appear lists of auctions: observed, started, auctioned (also lost) and completed (won as well as those which did not receive the minimum amount)
 - [ ] (optional) presentation of ratings and comments of an auction
 - [ ] (optional) adding an administrator role, which can block an account
