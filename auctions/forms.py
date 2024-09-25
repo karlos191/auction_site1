@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 from django.conf import settings
+from django.contrib.auth.models import User
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -26,3 +27,22 @@ class BidForm(forms.Form):
         label='Bid Amount',
         help_text='Enter your bid amount.'
     )
+
+
+class EditAccountForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput, required=False)
+    address = forms.CharField(max_length=255, required=False)
+    city = forms.CharField(max_length=100, required=False)
+    profile_image = forms.ImageField(required=False)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'address', 'city', 'profile_image']
+
+    def save(self, commit=True):
+        user = super().save(commit)
+        if self.cleaned_data['password']:
+            user.set_password(self.cleaned_data['password'])
+        if commit:
+            user.save()
+        return user

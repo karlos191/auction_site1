@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from .views import custom_logout, buy_now
+from .views import custom_logout, buy_now, edit_account
 
 urlpatterns = [
     path('', views.home, name='home'),  # Home page
@@ -14,5 +14,6 @@ urlpatterns = [
     path('buy_now/<int:pk>/', buy_now, name='buy_now'),
     path('accounts/', include('django.contrib.auth.urls')),  # This will include login/logout views
     path('auction/<int:pk>/buy/', buy_now, name='buy_now'),
+    path('edit_account/', edit_account, name='edit_account'),
     # Other URL patterns
 ]
