@@ -13,6 +13,7 @@
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
                 {% if user.is_authenticated %}
+                    <li><a href="{% url 'edit_account' %}">Edit Account</a></li>
                     <li>
     <form method="POST" action="{% url 'custom_logout' %}">
         {% csrf_token %}

@@ -8,6 +8,7 @@ from .forms import BidForm
 from .forms import CustomUserCreationForm
 from .models import Auction, Bid
 from django.utils import timezone
+from .forms import EditAccountForm
 
 
 def home(request):
@@ -153,3 +154,19 @@ def buy_now(request, pk):
     except Exception as e:
         messages.error(request, f"An error occurred while processing your purchase: {str(e)}")
         return redirect('auction_detail', pk=pk)
+
+
+@login_required
+def edit_account(request):
+    user = request.user
+
+    if request.method == 'POST':
+        form = EditAccountForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Account details updated successfully.')
+            return redirect('edit_account')
+    else:
+        form = EditAccountForm(instance=user)
+
+    return render(request, 'auctions/edit_account.html', {'form': form})
