@@ -112,6 +112,10 @@
             </p>
             <p><strong>End Date:</strong> {{ auction.end_date }}</p>
 
+            <!-- New Section: Display Auction Creator and Location -->
+            <p><strong>Added by:</strong> {{ auction.user.username }}</p>
+            <p><strong>Location:</strong> {{ auction.location }}</p>  <!-- This assumes you have a location field -->
+
             {% if user.is_authenticated %}
                 {% if auction.end_date > now and not auction.is_closed %}  <!-- Only show forms if auction is active -->
                     <!-- Place Bid Form -->
@@ -122,13 +126,14 @@
                         <button type="submit">Place Bid</button>
                     </form>
 
-                <!-- Buy Now Button -->
-                {% if auction.buy_now_price and not auction_has_ended %}
-    <form method="post" action="{% url 'buy_now' pk=auction.pk %}">
-        {% csrf_token %}
-        <button type="submit">Buy Now for ${{ auction.buy_now_price }}</button>
-    </form>
-{% endif %}{% else %}
+                    <!-- Buy Now Button -->
+                    {% if auction.buy_now_price and not auction_has_ended %}
+                        <form method="post" action="{% url 'buy_now' pk=auction.pk %}">
+                            {% csrf_token %}
+                            <button type="submit">Buy Now for ${{ auction.buy_now_price }}</button>
+                        </form>
+                    {% endif %}
+                {% else %}
                     <p>This auction has ended. No bids can be placed.</p>
                 {% endif %}
             {% else %}

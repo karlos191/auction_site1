@@ -6,9 +6,10 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BidForm
 from .forms import CustomUserCreationForm
-from .models import Auction, Bid
+from .models import Auction, Bid, CustomUser
 from django.utils import timezone
 from .forms import EditAccountForm
+from .forms import AuctionForm
 
 
 def home(request):
@@ -170,3 +171,31 @@ def edit_account(request):
         form = EditAccountForm(instance=user)
 
     return render(request, 'auctions/edit_account.html', {'form': form})
+
+
+from .models import CustomUser
+
+
+@login_required
+def create_auction(request):
+    user = request.user  # Get the logged-in user
+
+    # Cast to CustomUser to help IDE recognize the 'city' field
+    user = CustomUser.objects.get(pk=user.pk)  # This forces IDE to recognize the user as CustomUser
+
+    if request.method == 'POST':
+        form = AuctionForm(request.POST, request.FILES)
+        if form.is_valid():
+            auction = form.save(commit=False)
+            auction.user = request.user  # Assign the logged-in user to the auction
+            auction.location = user.city  # Get the user's city
+            auction.save()
+            messages.success(request, 'Auction created successfully!')
+            return redirect('auction_detail', pk=auction.pk)
+        else:
+            print(form.errors)  # Print form validation errors to console for debugging
+            messages.error(request, 'There was an error with your submission. Please check the form fields.')
+    else:
+        form = AuctionForm()
+
+    return render(request, 'auctions/create_auction.html', {'form': form})

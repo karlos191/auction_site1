@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser
+from .models import CustomUser, Auction
 from django.conf import settings
 from django.contrib.auth.models import User
 
@@ -46,3 +46,14 @@ class EditAccountForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class AuctionForm(forms.ModelForm):
+    end_date = forms.DateTimeField(
+        widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+        input_formats=['%Y-%m-%dT%H:%M']
+    )
+
+    class Meta:
+        model = Auction
+        fields = ['title', 'description', 'photos', 'category', 'starting_price', 'buy_now_price', 'minimum_amount', 'end_date']

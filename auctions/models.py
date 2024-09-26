@@ -74,7 +74,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 # Auction Model
 class Auction(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='auctions')
     title = models.CharField(max_length=255)
     description = models.TextField()
     photos = models.ImageField(upload_to='auction_photos/', blank=True, null=True)
@@ -85,7 +85,7 @@ class Auction(models.Model):
     minimum_amount = models.DecimalField(max_digits=10, decimal_places=2)
     buy_now_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     promoted = models.BooleanField(default=False)
-    location = models.CharField(max_length=255)
+    location = models.CharField(max_length=255, blank=True, null=True)
     start_date = models.DateTimeField(default=timezone.now, editable=False)
     end_date = models.DateTimeField()
     num_visits = models.IntegerField(default=0)
