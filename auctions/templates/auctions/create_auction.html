@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Auction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        .errorlist {
+            color: red;
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Create a New Auction</h1>
+
+<!-- Messages section to display errors or success messages -->
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div>
+        <label for="title">Title</label>
+        {{ form.title.errors }}
+        {{ form.title }}
+    </div>
+
+    <div>
+        <label for="description">Description</label>
+        {{ form.description.errors }}
+        {{ form.description }}
+    </div>
+
+    <div>
+        <label for="photos">Upload Photos</label>
+        {{ form.photos.errors }}
+        {{ form.photos }}
+    </div>
+
+    <div>
+        <label for="category">Category</label>
+        {{ form.category.errors }}
+        {{ form.category }}
+    </div>
+
+    <div>
+        <label for="starting_price">Starting Price</label>
+        {{ form.starting_price.errors }}
+        {{ form.starting_price }}
+    </div>
+
+    <div>
+        <label for="buy_now_price">Buy Now Price</label>
+        {{ form.buy_now_price.errors }}
+        {{ form.buy_now_price }}
+    </div>
+
+    <div>
+    <label for="minimum_amount">Minimum Amount</label>
+    {{ form.minimum_amount.errors }}
+    {{ form.minimum_amount }}
+    </div>
+
+    <div>
+        <label for="end_date">End Date</label>
+        {{ form.end_date.errors }}
+        {{ form.end_date }}
+    </div>
+
+    <button type="submit">Create Auction</button>
+</form>
+
+</body>
+</html>

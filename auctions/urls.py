@@ -15,5 +15,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),  # This will include login/logout views
     path('auction/<int:pk>/buy/', buy_now, name='buy_now'),
     path('edit_account/', edit_account, name='edit_account'),
+    path('auction/new/', views.create_auction, name='create_auction'),
     # Other URL patterns
 ]
