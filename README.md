@@ -19,7 +19,7 @@
 - [x] minimum amount to pay
 - [x] Buy Now amount ( it disappears if an auction has started) 
 - [ ] promoted (it can be assumed, that a premium account can promote e.g. 10 auctions a month) -- **omezit na 10 použiti**
-- [ ] location (corresponds to the location of the user account)
+- [x] location (corresponds to the location of the user account)
 - [x] auction start date
 - [x] auction end date
 - [ ] number of visits (page views) 
@@ -64,7 +64,7 @@
 - [ ] just like on the main page, there should appear lists of auctions: observed, started, auctioned (also lost) and completed (won as well as those which did not receive the minimum amount)
 
 ##Auction start
-- [ ] a form for starting the auction and determining its parameters
+- [x] a form for starting the auction and determining its parameters
 - [ ] an auction can be cancelled (if there was no bid)
 
 ##Auction search
@@ -79,7 +79,7 @@
 - [x] can input any amount to pay
 - [x] can immediately choose Buy now
 - [x] can only bid on ongoing auctions
-- [ ] the highest bid or Buy now becomes Purchase
+- [x] the highest bid or Buy now becomes Purchase
 - [ ] if the minimum amount has not been reached, there is no winner
 - [ ] Warning! For simplicity, you need to write a mechanism, that will be triggered each time you enter the site and will "close" auctions, that have ended (since the last visit to the site) and will select winners
 - [ ] (optional) with the help of a trainer you can try to use Celery
