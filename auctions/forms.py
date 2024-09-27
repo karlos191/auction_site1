@@ -49,11 +49,17 @@ class EditAccountForm(forms.ModelForm):
 
 
 class AuctionForm(forms.ModelForm):
-    end_date = forms.DateTimeField(
-        widget=forms.DateTimeInput(attrs={'type': 'datetime-local'}),
-        input_formats=['%Y-%m-%dT%H:%M']
-    )
-
     class Meta:
         model = Auction
-        fields = ['title', 'description', 'photos', 'category', 'starting_price', 'buy_now_price', 'minimum_amount', 'end_date']
+        fields = ['title', 'description', 'photos', 'category', 'starting_price', 'buy_now_price', 'end_date', 'promoted']
+        widgets = {
+            'end_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super(AuctionForm, self).__init__(*args, **kwargs)
+
+        # Cast the user to CustomUser if it's passed
+        if isinstance(user, CustomUser) and user.account_type != 'PREMIUM':
+            self.fields.pop('promoted')  # Remove the promoted field for non-premium users
