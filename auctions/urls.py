@@ -1,6 +1,8 @@
 from django.urls import path, include
 from . import views
 from .views import custom_logout, buy_now, edit_account
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     path('', views.home, name='home'),  # Home page
@@ -17,4 +19,4 @@ urlpatterns = [
     path('edit_account/', edit_account, name='edit_account'),
     path('auction/new/', views.create_auction, name='create_auction'),
     # Other URL patterns
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
