@@ -114,6 +114,14 @@
         {{ form.end_date }}
     </div>
 
+    {% if form.promoted %}
+        <div>
+            <label for="promoted">Promote Auction</label>
+            {{ form.promoted.errors }}
+            {{ form.promoted }}
+        </div>
+    {% endif %}
+
     <button type="submit">Create Auction</button>
 </form>
 

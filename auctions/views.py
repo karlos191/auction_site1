@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BidForm
 from .forms import CustomUserCreationForm
-from .models import Auction, Bid, CustomUser
+from .models import Auction, Bid, Category
 from django.utils import timezone
 from .forms import EditAccountForm
 from .forms import AuctionForm
@@ -14,7 +14,8 @@ from .forms import AuctionForm
 
 def home(request):
     recent_auctions = Auction.objects.all().order_by('-start_date')[:10]
-    return render(request, 'auctions/home.html', {'recent_auctions': recent_auctions})
+    categories = Category.objects.all()  # Get all categories
+    return render(request, 'auctions/home.html', {'recent_auctions': recent_auctions, 'categories': categories})
 
 
 def auctions_list(request):
@@ -27,6 +28,8 @@ def auction_detail(request, pk):
     form = BidForm(request.POST or None)
     now = timezone.now()
     auction_has_ended = auction.end_date < now
+    auction.num_visits += 1
+    auction.save()
 
     if request.method == 'POST' and form.is_valid():
         amount = form.cleaned_data['amount']
@@ -180,22 +183,32 @@ from .models import CustomUser
 def create_auction(request):
     user = request.user  # Get the logged-in user
 
-    # Cast to CustomUser to help IDE recognize the 'city' field
-    user = CustomUser.objects.get(pk=user.pk)  # This forces IDE to recognize the user as CustomUser
+    # Cast to CustomUser to help IDE recognize the 'city' field (if using a custom user model)
+    user = CustomUser.objects.get(pk=user.pk)  # This is only necessary if using a CustomUser model
 
     if request.method == 'POST':
-        form = AuctionForm(request.POST, request.FILES)
+        form = AuctionForm(request.POST, request.FILES, user=user)  # Pass the user to the form
         if form.is_valid():
             auction = form.save(commit=False)
-            auction.user = request.user  # Assign the logged-in user to the auction
-            auction.location = user.city  # Get the user's city
-            auction.save()
+            auction.user = user  # Assign the logged-in user to the auction
+            auction.location = user.city  # Assign the user's city to the auction location
+
+            # Check if promotion is allowed based on the user's account type
+            if auction.promoted and user.account_type == 'PREMIUM':
+                current_month = timezone.now().month
+                promoted_auctions_count = Auction.objects.filter(user=user, promoted=True, start_date__month=current_month).count()
+
+                if promoted_auctions_count >= 10:
+                    messages.error(request, 'You have already promoted the maximum of 10 auctions this month.')
+                    return redirect('create_auction')  # Redirect them back to the auction creation form
+
+            auction.save()  # Save the auction if everything is valid
             messages.success(request, 'Auction created successfully!')
             return redirect('auction_detail', pk=auction.pk)
         else:
-            print(form.errors)  # Print form validation errors to console for debugging
+            print(form.errors)  # Print form validation errors to the console for debugging
             messages.error(request, 'There was an error with your submission. Please check the form fields.')
     else:
-        form = AuctionForm()
+        form = AuctionForm(user=user)  # Pass the user to the form
 
     return render(request, 'auctions/create_auction.html', {'form': form})

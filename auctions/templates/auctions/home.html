@@ -4,6 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auction Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .auctions-column, .categories-column {
+            width: 45%;
+        }
+        .category {
+            margin-bottom: 20px;
+        }
+        .category h3 {
+            margin-bottom: 5px;
+        }
+        .auction {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,11 +37,11 @@
                     <li><a href="{% url 'edit_account' %}">Edit Account</a></li>
                     <li><a href="{% url 'create_auction' %}">Add Auction</a></li>
                     <li>
-    <form method="POST" action="{% url 'custom_logout' %}">
-        {% csrf_token %}
-        <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">Logout</button>
-    </form>
-</li>
+                        <form method="POST" action="{% url 'custom_logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">Logout</button>
+                        </form>
+                    </li>
                 {% else %}
                     <li><a href="{% url 'login' %}">Login</a></li>
                     <li><a href="{% url 'register' %}">Register</a></li>
@@ -28,8 +49,10 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <section>
+
+    <div class="container">
+        <!-- Left Column: Recent Auctions -->
+        <section class="auctions-column">
             <h2>Recent Auctions</h2>
             <ul>
                 {% for auction in recent_auctions %}
@@ -43,7 +66,29 @@
                 {% endfor %}
             </ul>
         </section>
-    </main>
+
+        <!-- Right Column: Categories and Auctions -->
+        <section class="categories-column">
+            <h2>Categories</h2>
+            <div class="categories">
+                {% for category in categories %}
+                    <div class="category">
+                        <h3>{{ category.name }}</h3>
+                        <ul>
+                            {% for auction in category.auction_set.all %}
+                                <li class="auction">
+                                    <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
+                                </li>
+                            {% empty %}
+                                <li>No auctions in this category.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
     <main>
         <!-- Messages display block -->
         {% if messages %}
@@ -57,12 +102,12 @@
         {% block content %}
         {% endblock %}
     </main>
+
     <footer>
         <p>&copy; 2024 Auction Site</p>
     </footer>
 </body>
 </html>
-
 
 
 
