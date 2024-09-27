@@ -15,7 +15,8 @@ from .forms import AuctionForm
 def home(request):
     recent_auctions = Auction.objects.all().order_by('-start_date')[:10]
     categories = Category.objects.all()  # Get all categories
-    return render(request, 'auctions/home.html', {'recent_auctions': recent_auctions, 'categories': categories})
+    now = timezone.now()  # Get the current time
+    return render(request, 'auctions/home.html', {'recent_auctions': recent_auctions, 'categories': categories, 'now': now})
 
 
 def auctions_list(request):
@@ -125,37 +126,39 @@ def profile(request):
 
 @login_required
 def buy_now(request, pk):
-    # Get the auction object; if it doesn't exist, return a 404 error.
+    # Get the auction object or return 404 if not found.
     auction = get_object_or_404(Auction, pk=pk)
 
-    # Check if the auction is already ended.
-    if auction.end_date < timezone.now():
+    # Check if the auction has already ended by date or is closed.
+    if auction.end_date < timezone.now() or auction.is_closed:
         messages.error(request, "This auction has already ended.")
         return redirect('auction_detail', pk=pk)
 
-    # Check if there's no buy now price.
+    # Check if the auction has a Buy Now price.
     if auction.buy_now_price is None:
         messages.error(request, "This auction does not have a 'Buy Now' price.")
         return redirect('auction_detail', pk=pk)
 
-    # Ensure the user is not trying to buy their own auction.
+    # Prevent the user from buying their own auction.
     if auction.user == request.user:
         messages.error(request, "You cannot buy your own auction.")
         return redirect('auction_detail', pk=pk)
 
     try:
-        # Create a bid with the buy now price
+        # Create a new bid at the buy now price and mark the auction as closed.
         Bid.objects.create(auction=auction, user=request.user, amount=auction.buy_now_price)
 
-        # Mark the auction as sold or closed
+        # Update the auction with the new price and close it.
         auction.current_price = auction.buy_now_price
-        auction.is_closed = True  # Ensure you have this field in your model
+        auction.is_closed = True  # Mark auction as closed
         auction.save()
 
+        # Success message after purchase
         messages.success(request, f"You have successfully bought '{auction.title}' for ${auction.buy_now_price}!")
         return redirect('auction_detail', pk=pk)
 
     except Exception as e:
+        # Handle any exception that occurs and provide feedback.
         messages.error(request, f"An error occurred while processing your purchase: {str(e)}")
         return redirect('auction_detail', pk=pk)
 
