@@ -37,6 +37,11 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
         form {
             margin: 20px 0;
         }
@@ -99,7 +104,14 @@
         <section>
             <h2>Auction Details</h2>
             <p><strong>Description:</strong> {{ auction.description }}</p>
-            <p><strong>Current Time:</strong> {{ now }}</p>
+
+            <!-- Display the auction photo if it exists -->
+            {% if auction.photos %}
+                <img src="{{ auction.photos.url }}" alt="{{ auction.title }}">
+            {% else %}
+                <p>No photo available for this auction.</p>
+            {% endif %}
+
             <p><strong>Starting Price:</strong> ${{ auction.minimum_amount }}</p>
             <p><strong>Current Highest Bid:</strong>
                 {% if auction.bids.exists %}
@@ -113,9 +125,9 @@
             <p><strong>End Date:</strong> {{ auction.end_date }}</p>
             <p><strong>Number of Visits:</strong> {{ auction.num_visits }}</p>
 
-            <!-- New Section: Display Auction Creator and Location -->
+            <!-- Display Auction Creator and Location -->
             <p><strong>Added by:</strong> {{ auction.user.username }}</p>
-            <p><strong>Location:</strong> {{ auction.location }}</p>  <!-- This assumes you have a location field -->
+            <p><strong>Location:</strong> {{ auction.location }}</p>
 
             {% if user.is_authenticated %}
                 {% if auction.end_date > now and not auction.is_closed %}  <!-- Only show forms if auction is active -->
@@ -160,3 +172,4 @@
     </footer>
 </body>
 </html>
+
