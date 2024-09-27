@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="function: edit user added">
-      <change afterPath="$PROJECT_DIR$/auctions/migrations/0004_alter_auction_location.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auctions/migrations/0005_alter_auction_user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auctions/templates/auctions/create_auction.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="added number of visits on auction detail">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/create_auction.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/create_auction.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +137,8 @@
       <workItem from="1726985209635" duration="2710000" />
       <workItem from="1727248043817" duration="6503000" />
       <workItem from="1727269373591" duration="3107000" />
-      <workItem from="1727349756272" duration="5477000" />
+      <workItem from="1727349756272" duration="5751000" />
+      <workItem from="1727419578137" duration="2738000" />
     </task>
     <task id="LOCAL-00001" summary="uprava chyby na main site">
       <option name="closed" value="true" />
@@ -201,7 +196,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727272235038</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="function: add auction added&#10;and location on auction same as users">
+      <option name="closed" value="true" />
+      <created>1727355585047</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727355585047</updated>
+    </task>
+    <task id="LOCAL-00009" summary="added number of visits on auction detail">
+      <option name="closed" value="true" />
+      <created>1727430220923</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727430220923</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,7 +236,9 @@
     <MESSAGE value="added buy now button, not done" />
     <MESSAGE value="added buy now button" />
     <MESSAGE value="function: edit user added" />
-    <option name="LAST_COMMIT_MESSAGE" value="function: edit user added" />
+    <MESSAGE value="function: add auction added&#10;and location on auction same as users" />
+    <MESSAGE value="added number of visits on auction detail" />
+    <option name="LAST_COMMIT_MESSAGE" value="added number of visits on auction detail" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/auction_site$views.coverage" NAME="views Coverage Results" MODIFIED="1725785704661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auctions" />
