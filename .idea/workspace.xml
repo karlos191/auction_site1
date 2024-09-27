@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="added number of visits on auction detail">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/create_auction.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/create_auction.html" afterDir="false" />
+    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="added promotion for premium account max 10 per month">
+      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +136,7 @@
       <workItem from="1727248043817" duration="6503000" />
       <workItem from="1727269373591" duration="3107000" />
       <workItem from="1727349756272" duration="5751000" />
-      <workItem from="1727419578137" duration="2738000" />
+      <workItem from="1727419578137" duration="3044000" />
     </task>
     <task id="LOCAL-00001" summary="uprava chyby na main site">
       <option name="closed" value="true" />
@@ -212,7 +210,23 @@
       <option name="project" value="LOCAL" />
       <updated>1727430220923</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="added promotion for premium account max 10 per month">
+      <option name="closed" value="true" />
+      <created>1727431150138</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1727431150138</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added promotion for premium account max 10 per month">
+      <option name="closed" value="true" />
+      <created>1727431184518</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1727431184518</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,7 +252,8 @@
     <MESSAGE value="function: edit user added" />
     <MESSAGE value="function: add auction added&#10;and location on auction same as users" />
     <MESSAGE value="added number of visits on auction detail" />
-    <option name="LAST_COMMIT_MESSAGE" value="added number of visits on auction detail" />
+    <MESSAGE value="added promotion for premium account max 10 per month" />
+    <option name="LAST_COMMIT_MESSAGE" value="added promotion for premium account max 10 per month" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/auction_site$views.coverage" NAME="views Coverage Results" MODIFIED="1725785704661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auctions" />

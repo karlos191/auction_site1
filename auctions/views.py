@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BidForm
 from .forms import CustomUserCreationForm
-from .models import Auction, Bid, CustomUser
+from .models import Auction, Bid, Category
 from django.utils import timezone
 from .forms import EditAccountForm
 from .forms import AuctionForm
@@ -14,7 +14,8 @@ from .forms import AuctionForm
 
 def home(request):
     recent_auctions = Auction.objects.all().order_by('-start_date')[:10]
-    return render(request, 'auctions/home.html', {'recent_auctions': recent_auctions})
+    categories = Category.objects.all()  # Get all categories
+    return render(request, 'auctions/home.html', {'recent_auctions': recent_auctions, 'categories': categories})
 
 
 def auctions_list(request):

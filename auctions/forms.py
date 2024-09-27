@@ -51,7 +51,7 @@ class EditAccountForm(forms.ModelForm):
 class AuctionForm(forms.ModelForm):
     class Meta:
         model = Auction
-        fields = ['title', 'description', 'photos', 'category', 'starting_price', 'buy_now_price', 'end_date', 'promoted']
+        fields = ['title', 'description', 'photos', 'category', 'starting_price', 'buy_now_price', 'minimum_amount', 'end_date', 'promoted']
         widgets = {
             'end_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
         }
