@@ -27,6 +27,8 @@ def auction_detail(request, pk):
     form = BidForm(request.POST or None)
     now = timezone.now()
     auction_has_ended = auction.end_date < now
+    auction.num_visits += 1
+    auction.save()
 
     if request.method == 'POST' and form.is_valid():
         amount = form.cleaned_data['amount']
