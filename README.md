@@ -46,7 +46,7 @@
 - [ ] buyer's comment
 
 ##Main page presentation
-- [ ] presentation of categories(main - if their structure is tree-like): e.g. a list of links in the left or right column, leading to auctions from the selected category
+- [x] presentation of categories(main - if their structure is tree-like): e.g. a list of links in the left or right column, leading to auctions from the selected category
 - [x] presentation of a list of recently added auctions (e.g. 10)
 - [ ] presentation of a list of ending auctions (e.g. 10)
 - [ ] presentation of a list of auctions of a currently logged in user
