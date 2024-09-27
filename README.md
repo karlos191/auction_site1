@@ -22,7 +22,7 @@
 - [x] location (corresponds to the location of the user account)
 - [x] auction start date
 - [x] auction end date
-- [ ] number of visits (page views) 
+- [x] number of visits (page views) 
 
   ##Bidding
 - [x] auction
