@@ -56,7 +56,7 @@
 - [ ] (optional) additional auction lists, e.g. the most popular (most visits or auctions)
 
 ##Auction category selection
-- [ ] a list of categories, in which auctions are placed - **přidat pouze na main page**
+- [x] a list of categories, in which auctions are placed 
 
 ##User account management
 - [x] form to set up an account
