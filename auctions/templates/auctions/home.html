@@ -47,27 +47,28 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to the Auction Site</h1>
-        <nav>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
-                {% if user.is_authenticated %}
-                    <li><a href="{% url 'edit_account' %}">Edit Account</a></li>
-                    <li><a href="{% url 'create_auction' %}">Add Auction</a></li>
-                    <li>
-                        <form method="POST" action="{% url 'custom_logout' %}">
-                            {% csrf_token %}
-                            <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">Logout</button>
-                        </form>
-                    </li>
-                {% else %}
-                    <li><a href="{% url 'login' %}">Login</a></li>
-                    <li><a href="{% url 'register' %}">Register</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
+    <h1>Welcome to the Auction Site</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'edit_account' %}">Edit Account</a></li>
+                <li><a href="{% url 'create_auction' %}">Add Auction</a></li>
+                <a href="{% url 'watchlist' %}">Your Watchlist</a>
+                <li>
+                    <form method="POST" action="{% url 'custom_logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">Logout</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
 
     <div class="container">
         <!-- Left Column: Recent Auctions -->

@@ -6,7 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BidForm
 from .forms import CustomUserCreationForm
-from .models import Auction, Bid, Category
+from .models import Auction, Bid, Category, CustomUser
 from django.utils import timezone
 from .forms import EditAccountForm
 from .forms import AuctionForm
@@ -235,3 +235,31 @@ def cancel_auction(request, pk):
 
     messages.success(request, "Auction canceled successfully.")
     return redirect('home')
+
+
+@login_required
+def add_to_watchlist(request, pk):
+    auction = get_object_or_404(Auction, pk=pk)
+    if auction in request.user.watchlist.all():
+        messages.info(request, "You are already watching this auction.")
+    else:
+        request.user.watchlist.add(auction)
+        messages.success(request, "Auction added to your watchlist.")
+    return redirect('auction_detail', pk=pk)
+
+
+@login_required
+def remove_from_watchlist(request, pk):
+    auction = get_object_or_404(Auction, pk=pk)
+    if auction in request.user.watchlist.all():
+        request.user.watchlist.remove(auction)
+        messages.success(request, "Auction removed from your watchlist.")
+    else:
+        messages.info(request, "This auction is not in your watchlist.")
+    return redirect('auction_detail', pk=pk)
+
+
+@login_required
+def watchlist(request):
+    watched_auctions = request.user.watchlist.all()
+    return render(request, 'auctions/watchlist.html', {'watched_auctions': watched_auctions})

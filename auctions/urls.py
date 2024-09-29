@@ -19,5 +19,8 @@ urlpatterns = [
     path('edit_account/', edit_account, name='edit_account'),
     path('auction/new/', views.create_auction, name='create_auction'),
     path('auction/<int:pk>/cancel/', cancel_auction, name='cancel_auction'),
+    path('watchlist/', views.watchlist, name='watchlist'),
+    path('add-to-watchlist/<int:pk>/', views.add_to_watchlist, name='add_to_watchlist'),
+    path('remove-from-watchlist/<int:pk>/', views.remove_from_watchlist, name='remove_from_watchlist'),
     # Other URL patterns
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
