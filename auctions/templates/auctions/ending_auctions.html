@@ -1,0 +1,11 @@
+<h2>Ending Soon Auctions</h2>
+<ul>
+    {% for auction in ending_auctions %}
+        <li>
+            <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
+            <p>Ends on: {{ auction.end_date }}</p>
+        </li>
+    {% empty %}
+        <li>No auctions are ending soon.</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,11 @@
+<h2>Recently Ended Auctions</h2>
+<ul>
+    {% for auction in recently_ended_auctions %}
+        <li>
+            <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
+            <p>Ended on: {{ auction.end_date }}</p>
+        </li>
+    {% empty %}
+        <li>No auctions have ended recently.</li>
+    {% endfor %}
+</ul>

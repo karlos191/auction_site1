@@ -13,8 +13,8 @@
             justify-content: space-between;
             margin: 20px;
         }
-        .auctions-column, .categories-column {
-            width: 45%;
+        .auctions-column, .categories-column, .profile-column {
+            width: 30%;
         }
         .category {
             margin-bottom: 20px;
@@ -55,7 +55,7 @@
             {% if user.is_authenticated %}
                 <li><a href="{% url 'edit_account' %}">Edit Account</a></li>
                 <li><a href="{% url 'create_auction' %}">Add Auction</a></li>
-                <a href="{% url 'watchlist' %}">Your Watchlist</a>
+                <li><a href="{% url 'watchlist' %}">Your Watchlist</a></li>
                 <li>
                     <form method="POST" action="{% url 'custom_logout' %}">
                         {% csrf_token %}
@@ -78,8 +78,6 @@
                 {% for auction in recent_auctions %}
                     <li>
                         <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
-
-                        <!-- Check if the auction has ended -->
                         {% if auction.end_date > now and not auction.is_closed %}
                             <p><strong>Starting Price:</strong> ${{ auction.starting_price }}</p>
                             <p><strong>Current Price:</strong> ${{ auction.current_price }}</p>
@@ -113,6 +111,57 @@
                 {% endfor %}
             </div>
         </section>
+
+        <!-- Profile Column -->
+        <section class="profile-column">
+            <h2>Profile</h2>
+            <div>
+                <h3>My Auctions</h3>
+                <ul>
+                    {% for auction in user_auctions %}
+                        <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
+                    {% empty %}
+                        <li>No auctions created by you.</li>
+                    {% endfor %}
+                </ul>
+
+                <h3>Auctions I'm Bidding On</h3>
+                <ul>
+                    {% for auction in auctions_bidding %}
+                        <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
+                    {% empty %}
+                        <li>You are not bidding on any auctions.</li>
+                    {% endfor %}
+                </ul>
+
+                <h3>Watchlist</h3>
+                <ul>
+                    {% for auction in watchlist_auctions %}
+                        <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
+                    {% empty %}
+                        <li>You are not watching any auctions.</li>
+                    {% endfor %}
+                </ul>
+
+                <h3>Ending Soon</h3>
+                <ul>
+                    {% for auction in ending_auctions %}
+                        <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
+                    {% empty %}
+                        <li>No auctions ending soon.</li>
+                    {% endfor %}
+                </ul>
+
+                <h3>Just Ended</h3>
+                <ul>
+                    {% for auction in ended_auctions %}
+                        <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
+                    {% empty %}
+                        <li>No auctions have just ended.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
     </div>
 
     <main>
@@ -134,8 +183,4 @@
     </footer>
 </body>
 </html>
-
-
-
-
 
