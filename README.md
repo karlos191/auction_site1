@@ -88,8 +88,8 @@
 - [ ] both the seller and the buyer can leave a rating and a comment
 
 ##Auction observation
-- [ ] logged in user can add auction to the watch list
-- [ ] after entering the observed auction, this fact should be marked, e.g. with an inscription or a star image
+- [x] logged in user can add auction to the watch list
+- [x] after entering the observed auction, this fact should be marked, e.g. with an inscription or a star image
 
 ##Project development
 - [ ] in its current form, the design is quite complicated
