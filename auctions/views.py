@@ -12,16 +12,16 @@ from .forms import EditAccountForm
 from .forms import AuctionForm
 
 
-@login_required  # Ensures the user is logged in to see profile-related info
+@login_required
 def home(request):
+    # Current time
+    now = timezone.now()
+
     # Recent auctions
     recent_auctions = Auction.objects.filter(is_canceled=False).order_by('-start_date')[:10]
 
     # Categories
     categories = Category.objects.all()
-
-    # Current time
-    now = timezone.now()
 
     # Auctions created by the logged-in user
     user_auctions = Auction.objects.filter(user=request.user, is_canceled=False)
@@ -32,11 +32,11 @@ def home(request):
     # Auctions the user is watching
     watchlist_auctions = request.user.watchlist.all()
 
-    # Auctions that are ending soon
-    ending_auctions = Auction.objects.filter(is_canceled=False, end_date__gte=now).order_by('end_date')[:10]
+    # Auctions that are ending soon (exclude closed auctions)
+    ending_auctions = Auction.objects.filter(is_canceled=False, end_date__gte=now, is_closed=False).order_by('end_date')[:10]
 
-    # Just ended auctions
-    ended_auctions = Auction.objects.filter(is_canceled=False, end_date__lt=now).order_by('-end_date')[:10]
+    # Just ended auctions (include closed auctions or those that ended by time)
+    ended_auctions = Auction.objects.filter(is_canceled=False, is_closed=True) | Auction.objects.filter(end_date__lt=now).order_by('-end_date')[:10]
 
     return render(request, 'auctions/home.html', {
         'recent_auctions': recent_auctions,
