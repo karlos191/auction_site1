@@ -65,7 +65,7 @@
 
 ##Auction start
 - [x] a form for starting the auction and determining its parameters
-- [ ] an auction can be cancelled (if there was no bid)
+- [x] an auction can be cancelled (if there was no bid)
 
 ##Auction search
 - [ ] page presenting auction search results, e.g. category links from the main page lead to it
