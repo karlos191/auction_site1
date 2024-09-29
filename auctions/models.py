@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User, AbstractUser, BaseUserManager, PermissionsMixin, AbstractBaseUser
 from django.conf import settings
 from django.utils import timezone
-from django.contrib.auth import get_user_model
 
 
 # Category Model
@@ -13,6 +12,29 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Auction(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='auctions')
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    photos = models.ImageField(upload_to='auction_photos/', blank=True, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    is_closed = models.BooleanField(default=False)
+    starting_price = models.DecimalField(max_digits=10, decimal_places=2, )
+    current_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
+    minimum_amount = models.DecimalField(max_digits=10, decimal_places=2)
+    buy_now_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
+    promoted = models.BooleanField(default=False)
+    location = models.CharField(max_length=255, blank=True, null=True)
+    start_date = models.DateTimeField(default=timezone.now, editable=False)
+    end_date = models.DateTimeField()
+    num_visits = models.IntegerField(default=0)
+    is_canceled = models.BooleanField(default=False)
+    watchers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='watching_auctions', blank=True)
+
+    def __str__(self):
+        return self.title
 
 
 class CustomUserManager(BaseUserManager):
@@ -28,6 +50,12 @@ class CustomUserManager(BaseUserManager):
     def create_superuser(self, email, password=None, **extra_fields):
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
         return self.create_user(email, password, **extra_fields)
 
 
@@ -37,6 +65,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=255)
     city = models.CharField(max_length=100, null=True, blank=True)
     address = models.CharField(max_length=255, null=True, blank=True)
+    watchlist = models.ManyToManyField('Auction', related_name='watched_by', blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)
     account_status = models.CharField(
         max_length=10, choices=[('ACTIVE', 'Active'), ('INACTIVE', 'Inactive'), ('BLOCKED', 'Blocked')]
@@ -70,28 +99,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
-
-
-# Auction Model
-class Auction(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='auctions')
-    title = models.CharField(max_length=255)
-    description = models.TextField()
-    photos = models.ImageField(upload_to='auction_photos/', blank=True, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    is_closed = models.BooleanField(default=False)
-    starting_price = models.DecimalField(max_digits=10, decimal_places=2, )
-    current_price = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    minimum_amount = models.DecimalField(max_digits=10, decimal_places=2)
-    buy_now_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    promoted = models.BooleanField(default=False)
-    location = models.CharField(max_length=255, blank=True, null=True)
-    start_date = models.DateTimeField(default=timezone.now, editable=False)
-    end_date = models.DateTimeField()
-    num_visits = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.title
 
 
 class Bid(models.Model):

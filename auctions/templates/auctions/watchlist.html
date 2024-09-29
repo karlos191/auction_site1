@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Watchlist</title>
+</head>
+<body>
+    <header>
+        <h1>Your Watchlist</h1>
+        <nav>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'auctions_list' %}">All Auctions</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Watched Auctions</h2>
+            <ul>
+                {% for auction in watched_auctions %}
+                    <li>
+                        <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
+                    </li>
+                {% empty %}
+                    <li>You are not watching any auctions.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

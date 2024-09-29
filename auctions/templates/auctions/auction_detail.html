@@ -129,8 +129,26 @@
             <p><strong>Added by:</strong> {{ auction.user.username }}</p>
             <p><strong>Location:</strong> {{ auction.location }}</p>
 
+            <!-- Show add/remove watchlist button -->
             {% if user.is_authenticated %}
-                {% if auction.end_date > now and not auction.is_closed %}  <!-- Only show forms if auction is active -->
+    {% if auction in user.watchlist.all %}
+        <p>⭐ You are watching this auction.</p>
+        <form method="post" action="{% url 'remove_from_watchlist' pk=auction.pk %}">
+            {% csrf_token %}
+            <button type="submit">Remove from Watchlist</button>
+        </form>
+    {% else %}
+        <form method="post" action="{% url 'add_to_watchlist' pk=auction.pk %}">
+            {% csrf_token %}
+            <button type="submit">Add to Watchlist</button>
+        </form>
+    {% endif %}
+{% else %}
+    <p>You need to <a href="{% url 'login' %}">login</a> to add auctions to your watchlist.</p>
+{% endif %}
+
+            {% if user.is_authenticated %}
+                {% if auction.end_date > now and not auction.is_closed %}
                     <!-- Place Bid Form -->
                     <form method="post" action="{% url 'place_bid' pk=auction.pk %}">
                         {% csrf_token %}
@@ -148,6 +166,14 @@
                     {% endif %}
                 {% else %}
                     <p>This auction has ended. No bids can be placed.</p>
+                {% endif %}
+
+                <!-- Cancel Auction Button (only shown if there are no bids) -->
+                {% if auction.user == user and not auction.bids.exists and not auction.is_closed %}
+                    <form method="post" action="{% url 'cancel_auction' pk=auction.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" style="background-color:red; color:white;">Cancel Auction</button>
+                    </form>
                 {% endif %}
             {% else %}
                 <p>You need to be logged in to place a bid or buy now.</p>
@@ -172,4 +198,3 @@
     </footer>
 </body>
 </html>
-
