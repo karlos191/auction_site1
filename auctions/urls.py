@@ -22,5 +22,10 @@ urlpatterns = [
     path('watchlist/', views.watchlist, name='watchlist'),
     path('add-to-watchlist/<int:pk>/', views.add_to_watchlist, name='add_to_watchlist'),
     path('remove-from-watchlist/<int:pk>/', views.remove_from_watchlist, name='remove_from_watchlist'),
+    path('ending-soon/', views.ending_soon_auctions, name='ending_soon_auctions'),
+    path('user-auctions/', views.user_auctions, name='user_auctions'),
+    path('user-bids/', views.user_bids, name='user_bids'),
+    path('observed-auctions/', views.observed_auctions, name='observed_auctions'),
+    path('recently-ended/', views.recently_ended_auctions, name='recently_ended_auctions'),
     # Other URL patterns
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

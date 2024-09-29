@@ -1,0 +1,11 @@
+<h2>Observed Auctions</h2>
+<ul>
+    {% for auction in observed_auctions %}
+        <li>
+            <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
+            <p>Ends on: {{ auction.end_date }}</p>
+        </li>
+    {% empty %}
+        <li>You are not observing any auctions.</li>
+    {% endfor %}
+</ul>

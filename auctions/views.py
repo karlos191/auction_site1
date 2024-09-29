@@ -6,18 +6,48 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BidForm
 from .forms import CustomUserCreationForm
-from .models import Auction, Bid, Category, CustomUser
+from .models import Auction, Bid, Category
 from django.utils import timezone
 from .forms import EditAccountForm
 from .forms import AuctionForm
 
 
+@login_required
 def home(request):
+    # Current time
+    now = timezone.now()
+
+    # Recent auctions
     recent_auctions = Auction.objects.filter(is_canceled=False).order_by('-start_date')[:10]
-    categories = Category.objects.all()  # Get all categories
-    now = timezone.now()  # Get the current time
-    return render(request, 'auctions/home.html',
-                  {'recent_auctions': recent_auctions, 'categories': categories, 'now': now})
+
+    # Categories
+    categories = Category.objects.all()
+
+    # Auctions created by the logged-in user
+    user_auctions = Auction.objects.filter(user=request.user, is_canceled=False)
+
+    # Auctions the user is bidding on
+    auctions_bidding = Auction.objects.filter(bids__user=request.user, is_canceled=False).distinct()
+
+    # Auctions the user is watching
+    watchlist_auctions = request.user.watchlist.all()
+
+    # Auctions that are ending soon (exclude closed auctions)
+    ending_auctions = Auction.objects.filter(is_canceled=False, end_date__gte=now, is_closed=False).order_by('end_date')[:10]
+
+    # Just ended auctions (include closed auctions or those that ended by time)
+    ended_auctions = Auction.objects.filter(is_canceled=False, is_closed=True) | Auction.objects.filter(end_date__lt=now).order_by('-end_date')[:10]
+
+    return render(request, 'auctions/home.html', {
+        'recent_auctions': recent_auctions,
+        'categories': categories,
+        'now': now,
+        'user_auctions': user_auctions,
+        'auctions_bidding': auctions_bidding,
+        'watchlist_auctions': watchlist_auctions,
+        'ending_auctions': ending_auctions,
+        'ended_auctions': ended_auctions,
+    })
 
 
 def auctions_list(request):
@@ -263,3 +293,31 @@ def remove_from_watchlist(request, pk):
 def watchlist(request):
     watched_auctions = request.user.watchlist.all()
     return render(request, 'auctions/watchlist.html', {'watched_auctions': watched_auctions})
+
+
+def ending_soon_auctions(request):
+    ending_auctions = Auction.objects.filter(end_date__gt=timezone.now()).order_by('end_date')[:10]
+    return render(request, 'auctions/ending_auctions.html', {'ending_auctions': ending_auctions})
+
+
+@login_required
+def user_auctions(request):
+    user_auctions = Auction.objects.filter(user=request.user)
+    return render(request, 'auctions/user_auctions.html', {'user_auctions': user_auctions})
+
+
+@login_required
+def user_bids(request):
+    user_bids = Auction.objects.filter(bids__user=request.user).distinct()
+    return render(request, 'auctions/user_bids.html', {'user_bids': user_bids})
+
+
+@login_required
+def observed_auctions(request):
+    observed_auctions = request.user.watchlist.all()
+    return render(request, 'auctions/observed_auctions.html', {'observed_auctions': observed_auctions})
+
+
+def recently_ended_auctions(request):
+    recently_ended_auctions = Auction.objects.filter(end_date__lte=timezone.now()).order_by('-end_date')[:10]
+    return render(request, 'auctions/recently_ended_auctions.html',{'recently_ended_auctions': recently_ended_auctions})

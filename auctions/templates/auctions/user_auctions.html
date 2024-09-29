@@ -1,0 +1,11 @@
+<h2>Your Auctions</h2>
+<ul>
+    {% for auction in user_auctions %}
+        <li>
+            <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
+            <p>Ends on: {{ auction.end_date }}</p>
+        </li>
+    {% empty %}
+        <li>You have not started any auctions.</li>
+    {% endfor %}
+</ul>

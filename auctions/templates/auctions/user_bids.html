@@ -1,0 +1,11 @@
+<h2>Auctions You're Bidding On</h2>
+<ul>
+    {% for auction in user_bids %}
+        <li>
+            <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
+            <p>Your highest bid: {{ auction.bids.order_by('-amount').first.amount }}</p>
+        </li>
+    {% empty %}
+        <li>You are not bidding on any auctions.</li>
+    {% endfor %}
+</ul>
