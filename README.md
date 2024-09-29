@@ -48,11 +48,11 @@
 ##Main page presentation
 - [x] presentation of categories(main - if their structure is tree-like): e.g. a list of links in the left or right column, leading to auctions from the selected category
 - [x] presentation of a list of recently added auctions (e.g. 10)
-- [ ] presentation of a list of ending auctions (e.g. 10)
-- [ ] presentation of a list of auctions of a currently logged in user
-- [ ] presentation of a list of auctions, that a logged in user is bidding on
-- [ ] presentation of a list of observed auctions
-- [ ] presentation of a list of "just ended" auctions (e.g. 10)
+- [x] presentation of a list of ending auctions (e.g. 10)
+- [x] presentation of a list of auctions of a currently logged in user
+- [x] presentation of a list of auctions, that a logged in user is bidding on
+- [x] presentation of a list of observed auctions
+- [x] presentation of a list of "just ended" auctions (e.g. 10)
 - [ ] (optional) additional auction lists, e.g. the most popular (most visits or auctions)
 
 ##Auction category selection
