@@ -89,6 +89,7 @@ class Auction(models.Model):
     start_date = models.DateTimeField(default=timezone.now, editable=False)
     end_date = models.DateTimeField()
     num_visits = models.IntegerField(default=0)
+    is_canceled = models.BooleanField(default=False)
 
     def __str__(self):
         return self.title

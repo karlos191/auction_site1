@@ -13,10 +13,11 @@ from .forms import AuctionForm
 
 
 def home(request):
-    recent_auctions = Auction.objects.all().order_by('-start_date')[:10]
+    recent_auctions = Auction.objects.filter(is_canceled=False).order_by('-start_date')[:10]
     categories = Category.objects.all()  # Get all categories
     now = timezone.now()  # Get the current time
-    return render(request, 'auctions/home.html', {'recent_auctions': recent_auctions, 'categories': categories, 'now': now})
+    return render(request, 'auctions/home.html',
+                  {'recent_auctions': recent_auctions, 'categories': categories, 'now': now})
 
 
 def auctions_list(request):
@@ -199,7 +200,8 @@ def create_auction(request):
             # Check if promotion is allowed based on the user's account type
             if auction.promoted and user.account_type == 'PREMIUM':
                 current_month = timezone.now().month
-                promoted_auctions_count = Auction.objects.filter(user=user, promoted=True, start_date__month=current_month).count()
+                promoted_auctions_count = Auction.objects.filter(user=user, promoted=True,
+                                                                 start_date__month=current_month).count()
 
                 if promoted_auctions_count >= 10:
                     messages.error(request, 'You have already promoted the maximum of 10 auctions this month.')
@@ -215,3 +217,21 @@ def create_auction(request):
         form = AuctionForm(user=user)  # Pass the user to the form
 
     return render(request, 'auctions/create_auction.html', {'form': form})
+
+
+@login_required
+def cancel_auction(request, pk):
+    auction = get_object_or_404(Auction, pk=pk)
+
+    # Check if the auction has any bids or if it's already closed
+    if auction.bids.exists() or auction.is_closed:
+        messages.error(request, "This auction cannot be canceled as it has bids or is already closed.")
+        return redirect('auction_detail', pk=pk)
+
+    # Mark the auction as canceled
+    auction.is_canceled = True
+    auction.is_closed = True  # Also mark it as closed so it doesn't appear as active
+    auction.save()
+
+    messages.success(request, "Auction canceled successfully.")
+    return redirect('home')
