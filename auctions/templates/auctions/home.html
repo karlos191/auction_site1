@@ -43,31 +43,56 @@
             color: #721c24;
             border-color: #f5c6cb;
         }
+        .search-bar {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .search-bar input {
+            padding: 8px;
+            font-size: 16px;
+            width: 50%;
+        }
+        .search-bar button {
+            padding: 8px;
+            font-size: 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <header>
-    <h1>Welcome to the Auction Site</h1>
-    <nav>
-        <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'edit_account' %}">Edit Account</a></li>
-                <li><a href="{% url 'create_auction' %}">Add Auction</a></li>
-                <li>
-                    <form method="POST" action="{% url 'custom_logout' %}">
-                        {% csrf_token %}
-                        <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">Logout</button>
-                    </form>
-                </li>
-            {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-                <li><a href="{% url 'register' %}">Register</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-</header>
+        <h1>Welcome to the Auction Site</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'edit_account' %}">Edit Account</a></li>
+                    <li><a href="{% url 'create_auction' %}">Add Auction</a></li>
+                    <li>
+                        <form method="POST" action="{% url 'custom_logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">Logout</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <form method="GET" action="{% url 'auction_search' %}">
+                <input type="text" name="query" placeholder="Search auctions by name...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </header>
 
     <div class="container">
         <!-- Left Column: Recent Auctions -->

@@ -28,5 +28,6 @@ urlpatterns = [
     path('observed-auctions/', views.observed_auctions, name='observed_auctions'),
     path('recently-ended/', views.recently_ended_auctions, name='recently_ended_auctions'),
     path('category/<int:category_id>/', views.auction_search_by_category, name='auction_search_by_category'),
+    path('search/', views.auction_search, name='auction_search'),
     # Other URL patterns
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

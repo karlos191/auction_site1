@@ -33,10 +33,12 @@ def home(request):
     watchlist_auctions = request.user.watchlist.all()
 
     # Auctions that are ending soon (exclude closed auctions)
-    ending_auctions = Auction.objects.filter(is_canceled=False, end_date__gte=now, is_closed=False).order_by('end_date')[:10]
+    ending_auctions = Auction.objects.filter(is_canceled=False, end_date__gte=now, is_closed=False).order_by(
+        'end_date')[:10]
 
     # Just ended auctions (include closed auctions or those that ended by time)
-    ended_auctions = Auction.objects.filter(is_canceled=False, is_closed=True) | Auction.objects.filter(end_date__lt=now).order_by('-end_date')[:10]
+    ended_auctions = Auction.objects.filter(is_canceled=False, is_closed=True) | Auction.objects.filter(
+        end_date__lt=now).order_by('-end_date')[:10]
 
     return render(request, 'auctions/home.html', {
         'recent_auctions': recent_auctions,
@@ -320,7 +322,8 @@ def observed_auctions(request):
 
 def recently_ended_auctions(request):
     recently_ended_auctions = Auction.objects.filter(end_date__lte=timezone.now()).order_by('-end_date')[:10]
-    return render(request, 'auctions/recently_ended_auctions.html',{'recently_ended_auctions': recently_ended_auctions})
+    return render(request, 'auctions/recently_ended_auctions.html',
+                  {'recently_ended_auctions': recently_ended_auctions})
 
 
 def auction_search_by_category(request, category_id):
@@ -332,3 +335,14 @@ def auction_search_by_category(request, category_id):
         'auctions': auctions,
     }
     return render(request, 'auctions/auction_search_results.html', context)
+
+
+def auction_search(request):
+    query = request.GET.get('query', '')
+    search_results = Auction.objects.filter(title__icontains=query, is_closed=False) if query else []
+
+    context = {
+        'search_results': search_results,
+        'query': query,
+    }
+    return render(request, 'auctions/auction_search.html', context)
