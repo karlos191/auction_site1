@@ -96,16 +96,9 @@
             <div class="categories">
                 {% for category in categories %}
                     <div class="category">
-                        <h3>{{ category.name }}</h3>
-                        <ul>
-                            {% for auction in category.auction_set.all %}
-                                <li class="auction">
-                                    <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
-                                </li>
-                            {% empty %}
-                                <li>No auctions in this category.</li>
-                            {% endfor %}
-                        </ul>
+                        <h3>
+                            <a href="{% url 'auction_search_by_category' category.id %}">{{ category.name }}</a>
+                        </h3>
                     </div>
                 {% endfor %}
             </div>
@@ -182,4 +175,3 @@
     </footer>
 </body>
 </html>
-

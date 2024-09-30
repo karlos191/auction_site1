@@ -321,3 +321,14 @@ def observed_auctions(request):
 def recently_ended_auctions(request):
     recently_ended_auctions = Auction.objects.filter(end_date__lte=timezone.now()).order_by('-end_date')[:10]
     return render(request, 'auctions/recently_ended_auctions.html',{'recently_ended_auctions': recently_ended_auctions})
+
+
+def auction_search_by_category(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    auctions = Auction.objects.filter(category=category, is_closed=False)  # Filter open auctions in the category
+
+    context = {
+        'category': category,
+        'auctions': auctions,
+    }
+    return render(request, 'auctions/auction_search_results.html', context)

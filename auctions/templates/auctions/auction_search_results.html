@@ -1,0 +1,59 @@
+<!-- templates/auctions/auction_search_results.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auction Search Results - {{ category.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px;
+        }
+        .auction-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .auction-list li {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Auctions in {{ category.name }}</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'create_auction' %}">Add Auction</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Auction Results</h2>
+        <ul class="auction-list">
+            {% for auction in auctions %}
+                <li>
+                    <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a><br>
+                    <strong>Starting Price:</strong> ${{ auction.starting_price }}<br>
+                    <strong>Current Price:</strong> ${{ auction.current_price }}<br>
+                    <strong>End Date:</strong> {{ auction.end_date }}
+                </li>
+            {% empty %}
+                <li>No auctions found in this category.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Auction Site</p>
+    </footer>
+</body>
+</html>
