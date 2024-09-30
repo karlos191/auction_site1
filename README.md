@@ -70,7 +70,6 @@
 ##Auction search
 - [x] page presenting auction search results, e.g. category links from the main page lead to it
 - [x] whenever the category name is presented, it should be clickable and lead to a page with results presentation
-- [ ] additionally, on the results page, you can limit / filter auctions (e.g. by city) and sort, e.g. by the date of adding, after the date of the end of the auction
 - [x] the mechanism must take into account premium auctions and presents them first
 - [ ] (optional) a field for entering an auction number or account name: search by number (presents a specific auction), search for a user's auction (presents a list of their auctions)
 
