@@ -33,10 +33,12 @@ def home(request):
     watchlist_auctions = request.user.watchlist.all()
 
     # Auctions that are ending soon (exclude closed auctions)
-    ending_auctions = Auction.objects.filter(is_canceled=False, end_date__gte=now, is_closed=False).order_by('end_date')[:10]
+    ending_auctions = Auction.objects.filter(is_canceled=False, end_date__gte=now, is_closed=False).order_by(
+        'end_date')[:10]
 
     # Just ended auctions (include closed auctions or those that ended by time)
-    ended_auctions = Auction.objects.filter(is_canceled=False, is_closed=True) | Auction.objects.filter(end_date__lt=now).order_by('-end_date')[:10]
+    ended_auctions = Auction.objects.filter(is_canceled=False, is_closed=True) | Auction.objects.filter(
+        end_date__lt=now).order_by('-end_date')[:10]
 
     return render(request, 'auctions/home.html', {
         'recent_auctions': recent_auctions,
@@ -157,39 +159,35 @@ def profile(request):
 
 @login_required
 def buy_now(request, pk):
-    # Get the auction object or return 404 if not found.
     auction = get_object_or_404(Auction, pk=pk)
 
-    # Check if the auction has already ended by date or is closed.
+    # Check if the auction is already ended.
     if auction.end_date < timezone.now() or auction.is_closed:
         messages.error(request, "This auction has already ended.")
         return redirect('auction_detail', pk=pk)
 
-    # Check if the auction has a Buy Now price.
+    # Check if there's no buy now price.
     if auction.buy_now_price is None:
         messages.error(request, "This auction does not have a 'Buy Now' price.")
         return redirect('auction_detail', pk=pk)
 
-    # Prevent the user from buying their own auction.
+    # Ensure the user is not trying to buy their own auction.
     if auction.user == request.user:
         messages.error(request, "You cannot buy your own auction.")
         return redirect('auction_detail', pk=pk)
 
     try:
-        # Create a new bid at the buy now price and mark the auction as closed.
-        Bid.objects.create(auction=auction, user=request.user, amount=auction.buy_now_price)
-
-        # Update the auction with the new price and close it.
+        # Set the winner as the current user and mark the auction as closed
+        auction.winner = request.user
+        auction.is_closed = True
         auction.current_price = auction.buy_now_price
-        auction.is_closed = True  # Mark auction as closed
         auction.save()
 
-        # Success message after purchase
-        messages.success(request, f"You have successfully bought '{auction.title}' for ${auction.buy_now_price}!")
+        # Notify the user
+        messages.success(request, f"You have successfully bought '{auction.title}' for ${auction.buy_now_price}! Contact the seller at {auction.user.username} ({auction.user.email}).")
         return redirect('auction_detail', pk=pk)
 
     except Exception as e:
-        # Handle any exception that occurs and provide feedback.
         messages.error(request, f"An error occurred while processing your purchase: {str(e)}")
         return redirect('auction_detail', pk=pk)
 
@@ -320,4 +318,27 @@ def observed_auctions(request):
 
 def recently_ended_auctions(request):
     recently_ended_auctions = Auction.objects.filter(end_date__lte=timezone.now()).order_by('-end_date')[:10]
-    return render(request, 'auctions/recently_ended_auctions.html',{'recently_ended_auctions': recently_ended_auctions})
+    return render(request, 'auctions/recently_ended_auctions.html',
+                  {'recently_ended_auctions': recently_ended_auctions})
+
+
+def auction_search_by_category(request, category_id):
+    category = get_object_or_404(Category, pk=category_id)
+    auctions = Auction.objects.filter(category=category, is_closed=False)
+
+    context = {
+        'category': category,
+        'auctions': auctions,
+    }
+    return render(request, 'auctions/auction_search_results.html', context)
+
+
+def auction_search(request):
+    query = request.GET.get('query', '')
+    search_results = Auction.objects.filter(title__icontains=query, is_closed=False) if query else []
+
+    context = {
+        'search_results': search_results,
+        'query': query,
+    }
+    return render(request, 'auctions/auction_search.html', context)

@@ -32,6 +32,7 @@ class Auction(models.Model):
     num_visits = models.IntegerField(default=0)
     is_canceled = models.BooleanField(default=False)
     watchers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='watching_auctions', blank=True)
+    winner = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL, related_name='won_auctions')
 
     def __str__(self):
         return self.title

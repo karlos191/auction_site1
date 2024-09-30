@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="added profile with (ending_soon_auctions, user_auctions, user_bids, observed_auctions, recently_ended_auctions" />
+    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="search bar added">
+      <change afterPath="$PROJECT_DIR$/auctions/migrations/0009_auction_winner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -148,7 +154,8 @@
       <workItem from="1727349756272" duration="5751000" />
       <workItem from="1727419578137" duration="5173000" />
       <workItem from="1727597854313" duration="4949000" />
-      <workItem from="1727608191298" duration="1724000" />
+      <workItem from="1727608191298" duration="2100000" />
+      <workItem from="1727698012891" duration="2152000" />
     </task>
     <task id="LOCAL-00001" summary="uprava chyby na main site">
       <option name="closed" value="true" />
@@ -286,7 +293,39 @@
       <option name="project" value="LOCAL" />
       <updated>1727609820741</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="added profile with (ending_soon_auctions, user_auctions, user_bids, observed_auctions, recently_ended_auctions">
+      <option name="closed" value="true" />
+      <created>1727610342609</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1727610342609</updated>
+    </task>
+    <task id="LOCAL-00019" summary="watchlist change">
+      <option name="closed" value="true" />
+      <created>1727698572386</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1727698572386</updated>
+    </task>
+    <task id="LOCAL-00020" summary="added clickable categeroies">
+      <option name="closed" value="true" />
+      <created>1727699053826</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1727699053826</updated>
+    </task>
+    <task id="LOCAL-00021" summary="search bar added">
+      <option name="closed" value="true" />
+      <created>1727699483536</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1727699483536</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,7 +370,10 @@
     <MESSAGE value="added cancel button" />
     <MESSAGE value="added watchlist" />
     <MESSAGE value="added profile with (ending_soon_auctions, user_auctions, user_bids, observed_auctions, recently_ended_auctions" />
-    <option name="LAST_COMMIT_MESSAGE" value="added profile with (ending_soon_auctions, user_auctions, user_bids, observed_auctions, recently_ended_auctions" />
+    <MESSAGE value="watchlist change" />
+    <MESSAGE value="added clickable categeroies" />
+    <MESSAGE value="search bar added" />
+    <option name="LAST_COMMIT_MESSAGE" value="search bar added" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/auction_site$views.coverage" NAME="views Coverage Results" MODIFIED="1725785704661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auctions" />

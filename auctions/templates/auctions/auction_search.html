@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+    <ul>
+        {% for auction in search_results %}
+            <li>
+                <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
+                <p><strong>Starting Price:</strong> ${{ auction.starting_price }}</p>
+                <p><strong>Current Price:</strong> ${{ auction.current_price }}</p>
+            </li>
+        {% empty %}
+            <li>No auctions found matching your search.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
