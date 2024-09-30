@@ -55,7 +55,6 @@
             {% if user.is_authenticated %}
                 <li><a href="{% url 'edit_account' %}">Edit Account</a></li>
                 <li><a href="{% url 'create_auction' %}">Add Auction</a></li>
-                <li><a href="{% url 'watchlist' %}">Your Watchlist</a></li>
                 <li>
                     <form method="POST" action="{% url 'custom_logout' %}">
                         {% csrf_token %}
