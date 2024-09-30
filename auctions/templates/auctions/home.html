@@ -129,56 +129,67 @@
             </div>
         </section>
 
-        <!-- Profile Column -->
-        <section class="profile-column">
-            <h2>Profile</h2>
-            <div>
-                <h3>My Auctions</h3>
-                <ul>
-                    {% for auction in user_auctions %}
-                        <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
-                    {% empty %}
-                        <li>No auctions created by you.</li>
-                    {% endfor %}
-                </ul>
+        <!-- Profile Column in home.html -->
+<section class="profile-column">
+    <h2>Profile</h2>
+    <div>
+        <h3>My Auctions</h3>
+        <ul>
+            {% for auction in user_auctions %}
+                <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
+            {% empty %}
+                <li>No auctions created by you.</li>
+            {% endfor %}
+        </ul>
 
-                <h3>Auctions I'm Bidding On</h3>
-                <ul>
-                    {% for auction in auctions_bidding %}
-                        <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
-                    {% empty %}
-                        <li>You are not bidding on any auctions.</li>
-                    {% endfor %}
-                </ul>
+        <h3>Auctions I'm Bidding On</h3>
+        <ul>
+            {% for auction in auctions_bidding %}
+                <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
+            {% empty %}
+                <li>You are not bidding on any auctions.</li>
+            {% endfor %}
+        </ul>
 
-                <h3>Watchlist</h3>
-                <ul>
-                    {% for auction in watchlist_auctions %}
-                        <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
-                    {% empty %}
-                        <li>You are not watching any auctions.</li>
-                    {% endfor %}
-                </ul>
+        <h3>Watchlist</h3>
+        <ul>
+            {% for auction in watchlist_auctions %}
+                <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
+            {% empty %}
+                <li>You are not watching any auctions.</li>
+            {% endfor %}
+        </ul>
 
-                <h3>Ending Soon</h3>
-                <ul>
-                    {% for auction in ending_auctions %}
-                        <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
-                    {% empty %}
-                        <li>No auctions ending soon.</li>
-                    {% endfor %}
-                </ul>
+        <h3>Auctions I Won</h3>
+        <ul>
+            {% for auction in request.user.won_auctions.all %}
+                <li>You won <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>!
+                    <p>Contact the seller: {{ auction.user.username }} ({{ auction.user.email }})</p>
+                </li>
+            {% empty %}
+                <li>You have not won any auctions yet.</li>
+            {% endfor %}
+        </ul>
 
-                <h3>Just Ended</h3>
-                <ul>
-                    {% for auction in ended_auctions %}
-                        <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
-                    {% empty %}
-                        <li>No auctions have just ended.</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </section>
+        <h3>Ending Soon</h3>
+        <ul>
+            {% for auction in ending_auctions %}
+                <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
+            {% empty %}
+                <li>No auctions ending soon.</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Just Ended</h3>
+        <ul>
+            {% for auction in ended_auctions %}
+                <li><a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a></li>
+            {% empty %}
+                <li>No auctions have just ended.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
     </div>
 
     <main>

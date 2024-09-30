@@ -159,39 +159,35 @@ def profile(request):
 
 @login_required
 def buy_now(request, pk):
-    # Get the auction object or return 404 if not found.
     auction = get_object_or_404(Auction, pk=pk)
 
-    # Check if the auction has already ended by date or is closed.
+    # Check if the auction is already ended.
     if auction.end_date < timezone.now() or auction.is_closed:
         messages.error(request, "This auction has already ended.")
         return redirect('auction_detail', pk=pk)
 
-    # Check if the auction has a Buy Now price.
+    # Check if there's no buy now price.
     if auction.buy_now_price is None:
         messages.error(request, "This auction does not have a 'Buy Now' price.")
         return redirect('auction_detail', pk=pk)
 
-    # Prevent the user from buying their own auction.
+    # Ensure the user is not trying to buy their own auction.
     if auction.user == request.user:
         messages.error(request, "You cannot buy your own auction.")
         return redirect('auction_detail', pk=pk)
 
     try:
-        # Create a new bid at the buy now price and mark the auction as closed.
-        Bid.objects.create(auction=auction, user=request.user, amount=auction.buy_now_price)
-
-        # Update the auction with the new price and close it.
+        # Set the winner as the current user and mark the auction as closed
+        auction.winner = request.user
+        auction.is_closed = True
         auction.current_price = auction.buy_now_price
-        auction.is_closed = True  # Mark auction as closed
         auction.save()
 
-        # Success message after purchase
-        messages.success(request, f"You have successfully bought '{auction.title}' for ${auction.buy_now_price}!")
+        # Notify the user
+        messages.success(request, f"You have successfully bought '{auction.title}' for ${auction.buy_now_price}! Contact the seller at {auction.user.username} ({auction.user.email}).")
         return redirect('auction_detail', pk=pk)
 
     except Exception as e:
-        # Handle any exception that occurs and provide feedback.
         messages.error(request, f"An error occurred while processing your purchase: {str(e)}")
         return redirect('auction_detail', pk=pk)
 
@@ -328,7 +324,7 @@ def recently_ended_auctions(request):
 
 def auction_search_by_category(request, category_id):
     category = get_object_or_404(Category, pk=category_id)
-    auctions = Auction.objects.filter(category=category, is_closed=False)  # Filter open auctions in the category
+    auctions = Auction.objects.filter(category=category, is_closed=False)
 
     context = {
         'category': category,
