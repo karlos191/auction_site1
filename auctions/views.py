@@ -161,34 +161,39 @@ def profile(request):
 def buy_now(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
 
-    # Check if the auction is already ended.
+    # Ensure auction hasn't ended or is already closed
     if auction.end_date < timezone.now() or auction.is_closed:
         messages.error(request, "This auction has already ended.")
         return redirect('auction_detail', pk=pk)
 
-    # Check if there's no buy now price.
     if auction.buy_now_price is None:
         messages.error(request, "This auction does not have a 'Buy Now' price.")
         return redirect('auction_detail', pk=pk)
 
-    # Ensure the user is not trying to buy their own auction.
+    # Prevent buyer from buying their own auction
     if auction.user == request.user:
         messages.error(request, "You cannot buy your own auction.")
         return redirect('auction_detail', pk=pk)
 
     try:
-        # Set the winner as the current user and mark the auction as closed
+        # Mark auction as sold
+        auction.current_price = auction.buy_now_price
         auction.winner = request.user
         auction.is_closed = True
-        auction.current_price = auction.buy_now_price
         auction.save()
 
-        # Notify the user
-        messages.success(request, f"You have successfully bought '{auction.title}' for ${auction.buy_now_price}! Contact the seller at {auction.user.username} ({auction.user.email}).")
+        # Create a new transaction
+        Transaction.objects.create(
+            auction=auction,
+            buyer=request.user,
+            seller=auction.user,
+        )
+
+        messages.success(request, f"You have successfully bought '{auction.title}' for ${auction.buy_now_price}.")
         return redirect('auction_detail', pk=pk)
 
     except Exception as e:
-        messages.error(request, f"An error occurred while processing your purchase: {str(e)}")
+        messages.error(request, f"An error occurred: {str(e)}")
         return redirect('auction_detail', pk=pk)
 
 

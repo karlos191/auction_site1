@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser, Auction
-from django.conf import settings
 from django.contrib.auth.models import User
 
 
@@ -63,3 +62,4 @@ class AuctionForm(forms.ModelForm):
         # Cast the user to CustomUser if it's passed
         if isinstance(user, CustomUser) and user.account_type != 'PREMIUM':
             self.fields.pop('promoted')  # Remove the promoted field for non-premium users
+
