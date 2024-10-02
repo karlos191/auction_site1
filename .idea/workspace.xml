@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="search bar added">
-      <change afterPath="$PROJECT_DIR$/auctions/migrations/0009_auction_winner.py" afterDir="false" />
+    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="design change">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -155,7 +154,8 @@
       <workItem from="1727419578137" duration="5173000" />
       <workItem from="1727597854313" duration="4949000" />
       <workItem from="1727608191298" duration="2100000" />
-      <workItem from="1727698012891" duration="2152000" />
+      <workItem from="1727698012891" duration="3351000" />
+      <workItem from="1727877260646" duration="3688000" />
     </task>
     <task id="LOCAL-00001" summary="uprava chyby na main site">
       <option name="closed" value="true" />
@@ -325,7 +325,47 @@
       <option name="project" value="LOCAL" />
       <updated>1727699483536</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="added message to buy now and section in profile to contact seller when someone win auction">
+      <option name="closed" value="true" />
+      <created>1727700538360</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1727700538360</updated>
+    </task>
+    <task id="LOCAL-00023" summary="small changes">
+      <option name="closed" value="true" />
+      <created>1727701299940</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1727701299940</updated>
+    </task>
+    <task id="LOCAL-00024" summary="small changes">
+      <option name="closed" value="true" />
+      <created>1727701315096</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1727701315096</updated>
+    </task>
+    <task id="LOCAL-00025" summary="small changes">
+      <option name="closed" value="true" />
+      <created>1727701349355</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1727701349355</updated>
+    </task>
+    <task id="LOCAL-00026" summary="design change">
+      <option name="closed" value="true" />
+      <created>1727878373306</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1727878373306</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +382,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="develop" />
+                        <option value="small-changes" />
                       </list>
                     </value>
                   </entry>
@@ -373,7 +413,10 @@
     <MESSAGE value="watchlist change" />
     <MESSAGE value="added clickable categeroies" />
     <MESSAGE value="search bar added" />
-    <option name="LAST_COMMIT_MESSAGE" value="search bar added" />
+    <MESSAGE value="added message to buy now and section in profile to contact seller when someone win auction" />
+    <MESSAGE value="small changes" />
+    <MESSAGE value="design change" />
+    <option name="LAST_COMMIT_MESSAGE" value="design change" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/auction_site$views.coverage" NAME="views Coverage Results" MODIFIED="1725785704661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auctions" />

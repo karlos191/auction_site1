@@ -110,3 +110,4 @@ class Bid(models.Model):
 
     def __str__(self):
         return f'{self.user} bid {self.amount} on {self.auction}'
+
