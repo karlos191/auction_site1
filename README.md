@@ -79,7 +79,7 @@
 - [x] can immediately choose Buy now
 - [x] can only bid on ongoing auctions
 - [x] the highest bid or Buy now becomes Purchase
-- [ ] if the minimum amount has not been reached, there is no winner
+- [x] if the minimum amount has not been reached, there is no winner
 - [ ] Warning! For simplicity, you need to write a mechanism, that will be triggered each time you enter the site and will "close" auctions, that have ended (since the last visit to the site) and will select winners
 - [ ] (optional) with the help of a trainer you can try to use Celery
 
