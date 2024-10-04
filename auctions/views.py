@@ -26,6 +26,8 @@ def home(request):
     # Categories
     categories = Category.objects.all()
 
+    won_auctions = Auction.objects.none()
+
     # Initialize empty lists for unauthenticated users
     user_auctions = auctions_bidding = watchlist_auctions = []
 
@@ -40,8 +42,12 @@ def home(request):
         # Auctions the user is watching
         watchlist_auctions = request.user.watchlist.all()
 
+        # Fetch auctions won by the logged-in user, either by bidding or Buy Now
+        won_auctions = Auction.objects.filter(winner=request.user)
+
     # Auctions that are ending soon (exclude closed auctions)
-    ending_auctions = Auction.objects.filter(is_canceled=False, end_date__gte=now, is_closed=False).order_by('end_date')[:10]
+    ending_auctions = Auction.objects.filter(is_canceled=False, end_date__gte=now, is_closed=False).order_by(
+        'end_date')[:10]
 
     # Just ended auctions (include closed auctions or those that ended by time)
     ended_auctions = Auction.objects.filter(is_canceled=False, is_closed=True) | Auction.objects.filter(
@@ -60,6 +66,7 @@ def home(request):
         'ending_auctions': ending_auctions,
         'ended_auctions': ended_auctions,
         'top_users': top_users,
+        'won_auctions': won_auctions,
     })
 
 
@@ -193,13 +200,6 @@ def buy_now(request, pk):
         auction.is_closed = True
         auction.save()
 
-        # Create a new transaction
-        Transaction.objects.create(
-            auction=auction,
-            buyer=request.user,
-            seller=auction.user,
-        )
-
         messages.success(request, f"You have successfully bought '{auction.title}' for ${auction.buy_now_price}.")
         return redirect('auction_detail', pk=pk)
 
@@ -222,9 +222,6 @@ def edit_account(request):
         form = EditAccountForm(instance=user)
 
     return render(request, 'auctions/edit_account.html', {'form': form})
-
-
-from .models import CustomUser
 
 
 @login_required
@@ -385,5 +382,3 @@ def user_profile(request, user_id):
         'form': form,
         'avg_rating': avg_rating
     })
-
-
