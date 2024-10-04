@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="added profile with comments and ratings">
+    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="minor changes">
+      <change afterPath="$PROJECT_DIR$/auctions/management/commands/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/management/commands/check_auctions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auction_search_results.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auction_search_results.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +23,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -155,7 +157,8 @@
       <workItem from="1727608191298" duration="2100000" />
       <workItem from="1727698012891" duration="3351000" />
       <workItem from="1727877260646" duration="4066000" />
-      <workItem from="1728037293776" duration="5134000" />
+      <workItem from="1728037293776" duration="5254000" />
+      <workItem from="1728052214620" duration="2805000" />
     </task>
     <task id="LOCAL-00001" summary="uprava chyby na main site">
       <option name="closed" value="true" />
@@ -381,7 +384,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728042071187</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="design change">
+      <option name="closed" value="true" />
+      <created>1728042575667</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1728042575667</updated>
+    </task>
+    <task id="LOCAL-00030" summary="minor changes">
+      <option name="closed" value="true" />
+      <created>1728053612396</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1728053612396</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,9 +450,10 @@
     <MESSAGE value="search bar added" />
     <MESSAGE value="added message to buy now and section in profile to contact seller when someone win auction" />
     <MESSAGE value="small changes" />
-    <MESSAGE value="design change" />
     <MESSAGE value="added profile with comments and ratings" />
-    <option name="LAST_COMMIT_MESSAGE" value="added profile with comments and ratings" />
+    <MESSAGE value="design change" />
+    <MESSAGE value="minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/auction_site$views.coverage" NAME="views Coverage Results" MODIFIED="1725785704661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auctions" />

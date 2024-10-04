@@ -36,6 +36,20 @@ class Auction(models.Model):
     winner = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL,
                                related_name='won_auctions')
 
+    def check_if_winner(self):
+        # Check if the auction has ended by date
+        if self.end_date <= timezone.now() and not self.is_closed:
+            highest_bid = self.bids.order_by('-amount').first()
+            # Check if the highest bid is greater than or equal to the minimum amount
+            if highest_bid and highest_bid.amount >= self.minimum_amount:
+                self.winner = highest_bid.user  # Mark the highest bidder as the winner
+                self.is_closed = True
+                self.save()
+            else:
+                # Auction ends without a winner
+                self.is_closed = True
+                self.save()
+
     def __str__(self):
         return self.title
 
@@ -127,4 +141,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment by {self.commenter.username if self.commenter else 'Anonymous'} on {self.user.username}"
-

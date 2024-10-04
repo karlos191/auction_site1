@@ -16,7 +16,6 @@ from django.db import models
 User = get_user_model()
 
 
-@login_required
 def home(request):
     # Current time
     now = timezone.now()
@@ -27,14 +26,24 @@ def home(request):
     # Categories
     categories = Category.objects.all()
 
-    # Auctions created by the logged-in user
-    user_auctions = Auction.objects.filter(user=request.user, is_canceled=False)
+    won_auctions = Auction.objects.none()
 
-    # Auctions the user is bidding on
-    auctions_bidding = Auction.objects.filter(bids__user=request.user, is_canceled=False).distinct()
+    # Initialize empty lists for unauthenticated users
+    user_auctions = auctions_bidding = watchlist_auctions = []
 
-    # Auctions the user is watching
-    watchlist_auctions = request.user.watchlist.all()
+    # Check if the user is authenticated
+    if request.user.is_authenticated:
+        # Auctions created by the logged-in user
+        user_auctions = Auction.objects.filter(user=request.user, is_canceled=False)
+
+        # Auctions the user is bidding on
+        auctions_bidding = Auction.objects.filter(bids__user=request.user, is_canceled=False).distinct()
+
+        # Auctions the user is watching
+        watchlist_auctions = request.user.watchlist.all()
+
+        # Fetch auctions won by the logged-in user, either by bidding or Buy Now
+        won_auctions = Auction.objects.filter(winner=request.user)
 
     # Auctions that are ending soon (exclude closed auctions)
     ending_auctions = Auction.objects.filter(is_canceled=False, end_date__gte=now, is_closed=False).order_by(
@@ -57,6 +66,7 @@ def home(request):
         'ending_auctions': ending_auctions,
         'ended_auctions': ended_auctions,
         'top_users': top_users,
+        'won_auctions': won_auctions,
     })
 
 
@@ -190,13 +200,6 @@ def buy_now(request, pk):
         auction.is_closed = True
         auction.save()
 
-        # Create a new transaction
-        Transaction.objects.create(
-            auction=auction,
-            buyer=request.user,
-            seller=auction.user,
-        )
-
         messages.success(request, f"You have successfully bought '{auction.title}' for ${auction.buy_now_price}.")
         return redirect('auction_detail', pk=pk)
 
@@ -219,9 +222,6 @@ def edit_account(request):
         form = EditAccountForm(instance=user)
 
     return render(request, 'auctions/edit_account.html', {'form': form})
-
-
-from .models import CustomUser
 
 
 @login_required
@@ -382,5 +382,3 @@ def user_profile(request, user_id):
         'form': form,
         'avg_rating': avg_rating
     })
-
-
