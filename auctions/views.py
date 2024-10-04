@@ -16,7 +16,6 @@ from django.db import models
 User = get_user_model()
 
 
-@login_required
 def home(request):
     # Current time
     now = timezone.now()
@@ -27,18 +26,22 @@ def home(request):
     # Categories
     categories = Category.objects.all()
 
-    # Auctions created by the logged-in user
-    user_auctions = Auction.objects.filter(user=request.user, is_canceled=False)
+    # Initialize empty lists for unauthenticated users
+    user_auctions = auctions_bidding = watchlist_auctions = []
 
-    # Auctions the user is bidding on
-    auctions_bidding = Auction.objects.filter(bids__user=request.user, is_canceled=False).distinct()
+    # Check if the user is authenticated
+    if request.user.is_authenticated:
+        # Auctions created by the logged-in user
+        user_auctions = Auction.objects.filter(user=request.user, is_canceled=False)
 
-    # Auctions the user is watching
-    watchlist_auctions = request.user.watchlist.all()
+        # Auctions the user is bidding on
+        auctions_bidding = Auction.objects.filter(bids__user=request.user, is_canceled=False).distinct()
+
+        # Auctions the user is watching
+        watchlist_auctions = request.user.watchlist.all()
 
     # Auctions that are ending soon (exclude closed auctions)
-    ending_auctions = Auction.objects.filter(is_canceled=False, end_date__gte=now, is_closed=False).order_by(
-        'end_date')[:10]
+    ending_auctions = Auction.objects.filter(is_canceled=False, end_date__gte=now, is_closed=False).order_by('end_date')[:10]
 
     # Just ended auctions (include closed auctions or those that ended by time)
     ended_auctions = Auction.objects.filter(is_canceled=False, is_closed=True) | Auction.objects.filter(
