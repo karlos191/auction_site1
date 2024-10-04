@@ -5,7 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="design change">
+      <change afterPath="$PROJECT_DIR$/auctions/migrations/0012_comment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/migrations/0013_comment_rating_customuser_comment_customuser_rating.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/migrations/0014_alter_comment_rating.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/migrations/0015_remove_customuser_comment_remove_customuser_rating_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/templates/auctions/user_profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/views.py" afterDir="false" />
@@ -155,7 +163,8 @@
       <workItem from="1727597854313" duration="4949000" />
       <workItem from="1727608191298" duration="2100000" />
       <workItem from="1727698012891" duration="3351000" />
-      <workItem from="1727877260646" duration="3688000" />
+      <workItem from="1727877260646" duration="4066000" />
+      <workItem from="1728037293776" duration="4441000" />
     </task>
     <task id="LOCAL-00001" summary="uprava chyby na main site">
       <option name="closed" value="true" />
@@ -365,7 +374,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727878373306</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="design change">
+      <option name="closed" value="true" />
+      <created>1727881255168</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1727881255168</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

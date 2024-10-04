@@ -1,15 +1,19 @@
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
-from django.contrib.auth import logout
+from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import BidForm
 from .forms import CustomUserCreationForm
-from .models import Auction, Bid, Category
+from .models import Auction, Bid, Category, CustomUser, Comment
 from django.utils import timezone
 from .forms import EditAccountForm
-from .forms import AuctionForm
+from .forms import AuctionForm, CommentForm
+from django.db.models import Count
+from django.db import models
+
+User = get_user_model()
 
 
 @login_required
@@ -40,6 +44,9 @@ def home(request):
     ended_auctions = Auction.objects.filter(is_canceled=False, is_closed=True) | Auction.objects.filter(
         end_date__lt=now).order_by('-end_date')[:10]
 
+    # Query to get top 5 users with the most auctions
+    top_users = User.objects.annotate(auction_count=Count('auctions')).order_by('-auction_count')[:5]
+
     return render(request, 'auctions/home.html', {
         'recent_auctions': recent_auctions,
         'categories': categories,
@@ -49,6 +56,7 @@ def home(request):
         'watchlist_auctions': watchlist_auctions,
         'ending_auctions': ending_auctions,
         'ended_auctions': ended_auctions,
+        'top_users': top_users,
     })
 
 
@@ -347,3 +355,32 @@ def auction_search(request):
         'query': query,
     }
     return render(request, 'auctions/auction_search.html', context)
+
+
+@login_required
+def user_profile(request, user_id):
+    user_profile = get_object_or_404(CustomUser, pk=user_id)
+    comments = user_profile.comments_received.all()
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.user = user_profile  # User being commented on
+            comment.commenter = request.user  # User leaving the comment
+            comment.save()
+            messages.success(request, 'Comment and rating added successfully!')
+            return redirect('user_profile', user_id=user_profile.id)
+    else:
+        form = CommentForm()
+
+    avg_rating = comments.aggregate(models.Avg('rating'))['rating__avg'] or 0
+
+    return render(request, 'auctions/user_profile.html', {
+        'user_profile': user_profile,
+        'comments': comments,
+        'form': form,
+        'avg_rating': avg_rating
+    })
+
+

@@ -104,7 +104,7 @@
         <section>
             <h2>Auction Details</h2>
             <p><strong>Description:</strong> {{ auction.description }}</p>
-
+            <p><strong>Seller:</strong> <a href="{% url 'user_profile' user_id=auction.user.id %}">{{ auction.user.username }}</a></p>
             <!-- Display the auction photo if it exists -->
             {% if auction.photos %}
                 <img src="{{ auction.photos.url }}" alt="{{ auction.title }}">

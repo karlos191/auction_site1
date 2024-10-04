@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser, Auction
+from .models import CustomUser, Auction, Comment
 from django.contrib.auth.models import User
 
 
@@ -50,7 +50,8 @@ class EditAccountForm(forms.ModelForm):
 class AuctionForm(forms.ModelForm):
     class Meta:
         model = Auction
-        fields = ['title', 'description', 'photos', 'category', 'starting_price', 'buy_now_price', 'minimum_amount', 'end_date', 'promoted']
+        fields = ['title', 'description', 'photos', 'category', 'starting_price', 'buy_now_price', 'minimum_amount',
+                  'end_date', 'promoted']
         widgets = {
             'end_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
         }
@@ -63,3 +64,12 @@ class AuctionForm(forms.ModelForm):
         if isinstance(user, CustomUser) and user.account_type != 'PREMIUM':
             self.fields.pop('promoted')  # Remove the promoted field for non-premium users
 
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content', 'rating']
+        widgets = {
+            'content': forms.Textarea(attrs={'placeholder': 'Write your comment...'}),
+            'rating': forms.NumberInput(attrs={'min': 1, 'max': 5}),
+        }
