@@ -1,24 +1,106 @@
-<!-- templates/auctions/auction_search_results.html -->
-
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auction Search Results - {{ category.name }}</title>
     <style>
+        /* Body Styling */
         body {
             font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
         }
+
+        /* Header Styling */
+        header {
+            background-color: #900C3F;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        /* Container Styling */
         .container {
-            margin: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
+        /* Section Header */
+        h2 {
+            background-color: #900C3F;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+
+        /* Auction List Styling */
         .auction-list {
             list-style-type: none;
             padding: 0;
         }
+
         .auction-list li {
-            margin-bottom: 15px;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .auction-list li:last-child {
+            border-bottom: none;
+        }
+
+        .auction-list a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .auction-list p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #004aad;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 50px;
         }
     </style>
 </head>

@@ -134,7 +134,7 @@
         /* Category links */
         .category h3 a {
             text-decoration: none;
-            color: #ff9800;
+            color: #007bff;
         }
 
         .category h3 a:hover {
@@ -239,6 +239,20 @@
                     </div>
                 {% endfor %}
             </div>
+            <!-- New Section for Top Users -->
+    <div class="top-users">
+        <h2>Top Users</h2>
+        <ul>
+            {% for user in top_users %}
+                <li>
+                    <a href="{% url 'user_profile' user_id=user.id %}">{{ user.username }}</a>
+                    ({{ user.auction_count }} auctions)
+                </li>
+            {% empty %}
+                <li>No users available.</li>
+            {% endfor %}
+        </ul>
+    </div>
         </section>
 
         <!-- Profile Column -->

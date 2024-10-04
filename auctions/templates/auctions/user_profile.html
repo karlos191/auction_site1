@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user_profile.username }}'s Profile</title>
+    <style>
+        /* General Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #900C3F;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        /* Main Container */
+        .container {
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 1000px;
+        }
+
+        /* Profile Box Styling */
+        .profile-box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        h2, h3 {
+            background-color: #900C3F;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+
+        .profile-info p {
+            font-size: 1.2em;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .comment-form {
+            margin-bottom: 30px;
+        }
+
+        form textarea, form select {
+            width: 80%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .comment-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .comment-list li {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .comment-list li:last-child {
+            border-bottom: none;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #007bff;
+            font-size: 1.2em;
+        }
+
+        .comment-text {
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        .comment-rating {
+            color: #ff9800;
+            margin-top: 5px;
+            font-size: 1.1em;
+        }
+
+        button {
+            background-color: #900C3F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #bf1650;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #004aad;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>{{ user_profile.username }}'s Profile</h2>
+    <p>Email: {{ user_profile.email }}</p>
+    <p>Average Rating: {{ avg_rating|floatformat:1 }} / 5</p>
+
+    <h3>Leave a Comment</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit Comment</button>
+    </form>
+
+    <h3>Comments</h3>
+    <ul class="comment-list">
+        {% if comments %}
+            {% for comment in comments %}
+                <li>
+                    <p><strong>{{ comment.commenter.username }}</strong> rated {{ comment.rating }} stars</p>
+                    <p>{{ comment.content }}</p>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No comments yet.</li>
+        {% endif %}
+    </ul>
+
+    <p><a href="{% url 'home' %}">Back to Home</a></p>
+
+</body>
+</html>
+

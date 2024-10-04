@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User, AbstractUser, BaseUserManager, PermissionsMixin, AbstractBaseUser
 from django.conf import settings
 from django.utils import timezone
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 # Category Model
@@ -32,7 +33,8 @@ class Auction(models.Model):
     num_visits = models.IntegerField(default=0)
     is_canceled = models.BooleanField(default=False)
     watchers = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='watching_auctions', blank=True)
-    winner = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL, related_name='won_auctions')
+    winner = models.ForeignKey(settings.AUTH_USER_MODEL, null=True, blank=True, on_delete=models.SET_NULL,
+                               related_name='won_auctions')
 
     def __str__(self):
         return self.title
@@ -110,4 +112,19 @@ class Bid(models.Model):
 
     def __str__(self):
         return f'{self.user} bid {self.amount} on {self.auction}'
+
+
+class Comment(models.Model):
+    user = models.ForeignKey(
+        CustomUser, related_name='comments_received', on_delete=models.CASCADE
+    )
+    commenter = models.ForeignKey(
+        CustomUser, related_name='comments_made', on_delete=models.SET_NULL, null=True
+    )
+    content = models.TextField()
+    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Comment by {self.commenter.username if self.commenter else 'Anonymous'} on {self.user.username}"
 
