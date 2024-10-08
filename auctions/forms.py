@@ -70,6 +70,15 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['content', 'rating']
         widgets = {
-            'content': forms.Textarea(attrs={'placeholder': 'Write your comment...'}),
-            'rating': forms.NumberInput(attrs={'min': 1, 'max': 5}),
+            'content': forms.Textarea(attrs={
+                'placeholder': 'Write your comment...',
+                'rows': 4,
+                'cols': 40,
+            }),
+            'rating': forms.NumberInput(attrs={
+                'min': 1,
+                'max': 5,
+                'step': 1,
+                'placeholder': 'Rate 1-5'
+            }),
         }

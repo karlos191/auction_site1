@@ -38,7 +38,6 @@ def home(request):
 
         # Auctions the user is bidding on
         auctions_bidding = Auction.objects.filter(bids__user=request.user, is_canceled=False).distinct()
-
         # Auctions the user is watching
         watchlist_auctions = request.user.watchlist.all()
 
@@ -77,25 +76,48 @@ def auctions_list(request):
 
 def auction_detail(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
-    form = BidForm(request.POST or None)
+    bid_form = BidForm(request.POST or None)
+    comment_form = CommentForm(request.POST or None)
     now = timezone.now()
-    auction_has_ended = auction.end_date < now
+    auction_has_ended = auction.end_date and auction.end_date < now
     auction.num_visits += 1
     auction.save()
 
-    if request.method == 'POST' and form.is_valid():
-        amount = form.cleaned_data['amount']
-        if amount > auction.current_price:
-            Bid.objects.create(auction=auction, user=request.user, amount=amount)
-            auction.current_price = amount
-            auction.save()
-            messages.success(request, 'Bid placed successfully!')
-        else:
-            messages.error(request, 'Bid amount must be higher than the current price.')
-        return redirect('auction_detail', pk=pk)
+    # Handle Bid form submission
+    if request.method == 'POST' and 'bid_submit' in request.POST:
+        if bid_form.is_valid():
+            amount = bid_form.cleaned_data['amount']
+            if amount > auction.current_price:
+                Bid.objects.create(auction=auction, user=request.user, amount=amount)
+                auction.current_price = amount
+                auction.save()
+                messages.success(request, 'Bid placed successfully!')
+            else:
+                messages.error(request, 'Bid amount must be higher than the current price.')
+            return redirect('auction_detail', pk=pk)
 
-    return render(request, 'auctions/auction_detail.html',
-                  {'auction': auction, 'form': form, 'now': now, 'auction_has_ended': auction_has_ended})
+    # Handle Comment form submission
+    if request.method == 'POST' and 'comment_submit' in request.POST:
+        if comment_form.is_valid() and request.user.is_authenticated:
+            comment = comment_form.save(commit=False)
+            comment.auction = auction
+            comment.user = request.user
+            comment.save()
+            # Add the comment to the auction's related comments set
+            auction.comments.add(comment)  # Make sure this is the correct way to add
+            messages.success(request, 'Comment added successfully!')
+            return redirect('auction_detail', pk=pk)
+
+    comments = auction.comments.all().order_by('-created_at')
+
+    return render(request, 'auctions/auction_detail.html', {
+        'auction': auction,
+        'bid_form': bid_form,
+        'comment_form': comment_form,
+        'comments': comments,
+        'now': now,
+        'auction_has_ended': auction_has_ended
+    })
 
 
 def register(request):
@@ -382,3 +404,14 @@ def user_profile(request, user_id):
         'form': form,
         'avg_rating': avg_rating
     })
+
+# komentáře u aukcí přímo,
+# ukončení aukcí automaticky pomocí cronu,
+# vytvořit zvlast stranku na komunikaci vyherce a prodejce?,
+# video pro vytvoření erd diagramu,
+# search bar?,
+#možnost koupit premium tím pádem bude funkční promoted pro uživatele,
+#data získávaná od uživatelů by měla být předem ověřena?
+#git pull atd,
+# workspace.xml
+# auctions I won jméno dát aby se dalo rozkliknout na profil
