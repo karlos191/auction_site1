@@ -135,9 +135,14 @@ class Comment(models.Model):
     commenter = models.ForeignKey(
         CustomUser, related_name='comments_made', on_delete=models.SET_NULL, null=True
     )
+    auction = models.ForeignKey(
+        Auction, related_name='comments', on_delete=models.CASCADE
+    )
     content = models.TextField()
-    rating = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)], null=True, blank=True)
+    rating = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(5)]
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Comment by {self.commenter.username if self.commenter else 'Anonymous'} on {self.user.username}"
+        return f"Comment by {self.commenter.username if self.commenter else 'Anonymous'} on {self.auction.title}"

@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="minor changes">
-      <change afterPath="$PROJECT_DIR$/auctions/management/commands/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auctions/management/commands/check_auctions.py" afterDir="false" />
+    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="small detail">
+      <change afterPath="$PROJECT_DIR$/auctions/migrations/0017_comment_auction.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/migrations/0018_alter_comment_auction_alter_comment_rating.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +92,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -158,7 +160,9 @@
       <workItem from="1727698012891" duration="3351000" />
       <workItem from="1727877260646" duration="4066000" />
       <workItem from="1728037293776" duration="5254000" />
-      <workItem from="1728052214620" duration="2805000" />
+      <workItem from="1728052214620" duration="3483000" />
+      <workItem from="1728192937517" duration="15094000" />
+      <workItem from="1728391245055" duration="4690000" />
     </task>
     <task id="LOCAL-00001" summary="uprava chyby na main site">
       <option name="closed" value="true" />
@@ -400,7 +404,23 @@
       <option name="project" value="LOCAL" />
       <updated>1728053612396</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="check for ended auctions and selecting winner">
+      <option name="closed" value="true" />
+      <created>1728055728171</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1728055728171</updated>
+    </task>
+    <task id="LOCAL-00032" summary="small detail">
+      <option name="closed" value="true" />
+      <created>1728213181399</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1728213181399</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,7 +473,9 @@
     <MESSAGE value="added profile with comments and ratings" />
     <MESSAGE value="design change" />
     <MESSAGE value="minor changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
+    <MESSAGE value="check for ended auctions and selecting winner" />
+    <MESSAGE value="small detail" />
+    <option name="LAST_COMMIT_MESSAGE" value="small detail" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/auction_site$views.coverage" NAME="views Coverage Results" MODIFIED="1725785704661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auctions" />
