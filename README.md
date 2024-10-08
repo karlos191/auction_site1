@@ -39,11 +39,11 @@
 - [x] user
 
 ##Transaction (purchase) assessment
-- [ ] purchase
-- [ ] seller rating
-- [ ] seller’s comment
-- [ ] buyer’s rating
-- [ ] buyer's comment
+- [x] purchase
+- [x] seller rating
+- [x] seller’s comment
+- [x] buyer’s rating
+- [x] buyer's comment
 
 ##Main page presentation
 - [x] presentation of categories(main - if their structure is tree-like): e.g. a list of links in the left or right column, leading to auctions from the selected category
