@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="added comments in auction detail">
-      <change afterPath="$PROJECT_DIR$/auctions/migrations/0019_alter_comment_auction.py" afterDir="false" />
+    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="small change">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auctions_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auctions_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/create_auction.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/create_auction.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,43 +71,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.Auction_site.executor": "Run",
-    "Django tests.Test: auctions.tests.AuctionModelTest.executor": "Run",
-    "Django tests.Test: auctions.tests.AuctionTestCase.executor": "Run",
-    "Django tests.Test: auctions.tests.BidTestCase.executor": "Run",
-    "Django tests.Test: auctions.tests.CreateAuctionTestCase.executor": "Run",
-    "Django tests.Test: auctions.tests.MySeleniumTests.executor": "Run",
-    "Django tests.Test: auctions.tests.MySeleniumTests.test_login.executor": "Run",
-    "Django tests.Test: auctions.tests.WatchlistTestCase.executor": "Run",
-    "Django tests.Test: auctions.tests.executor": "Run",
-    "Python.tests.executor": "Run",
-    "Python.views.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "small-changes",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.Auction_site.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.AuctionModelTest.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.AuctionTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.BidTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.CreateAuctionTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.MySeleniumTests.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.MySeleniumTests.test_login.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.WatchlistTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tests.executor&quot;: &quot;Run&quot;,
+    &quot;Python.views.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;small-changes&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql",
-      "sqlite"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;,
+      &quot;sqlite&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\karel\PycharmProjects\auction_site\auctions\templates\registration" />
@@ -298,7 +291,8 @@
       <workItem from="1728391245055" duration="5379000" />
       <workItem from="1728801325665" duration="2697000" />
       <workItem from="1728822835076" duration="424000" />
-      <workItem from="1728987623656" duration="7793000" />
+      <workItem from="1728987623656" duration="8097000" />
+      <workItem from="1729008856307" duration="1369000" />
     </task>
     <task id="LOCAL-00001" summary="uprava chyby na main site">
       <option name="closed" value="true" />
@@ -564,7 +558,47 @@
       <option name="project" value="LOCAL" />
       <updated>1728396143656</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="added htmls and changed comments on profile">
+      <option name="closed" value="true" />
+      <created>1728996009519</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1728996009519</updated>
+    </task>
+    <task id="LOCAL-00035" summary="added htmls and changed comments on profile">
+      <option name="closed" value="true" />
+      <created>1729008939689</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1729008939689</updated>
+    </task>
+    <task id="LOCAL-00036" summary="added htmls and changed comments on profile">
+      <option name="closed" value="true" />
+      <created>1729008947760</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1729008947760</updated>
+    </task>
+    <task id="LOCAL-00037" summary="added htmls and changed comments on profile">
+      <option name="closed" value="true" />
+      <created>1729009163892</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1729009163892</updated>
+    </task>
+    <task id="LOCAL-00038" summary="small change">
+      <option name="closed" value="true" />
+      <created>1729009296797</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1729009296797</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -595,8 +629,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="uprava chyby na main site" />
-    <MESSAGE value="added CustomUser with city&#10;&#10;address (street, house number, ZIP code)&#10;&#10;account creation date" />
     <MESSAGE value="added buy now button, not done" />
     <MESSAGE value="added buy now button" />
     <MESSAGE value="function: edit user added" />
@@ -620,7 +652,9 @@
     <MESSAGE value="check for ended auctions and selecting winner" />
     <MESSAGE value="small detail" />
     <MESSAGE value="added comments in auction detail" />
-    <option name="LAST_COMMIT_MESSAGE" value="added comments in auction detail" />
+    <MESSAGE value="added htmls and changed comments on profile" />
+    <MESSAGE value="small change" />
+    <option name="LAST_COMMIT_MESSAGE" value="small change" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests.coverage" NAME="Test: auctions.tests Coverage Results" MODIFIED="1728990493230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

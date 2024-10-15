@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Account</title>
+    <style>
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #900C3F;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        nav ul li form button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        /* Main Content Styling */
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            background-color: #900C3F;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            text-align: center;
+        }
+
+        .messages {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin: 20px 0;
+        }
+
+        form input, form button, form select, form textarea {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        form button:hover {
+            background-color: #218838;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #004aad;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Edit Account</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'edit_account' %}">Edit Account</a></li>
+                    <li>
+                        <form method="POST" action="{% url 'custom_logout' %}">
+                            {% csrf_token %}
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Edit Your Details</h2>
+        {% if messages %}
+            <div class="messages">
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Update</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Auction Site</p>
+    </footer>
+</body>
+</html>
+
+
