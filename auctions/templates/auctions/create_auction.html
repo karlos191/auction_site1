@@ -5,125 +5,222 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Auction</title>
     <style>
+        /* Body Styling */
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
+            background-color: #f0f2f5;
             margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
+            padding: 0;
+            color: #333;
         }
-        form {
-            max-width: 600px;
+
+        /* Header Styling */
+        header {
+            background-color: #900C3F;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        /* Main Content Styling */
+        main {
+            max-width: 800px;
             margin: 20px auto;
             padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
+        h2 {
+            background-color: #900C3F;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            text-align: center;
+        }
+
         label {
-            display: block;
-            margin-bottom: 8px;
             font-weight: bold;
+            margin-bottom: 5px;
         }
+
         input, textarea, select {
             width: 100%;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 5px;
         }
+
         button {
-            background-color: #333;
+            background-color: #28a745;
             color: white;
-            border: none;
             padding: 10px 20px;
-            border-radius: 4px;
+            border-radius: 5px;
+            border: none;
             cursor: pointer;
+            font-size: 1.1rem;
         }
+
         button:hover {
-            background-color: #555;
+            background-color: #218838;
         }
+
+        .messages {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
         .errorlist {
             color: red;
             list-style: none;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #004aad;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
 
-<h1>Create a New Auction</h1>
+<header>
+    <h1>Create a New Auction</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'edit_account' %}">Edit Account</a></li>
+                <li>
+                    <form method="POST" action="{% url 'custom_logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" style="background:none; border:none; color:white; cursor:pointer;">Logout</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
 
-<!-- Messages section to display errors or success messages -->
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
+<main>
+    <h2>Create a New Auction</h2>
 
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.non_field_errors }}
-
-    <div>
-        <label for="title">Title</label>
-        {{ form.title.errors }}
-        {{ form.title }}
-    </div>
-
-    <div>
-        <label for="description">Description</label>
-        {{ form.description.errors }}
-        {{ form.description }}
-    </div>
-
-    <div>
-        <label for="photos">Upload Photos</label>
-        {{ form.photos.errors }}
-        {{ form.photos }}
-    </div>
-
-    <div>
-        <label for="category">Category</label>
-        {{ form.category.errors }}
-        {{ form.category }}
-    </div>
-
-    <div>
-        <label for="starting_price">Starting Price</label>
-        {{ form.starting_price.errors }}
-        {{ form.starting_price }}
-    </div>
-
-    <div>
-        <label for="buy_now_price">Buy Now Price</label>
-        {{ form.buy_now_price.errors }}
-        {{ form.buy_now_price }}
-    </div>
-
-    <div>
-    <label for="minimum_amount">Minimum Amount</label>
-    {{ form.minimum_amount.errors }}
-    {{ form.minimum_amount }}
-    </div>
-
-    <div>
-        <label for="end_date">End Date</label>
-        {{ form.end_date.errors }}
-        {{ form.end_date }}
-    </div>
-
-    {% if form.promoted %}
-        <div>
-            <label for="promoted">Promote Auction</label>
-            {{ form.promoted.errors }}
-            {{ form.promoted }}
+    <!-- Messages section to display errors or success messages -->
+    {% if messages %}
+        <div class="messages">
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
         </div>
     {% endif %}
 
-    <button type="submit">Create Auction</button>
-</form>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div>
+            <label for="title">Title</label>
+            {{ form.title.errors }}
+            {{ form.title }}
+        </div>
+
+        <div>
+            <label for="description">Description</label>
+            {{ form.description.errors }}
+            {{ form.description }}
+        </div>
+
+        <div>
+            <label for="photos">Upload Photos</label>
+            {{ form.photos.errors }}
+            {{ form.photos }}
+        </div>
+
+        <div>
+            <label for="category">Category</label>
+            {{ form.category.errors }}
+            {{ form.category }}
+        </div>
+
+        <div>
+            <label for="starting_price">Starting Price</label>
+            {{ form.starting_price.errors }}
+            {{ form.starting_price }}
+        </div>
+
+        <div>
+            <label for="buy_now_price">Buy Now Price</label>
+            {{ form.buy_now_price.errors }}
+            {{ form.buy_now_price }}
+        </div>
+
+        <div>
+            <label for="minimum_amount">Minimum Amount</label>
+            {{ form.minimum_amount.errors }}
+            {{ form.minimum_amount }}
+        </div>
+
+        <div>
+            <label for="end_date">End Date</label>
+            {{ form.end_date.errors }}
+            {{ form.end_date }}
+        </div>
+
+        {% if form.promoted %}
+            <div>
+                <label for="promoted">Promote Auction</label>
+                {{ form.promoted.errors }}
+                {{ form.promoted }}
+            </div>
+        {% endif %}
+
+        <button type="submit">Create Auction</button>
+    </form>
+</main>
+
+<footer>
+    <p>&copy; 2024 Auction Site</p>
+</footer>
 
 </body>
 </html>

@@ -13,7 +13,7 @@
         }
 
         header {
-            background-color: #333;
+            background-color: #900C3F;
             color: white;
             padding: 15px 0;
             text-align: center;
@@ -29,7 +29,7 @@
         }
 
         .section h2 {
-            border-bottom: 2px solid #3498db;
+            border-bottom: 2px solid #900C3F;
             padding-bottom: 10px;
             color: #333;
             margin-bottom: 20px;
@@ -76,11 +76,59 @@
         .auction-item a:hover {
             text-decoration: underline;
         }
+         /* Header Styling */
+        header {
+            background-color: #900C3F;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1rem;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>All Auctions</h1>
+        <h1>ALL Auctions</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'edit_account' %}">Edit Account</a></li>
+                    <li>
+                        <form method="POST" action="{% url 'custom_logout' %}">
+                            {% csrf_token %}
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
     </header>
     <div class="container">
         <div class="section">

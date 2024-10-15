@@ -5,22 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ auction.title }}</title>
     <style>
-        /* Styling for the whole body */
+        /* General Body Styling */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
             margin: 0;
-            padding: 20px;
-            color: #333;
+            padding: 0;
+            color: #900C3F;
         }
 
-        /* Header styling */
+        /* Header Styling */
         header {
             background-color: #900C3F;
             color: white;
-            padding: 15px;
+            padding: 15px 0;
             text-align: center;
-            margin-bottom: 30px;
         }
 
         header h1 {
@@ -31,43 +30,46 @@
         nav ul {
             list-style-type: none;
             padding: 0;
+            margin: 10px 0;
             display: flex;
             justify-content: center;
-            margin-top: 10px;
         }
 
         nav ul li {
             margin: 0 15px;
         }
 
-        nav ul li a {
+        nav ul li a, nav ul li form button {
             text-decoration: none;
             color: white;
             font-size: 1.1rem;
-        }
-
-        nav ul li form button {
             background: none;
             border: none;
-            color: white;
-            font-size: 1.1rem;
             cursor: pointer;
+            padding: 8px 16px;
+            transition: background-color 0.3s ease;
         }
 
-        /* Main content styling */
+        nav ul li a:hover, nav ul li form button:hover {
+            background-color: #495057;
+            border-radius: 5px;
+        }
+
+        /* Main Content Styling */
         main {
-            max-width: 1000px;
-            margin: 20px auto;
+            max-width: 1100px;
+            margin: 40px auto;
             padding: 20px;
-            background-color: white;
+            background-color: #fff;
             border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         h2 {
             color: #900C3F;
-            padding: 10px;
+            font-size: 1.8rem;
             border-bottom: 2px solid #900C3F;
+            padding-bottom: 10px;
             margin-bottom: 20px;
         }
 
@@ -75,16 +77,28 @@
             max-width: 100%;
             height: auto;
             margin-bottom: 20px;
-            border-radius: 8px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         p {
-            font-size: 1.1em;
+            font-size: 1.1rem;
             margin-bottom: 15px;
+            color: #555;
         }
 
-        form {
-            margin: 20px 0;
+        .highlight {
+            color: #900C3F;
+            font-weight: bold;
+        }
+
+        /* Bid and Buy Now Section */
+        .action-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
         }
 
         form input, form button {
@@ -99,42 +113,90 @@
             background-color: #28a745;
             color: white;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         form button:hover {
             background-color: #218838;
         }
 
+        /* Cancel Auction Button */
+        .cancel-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .cancel-button:hover {
+            background-color: #c82333;
+        }
+
+        /* Bids List */
         .bids-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bids-list li {
+            padding: 15px;
+            background-color: #f8f9fa;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bidder {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .bid-amount {
+            font-size: 1.2rem;
+            color: #28a745;
+        }
+
+        /* Comments Section */
+        .comments-section {
+            margin-top: 40px;
+        }
+
+        .comment-list {
             list-style-type: none;
             padding: 0;
         }
 
-        .bids-list li {
+        .comment-list li {
             padding: 10px;
-            background-color: #f9f9f9;
+            background-color: #f8f9fa;
             margin-bottom: 10px;
             border-radius: 5px;
             border: 1px solid #ddd;
         }
 
-        .bids-list li .bidder {
+        .comment-author {
             font-weight: bold;
-            color: #007bff;
-        }
-
-        .bids-list li .bid-amount {
-            color: #ff9800;
+            color: #495057;
         }
 
         /* Footer Styling */
         footer {
-            background-color: #004aad;
+            background-color: #343a40;
             color: white;
             text-align: center;
             padding: 15px 0;
             margin-top: 50px;
         }
+
     </style>
 </head>
 <body>
@@ -202,7 +264,8 @@
         {% endif %}
     </section>
 
-    <section>
+    <!-- Bid, Buy Now, Cancel Auction Section -->
+    <section class="action-section">
         {% if auction.end_date > now and not auction.is_closed %}
             <h2>Place a Bid</h2>
             <form method="post" action="{% url 'place_bid' pk=auction.pk %}">
@@ -212,7 +275,6 @@
                 <button type="submit">Place Bid</button>
             </form>
 
-            <!-- Buy Now Button -->
             {% if auction.buy_now_price %}
                 <form method="post" action="{% url 'buy_now' pk=auction.pk %}">
                     {% csrf_token %}
@@ -220,14 +282,12 @@
                 </form>
             {% endif %}
 
-            <!-- Cancel Auction Button (only shown if there are no bids) -->
             {% if auction.user == user and not auction.bids.exists and not auction.is_closed %}
                 <form method="post" action="{% url 'cancel_auction' pk=auction.pk %}">
                     {% csrf_token %}
-                    <button type="submit" style="background-color:red; color:white;">Cancel Auction</button>
+                    <button type="submit" class="cancel-button">Cancel Auction</button>
                 </form>
             {% endif %}
-
         {% else %}
             <p>This auction has ended. No bids can be placed.</p>
         {% endif %}
@@ -249,12 +309,13 @@
         </ul>
     </section>
 
-    <section>
+    <!-- Comments Section -->
+    <section class="comments-section">
         <h2>Comments</h2>
-        <ul>
+        <ul class="comment-list">
             {% for comment in comments %}
                 <li>
-                    <strong>{{ comment.user.username }}:</strong> {{ comment.content }}
+                    <strong class="comment-author">{{ comment.user.username }}:</strong> {{ comment.content }}
                     <br><small>Rating: {{ comment.rating }} stars | Posted on {{ comment.created_at }}</small>
                 </li>
             {% empty %}

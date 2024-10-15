@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="small detail">
-      <change afterPath="$PROJECT_DIR$/auctions/migrations/0017_comment_auction.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/auctions/migrations/0018_alter_comment_auction_alter_comment_rating.py" afterDir="false" />
+    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="added comments in auction detail">
+      <change afterPath="$PROJECT_DIR$/auctions/migrations/0019_alter_comment_auction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auctions_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auctions_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/create_auction.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/create_auction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/tests.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,28 +78,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.Auction_site.executor&quot;: &quot;Run&quot;,
-    &quot;Python.views.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;small-changes&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.Auction_site.executor": "Run",
+    "Django tests.Test: auctions.tests.AuctionModelTest.executor": "Run",
+    "Django tests.Test: auctions.tests.AuctionTestCase.executor": "Run",
+    "Django tests.Test: auctions.tests.BidTestCase.executor": "Run",
+    "Django tests.Test: auctions.tests.CreateAuctionTestCase.executor": "Run",
+    "Django tests.Test: auctions.tests.MySeleniumTests.executor": "Run",
+    "Django tests.Test: auctions.tests.MySeleniumTests.test_login.executor": "Run",
+    "Django tests.Test: auctions.tests.WatchlistTestCase.executor": "Run",
+    "Django tests.Test: auctions.tests.executor": "Run",
+    "Python.tests.executor": "Run",
+    "Python.views.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "small-changes",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql",
+      "sqlite"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\karel\PycharmProjects\auction_site\auctions\templates\registration" />
@@ -103,7 +122,112 @@
       <recent name="C:\Users\karel\PycharmProjects\auction_site\auctions\templates\auctions" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Django tests.Test: auctions.tests.CreateAuctionTestCase">
+    <configuration name="Test: auctions.tests.AuctionModelTest" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="Auction_site" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="auctions.tests.AuctionModelTest" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: auctions.tests.AuctionTestCase" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="Auction_site" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="auctions.tests.AuctionTestCase" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: auctions.tests.BidTestCase" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="Auction_site" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="auctions.tests.BidTestCase" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: auctions.tests.CreateAuctionTestCase" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="Auction_site" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="auctions.tests.CreateAuctionTestCase" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Test: auctions.tests.WatchlistTestCase" type="DjangoTestsConfigurationType" temporary="true">
+      <module name="Auction_site" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="TARGET" value="auctions.tests.WatchlistTestCase" />
+      <option name="SETTINGS_FILE" value="" />
+      <option name="CUSTOM_SETTINGS" value="false" />
+      <option name="USE_OPTIONS" value="false" />
+      <option name="OPTIONS" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="Auction_site" type="Python.DjangoServer" factoryName="Django server">
       <module name="Auction_site" />
       <option name="ENV_FILES" value="" />
@@ -129,6 +253,15 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Django tests.Test: auctions.tests.CreateAuctionTestCase" />
+        <item itemvalue="Django tests.Test: auctions.tests.WatchlistTestCase" />
+        <item itemvalue="Django tests.Test: auctions.tests.BidTestCase" />
+        <item itemvalue="Django tests.Test: auctions.tests.AuctionTestCase" />
+        <item itemvalue="Django tests.Test: auctions.tests.AuctionModelTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -162,7 +295,10 @@
       <workItem from="1728037293776" duration="5254000" />
       <workItem from="1728052214620" duration="3483000" />
       <workItem from="1728192937517" duration="15094000" />
-      <workItem from="1728391245055" duration="4690000" />
+      <workItem from="1728391245055" duration="5379000" />
+      <workItem from="1728801325665" duration="2697000" />
+      <workItem from="1728822835076" duration="424000" />
+      <workItem from="1728987623656" duration="7793000" />
     </task>
     <task id="LOCAL-00001" summary="uprava chyby na main site">
       <option name="closed" value="true" />
@@ -420,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728213181399</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="added comments in auction detail">
+      <option name="closed" value="true" />
+      <created>1728396143656</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1728396143656</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -475,9 +619,19 @@
     <MESSAGE value="minor changes" />
     <MESSAGE value="check for ended auctions and selecting winner" />
     <MESSAGE value="small detail" />
-    <option name="LAST_COMMIT_MESSAGE" value="small detail" />
+    <MESSAGE value="added comments in auction detail" />
+    <option name="LAST_COMMIT_MESSAGE" value="added comments in auction detail" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests.coverage" NAME="Test: auctions.tests Coverage Results" MODIFIED="1728990493230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_WatchlistTestCase.coverage" NAME="Test: auctions.tests.WatchlistTestCase Coverage Results" MODIFIED="1728993435425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/auction_site$tests.coverage" NAME="tests Coverage Results" MODIFIED="1728989999258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auctions" />
+    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_MySeleniumTests_test_login.coverage" NAME="Test: auctions.tests.MySeleniumTests.test_login Coverage Results" MODIFIED="1728990957129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/auction_site$views.coverage" NAME="views Coverage Results" MODIFIED="1725785704661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auctions" />
+    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_MySeleniumTests.coverage" NAME="Test: auctions.tests.MySeleniumTests Coverage Results" MODIFIED="1728991915807" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_AuctionTestCase.coverage" NAME="Test: auctions.tests.AuctionTestCase Coverage Results" MODIFIED="1728993366074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_CreateAuctionTestCase.coverage" NAME="Test: auctions.tests.CreateAuctionTestCase Coverage Results" MODIFIED="1728993491847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_AuctionModelTest.coverage" NAME="Test: auctions.tests.AuctionModelTest Coverage Results" MODIFIED="1728992049999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_BidTestCase.coverage" NAME="Test: auctions.tests.BidTestCase Coverage Results" MODIFIED="1728993374748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

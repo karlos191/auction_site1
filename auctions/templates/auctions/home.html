@@ -287,15 +287,20 @@
                 </ul>
 
                 <h3>Auctions I Won</h3>
-                <ul>
-                    {% for auction in request.user.won_auctions.all %}
-                        <li>You won <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>!
-                            <p>Contact the seller: {{ auction.user.username }} ({{ auction.user.email }})</p>
-                        </li>
-                    {% empty %}
-                        <li>You have not won any auctions yet.</li>
-                    {% endfor %}
-                </ul>
+<ul>
+    {% for auction in request.user.won_auctions.all %}
+        <li>You won <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>!
+            <p>Contact the seller:
+                <a href="{% url 'user_profile' user_id=auction.user.id %}">
+                    {{ auction.user.username }}
+                </a>
+                ({{ auction.user.email }})
+            </p>
+        </li>
+    {% empty %}
+        <li>You have not won any auctions yet.</li>
+    {% endfor %}
+</ul>
 
                 <h3>Ending Soon</h3>
                 <ul>

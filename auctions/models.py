@@ -136,7 +136,7 @@ class Comment(models.Model):
         CustomUser, related_name='comments_made', on_delete=models.SET_NULL, null=True
     )
     auction = models.ForeignKey(
-        Auction, related_name='comments', on_delete=models.CASCADE
+        Auction, related_name='comments', on_delete=models.CASCADE, null=True, blank=True
     )
     content = models.TextField()
     rating = models.IntegerField(

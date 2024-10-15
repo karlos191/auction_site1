@@ -37,7 +37,7 @@ def home(request):
         user_auctions = Auction.objects.filter(user=request.user, is_canceled=False)
 
         # Auctions the user is bidding on
-        auctions_bidding = Auction.objects.filter(bids__user=request.user, is_canceled=False).distinct()
+        auctions_bidding = Auction.objects.filter(bids__user=request.user, is_canceled=False, end_date__gte=now).distinct()
         # Auctions the user is watching
         watchlist_auctions = request.user.watchlist.all()
 
@@ -147,11 +147,11 @@ def custom_login(request):
 
 @login_required
 def custom_logout(request):
-    if request.method == 'POST':  # Ensures it's a POST request
+    if request.method == 'POST':
         logout(request)
-        return redirect('home')  # Redirect to home or another page after logout
+        return redirect('home')  # Redirect to home
     else:
-        return redirect('home')  # Redirect if it's not a POST request
+        return redirect('home')
 
 
 @login_required
@@ -382,7 +382,7 @@ def auction_search(request):
 @login_required
 def user_profile(request, user_id):
     user_profile = get_object_or_404(CustomUser, pk=user_id)
-    comments = user_profile.comments_received.all()
+    comments = user_profile.comments_received.filter(auction__isnull=True).order_by('-created_at')
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -390,6 +390,7 @@ def user_profile(request, user_id):
             comment = form.save(commit=False)
             comment.user = user_profile  # User being commented on
             comment.commenter = request.user  # User leaving the comment
+            comment.auction = None
             comment.save()
             messages.success(request, 'Comment and rating added successfully!')
             return redirect('user_profile', user_id=user_profile.id)
@@ -405,13 +406,7 @@ def user_profile(request, user_id):
         'avg_rating': avg_rating
     })
 
-# komentáře u aukcí přímo,
-# ukončení aukcí automaticky pomocí cronu,
-# vytvořit zvlast stranku na komunikaci vyherce a prodejce?,
+
 # video pro vytvoření erd diagramu,
-# search bar?,
 #možnost koupit premium tím pádem bude funkční promoted pro uživatele,
-#data získávaná od uživatelů by měla být předem ověřena?
-#git pull atd,
-# workspace.xml
-# auctions I won jméno dát aby se dalo rozkliknout na profil
+# auctions I won jmétno dát aby se dalo rozkliknou na profil
