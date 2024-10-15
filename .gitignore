@@ -1,6 +1,2 @@
 *__pycache__*
-/auctions/migrations/0002_rename_created_at_customuser_date_joined.py
-/auctions/migrations/0001_initial.py
-/auctions/migrations/0002_rename_user_auction_user.py
-/auctions/migrations/0003_auction_is_closed.py
 /db.sqlite3
