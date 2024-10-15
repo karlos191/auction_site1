@@ -53,7 +53,6 @@
 - [x] presentation of a list of auctions, that a logged in user is bidding on
 - [x] presentation of a list of observed auctions
 - [x] presentation of a list of "just ended" auctions (e.g. 10)
-- [ ] (optional) additional auction lists, e.g. the most popular (most visits or auctions)
 
 ##Auction category selection
 - [x] a list of categories, in which auctions are placed 
@@ -61,7 +60,7 @@
 ##User account management
 - [x] form to set up an account
 - [x] page (available after logging in) for editing account details
-- [ ] just like on the main page, there should appear lists of auctions: observed, started, auctioned (also lost) and completed (won as well as those which did not receive the minimum amount)
+- [x] just like on the main page, there should appear lists of auctions: observed, started, auctioned (also lost) and completed (won as well as those which did not receive the minimum amount)
 
 ##Auction start
 - [x] a form for starting the auction and determining its parameters
@@ -71,7 +70,6 @@
 - [x] page presenting auction search results, e.g. category links from the main page lead to it
 - [x] whenever the category name is presented, it should be clickable and lead to a page with results presentation
 - [x] the mechanism must take into account premium auctions and presents them first
-- [ ] (optional) a field for entering an auction number or account name: search by number (presents a specific auction), search for a user's auction (presents a list of their auctions)
 
 ##Bid and buy
 - [x] a logged in user can bid on an auction
@@ -81,19 +79,19 @@
 - [x] the highest bid or Buy now becomes Purchase
 - [x] if the minimum amount has not been reached, there is no winner
 - [ ] Warning! For simplicity, you need to write a mechanism, that will be triggered each time you enter the site and will "close" auctions, that have ended (since the last visit to the site) and will select winners
-- [ ] (optional) with the help of a trainer you can try to use Celery
+
 
 ##Transaction Ratings
-- [ ] both the seller and the buyer can leave a rating and a comment
+- [x] both the seller and the buyer can leave a rating and a comment
 
 ##Auction observation
 - [x] logged in user can add auction to the watch list
 - [x] after entering the observed auction, this fact should be marked, e.g. with an inscription or a star image
 
 ##Project development
-- [ ] in its current form, the design is quite complicated
-- [ ] developing the functionality is left to the Student (inspired by existing websites and own ideas)
+- [x] in its current form, the design is quite complicated
+- [x] developing the functionality is left to the Student (inspired by existing websites and own ideas)
 
 ##Additional requirements
-- [ ] it is necessary to ensure an aesthetic and functional data presentation
-- [ ] data collected from users should be pre-validated
+- [x] it is necessary to ensure an aesthetic and functional data presentation
+- [x] data collected from users should be pre-validated
