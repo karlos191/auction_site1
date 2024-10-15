@@ -66,43 +66,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.Auction_site.executor": "Run",
-    "Django tests.Test: auctions.tests.AuctionModelTest.executor": "Run",
-    "Django tests.Test: auctions.tests.AuctionTestCase.executor": "Run",
-    "Django tests.Test: auctions.tests.BidTestCase.executor": "Run",
-    "Django tests.Test: auctions.tests.CreateAuctionTestCase.executor": "Run",
-    "Django tests.Test: auctions.tests.MySeleniumTests.executor": "Run",
-    "Django tests.Test: auctions.tests.MySeleniumTests.test_login.executor": "Run",
-    "Django tests.Test: auctions.tests.WatchlistTestCase.executor": "Run",
-    "Django tests.Test: auctions.tests.executor": "Run",
-    "Python.tests.executor": "Run",
-    "Python.views.executor": "Run",
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "small-changes",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Django Server.Auction_site.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.AuctionModelTest.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.AuctionTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.BidTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.CreateAuctionTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.MySeleniumTests.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.MySeleniumTests.test_login.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.WatchlistTestCase.executor&quot;: &quot;Run&quot;,
+    &quot;Django tests.Test: auctions.tests.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tests.executor&quot;: &quot;Run&quot;,
+    &quot;Python.views.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;small-changes&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql",
-      "sqlite"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;,
+      &quot;sqlite&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\karel\PycharmProjects\auction_site\auctions\templates\registration" />
@@ -287,6 +287,7 @@
       <workItem from="1728801325665" duration="2697000" />
       <workItem from="1728822835076" duration="424000" />
       <workItem from="1728987623656" duration="8097000" />
+      <workItem from="1729008856307" duration="312000" />
     </task>
     <task id="LOCAL-00001" summary="uprava chyby na main site">
       <option name="closed" value="true" />
@@ -560,7 +561,31 @@
       <option name="project" value="LOCAL" />
       <updated>1728996009519</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="added htmls and changed comments on profile">
+      <option name="closed" value="true" />
+      <created>1729008939689</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1729008939689</updated>
+    </task>
+    <task id="LOCAL-00036" summary="added htmls and changed comments on profile">
+      <option name="closed" value="true" />
+      <created>1729008947760</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1729008947760</updated>
+    </task>
+    <task id="LOCAL-00037" summary="added htmls and changed comments on profile">
+      <option name="closed" value="true" />
+      <created>1729009163892</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1729009163892</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
