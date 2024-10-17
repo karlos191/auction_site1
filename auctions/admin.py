@@ -36,7 +36,7 @@ admin.site.register(CustomUser, CustomUserAdmin)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name',)  # Customize as needed
+    list_display = ('name',)
 
 
 @admin.register(Auction)
@@ -51,7 +51,7 @@ class AuctionAdmin(admin.ModelAdmin):
         (None, {'fields': (
             'title', 'category', 'description', 'minimum_amount', 'starting_price', 'current_price', 'buy_now_price', 'end_date')}),
     )
-    readonly_fields = ('start_date',)  # Make start_date read-only
+    readonly_fields = ('start_date',)
 
     def save_model(self, request, obj, form, change):
         if not obj.pk:  # Check if the auction is being created

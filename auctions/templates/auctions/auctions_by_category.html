@@ -4,16 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auctions in {{ category.name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #900C3F;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        li {
+            background-color: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        li a {
+            font-weight: bold;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            text-decoration: underline;
+        }
+
+        li p {
+            margin: 5px 0;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background-color: #900C3F;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 30px;
+        }
+
+    </style>
 </head>
 <body>
+
+<header>
     <h1>Auctions in {{ category.name }}</h1>
+</header>
+
+<main>
     <ul>
         {% for auction in auctions %}
             <li>
                 <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
                 <p>{{ auction.description }}</p>
-                <p>Minimum Amount: {{ auction.minimum_amount }}</p>
-                <p>Buy Now Amount: {{ auction.buy_now_amount }}</p>
+                <p>Minimum Amount: ${{ auction.minimum_amount }}</p>
+                <p>Buy Now Price: ${{ auction.buy_now_price }}</p>
                 <p>Location: {{ auction.location }}</p>
                 <p>Start Date: {{ auction.start_date }}</p>
                 <p>End Date: {{ auction.end_date }}</p>
@@ -22,5 +87,12 @@
             <li>No auctions available in this category.</li>
         {% endfor %}
     </ul>
+</main>
+
+<footer>
+    <p>&copy; 2024 Auction Site</p>
+</footer>
+
 </body>
 </html>
+

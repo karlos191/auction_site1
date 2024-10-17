@@ -76,7 +76,7 @@ class CommentForm(forms.ModelForm):
                 'cols': 40,
             }),
             'rating': forms.NumberInput(attrs={
-                'min': 1,
+                'min': 0,
                 'max': 5,
                 'step': 1,
                 'placeholder': 'Rate 1-5'
