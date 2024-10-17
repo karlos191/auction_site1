@@ -101,4 +101,54 @@ class WatchlistTestCase(TestCase):
         self.assertTrue(self.auction in self.user.watchlist.all())
 
 
+from django.test import LiveServerTestCase
+from django.utils import timezone
+from django.contrib.auth import get_user_model
+from .models import Auction, Category, Bid
+from django.urls import reverse
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
+
+class MySeleniumTests(LiveServerTestCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+
+        options = webdriver.FirefoxOptions()
+        options.add_argument('--headless')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-dev-shm-usage')
+        cls.selenium = webdriver.Firefox(options=options)
+        cls.selenium.implicitly_wait(10)
+        User = get_user_model()
+        cls.admin_user = User.objects.create_superuser(
+            username='admin',
+            password='Heslo12345',
+            email='admin@example.com'
+        )
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.selenium.quit()
+        super().tearDownClass()
+
+    def test_login(self):
+        # Access the live server URL
+        self.selenium.get(f'{self.live_server_url}/accounts/login/')
+
+        # Find the username and password input fields and fill them
+        username_input = self.selenium.find_element(By.NAME, "username")
+        password_input = self.selenium.find_element(By.NAME, "password")
+
+        username_input.send_keys('adam@gmail.com')
+        password_input.send_keys('Admin123456')
+
+        # Submit the form
+        submit_input = self.selenium.find_element(By.NAME, "submit")
+        submit_input.click()
+        import time
+        time.sleep(2)
+
+        # Test that we successfully logged in (check for a successful redirect or message)
+        # Should be in self.live_server_url (root/home)
