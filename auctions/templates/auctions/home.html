@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auction Site</title>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <style>
         /* Styling for flash messages */
         .flash-messages {
@@ -198,14 +200,7 @@
             border-color: #f5c6cb;
         }
 
-        /* Footer Styling */
-        footer {
-            background-color: #004aad;
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            margin-top: 50px;
-        }
+
     </style>
 </head>
 <body>
@@ -369,8 +364,39 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 Auction Site</p>
-    </footer>
+    <div class="container">
+        <!-- About Us Section -->
+        <div class="about">
+            <h3>About Us</h3>
+            <p>We are the leading auction platform, connecting buyers and sellers worldwide.</p>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="quick-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
+                <li><a href="{% url 'create_auction' %}">Create Auction</a></li>
+                <li><a href="{% url 'user_profile' user_id=user.id %}">My Profile</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact">
+            <h3>Contact Us</h3>
+            <p>Email: support@auctionsite.com</p>
+            <p>Phone: +420 602877026</p>
+            <p>Address: Auction street, New York</p>
+        </div>
+
+
+    </div>
+
+    <div class="bottom-bar">
+        &copy; 2024 Auction Site - All Rights Reserved
+    </div>
+</footer>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const flashMessages = document.querySelectorAll('.flash-messages');
