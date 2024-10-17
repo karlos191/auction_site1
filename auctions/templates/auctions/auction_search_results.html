@@ -142,7 +142,9 @@
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
                 <li><a href="{% url 'create_auction' %}">Create Auction</a></li>
+                {% if user.is_authenticated %}
                 <li><a href="{% url 'user_profile' user_id=user.id %}">My Profile</a></li>
+                {% endif %}
             </ul>
         </div>
 
