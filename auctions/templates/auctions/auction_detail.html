@@ -5,6 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ auction.title }}</title>
     <style>
+        /* Styling for flash messages */
+        .flash-messages {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.8rem;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        /* Success and error message specific styles */
+        .flash-messages.success {
+            background-color: #28a745;
+        }
+
+        .flash-messages.error {
+            background-color: #dc3545;
+        }
+
+        /* Warning message */
+        .flash-messages.warning {
+            background-color: #ffc107;
+        }
+
+        /* Info message */
+        .flash-messages.info {
+            background-color: #17a2b8;
+        }
+
         /* General Body Styling */
         body {
             font-family: Arial, sans-serif;
@@ -211,7 +246,7 @@
                 <li>
                     <form method="POST" action="{% url 'custom_logout' %}">
                         {% csrf_token %}
-                        <button type="submit">Logout</button>
+                        <button type="submit" style="background:none; border:none; color:white; cursor:pointer;">Logout</button>
                     </form>
                 </li>
             {% else %}
@@ -334,13 +369,33 @@
         {% else %}
             <p>You need to <a href="{% url 'login' %}">login</a> to leave a comment.</p>
         {% endif %}
+
+        {% if messages %}
+    <div class="flash-messages">
+        {% for message in messages %}
+            <div class="flash-messages {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
     </section>
 </main>
 
 <footer>
     <p>&copy; 2024 Auction Site</p>
 </footer>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const flashMessages = document.querySelectorAll('.flash-messages');
 
+        flashMessages.forEach(function (message) {
+            message.style.opacity = '1'; // Show message
+            // Automatically hide message after 10 seconds
+            setTimeout(function () {
+                message.style.opacity = '0'; // Fade out
+            }, 10000); // 10 seconds (10,000 milliseconds)
+        });
+    });
+</script>
 </body>
 </html>
 

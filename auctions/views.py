@@ -4,11 +4,10 @@ from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import BidForm
 from .forms import CustomUserCreationForm
 from .models import Auction, Bid, Category, CustomUser, Comment
 from django.utils import timezone
-from .forms import EditAccountForm
+from .forms import EditAccountForm, BidForm
 from .forms import AuctionForm, CommentForm
 from django.db.models import Count
 from django.db import models
@@ -158,11 +157,7 @@ def custom_logout(request):
 def place_bid(request, pk):
     auction = get_object_or_404(Auction, pk=pk)
 
-    # Check if the auction has ended
-    if auction.end_date < timezone.now() or auction.is_closed:
-        messages.error(request, "This auction has already ended. You cannot place a bid.")
-        return redirect('auction_detail', pk=pk)
-
+    # Check if the auction has ended or is closed
     if auction.end_date < timezone.now() or auction.is_closed:
         messages.error(request, "This auction has already ended. You can no longer place bids.")
         return redirect('auction_detail', pk=pk)
@@ -171,19 +166,21 @@ def place_bid(request, pk):
         form = BidForm(request.POST)
         if form.is_valid():
             amount = form.cleaned_data['amount']
-            # Check if the bid amount is higher than the current price
+            # Ensure the bid is higher than the current price
             if amount > auction.current_price:
+                # Save the new bid
                 Bid.objects.create(auction=auction, user=request.user, amount=amount)
                 auction.current_price = amount
                 auction.save()
-                messages.success(request, 'Bid placed successfully!')
-                return redirect('auction_detail', pk=pk)
+                messages.success(request, 'Your bid was placed successfully!')
             else:
+                # If bid is lower than current price, show an error
                 messages.error(request, 'Bid amount must be higher than the current price.')
-    else:
-        form = BidForm()
+        else:
+            # If form is invalid, show an error
+            messages.error(request, 'There was an issue with your bid. Please try again.')
 
-    return render(request, 'auctions/place_bid.html', {'auction': auction, 'form': form})
+    return redirect('auction_detail', pk=pk)
 
 
 def profile(request):
@@ -407,6 +404,6 @@ def user_profile(request, user_id):
     })
 
 
-# video pro vytvoření erd diagramu,
+
 #možnost koupit premium tím pádem bude funkční promoted pro uživatele,
-# auctions I won jmétno dát aby se dalo rozkliknou na profil
+

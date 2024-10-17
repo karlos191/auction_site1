@@ -140,7 +140,7 @@ class Comment(models.Model):
     )
     content = models.TextField()
     rating = models.IntegerField(
-        validators=[MinValueValidator(1), MaxValueValidator(5)]
+        validators=[MinValueValidator(0), MaxValueValidator(5)]
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
