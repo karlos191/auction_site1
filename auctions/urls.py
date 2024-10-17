@@ -14,7 +14,7 @@ urlpatterns = [
     path('place_bid/<int:pk>/', views.place_bid, name='place_bid'),
     path('profile/', views.profile, name='profile'),
     path('buy_now/<int:pk>/', buy_now, name='buy_now'),
-    path('accounts/', include('django.contrib.auth.urls')),  # This will include login/logout views
+    path('accounts/', include('django.contrib.auth.urls')),
     path('auction/<int:pk>/buy/', buy_now, name='buy_now'),
     path('edit_account/', edit_account, name='edit_account'),
     path('auction/new/', views.create_auction, name='create_auction'),
