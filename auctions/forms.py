@@ -60,7 +60,6 @@ class AuctionForm(forms.ModelForm):
         user = kwargs.pop('user', None)
         super(AuctionForm, self).__init__(*args, **kwargs)
 
-        # Cast the user to CustomUser if it's passed
         if isinstance(user, CustomUser) and user.account_type != 'PREMIUM':
             self.fields.pop('promoted')  # Remove the promoted field for non-premium users
 

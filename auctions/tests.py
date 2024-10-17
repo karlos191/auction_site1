@@ -3,6 +3,9 @@ from django.utils import timezone
 from django.contrib.auth import get_user_model
 from .models import Auction, Category, Bid
 from django.urls import reverse
+from django.test import LiveServerTestCase
+from selenium import webdriver
+from selenium.webdriver.common.by import By
 
 
 class AuctionTestCase(TestCase):
@@ -101,15 +104,6 @@ class WatchlistTestCase(TestCase):
         self.assertTrue(self.auction in self.user.watchlist.all())
 
 
-from django.test import LiveServerTestCase
-from django.utils import timezone
-from django.contrib.auth import get_user_model
-from .models import Auction, Category, Bid
-from django.urls import reverse
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-
-
 class MySeleniumTests(LiveServerTestCase):
     @classmethod
     def setUpClass(cls):
@@ -149,6 +143,3 @@ class MySeleniumTests(LiveServerTestCase):
         submit_input.click()
         import time
         time.sleep(2)
-
-        # Test that we successfully logged in (check for a successful redirect or message)
-        # Should be in self.live_server_url (root/home)

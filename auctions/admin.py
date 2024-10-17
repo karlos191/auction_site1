@@ -10,21 +10,18 @@ class CustomUserAdmin(UserAdmin):
     # Fields to be displayed in the admin list view
     list_display = ['username', 'email', 'city', 'address', 'account_status', 'account_type', 'date_joined']
 
-    # Fields to be used in the edit form
     fieldsets = (
         (None, {'fields': ('username', 'email', 'password')}),
         ('Personal info', {'fields': ('city', 'address', 'profile_image', 'account_status', 'account_type')}),
         ('Important dates', {'fields': ('date_joined',)}),
     )
 
-    # Fields to be used in the creation form
     add_fieldsets = (
         (None, {'fields': (
             'username', 'email', 'password1', 'password2', 'city', 'address', 'profile_image', 'account_status',
             'account_type')}),
     )
 
-    # Specify which fields are readonly
     readonly_fields = ['date_joined']
 
     search_fields = ('username', 'email')
@@ -49,7 +46,8 @@ class AuctionAdmin(admin.ModelAdmin):
     exclude = ('start_date', 'user')
     fieldsets = (
         (None, {'fields': (
-            'title', 'category', 'description', 'minimum_amount', 'starting_price', 'current_price', 'buy_now_price', 'end_date')}),
+            'title', 'category', 'description', 'minimum_amount', 'starting_price', 'current_price', 'buy_now_price',
+            'end_date')}),
     )
     readonly_fields = ('start_date',)
 

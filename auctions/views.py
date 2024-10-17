@@ -16,7 +16,6 @@ User = get_user_model()
 
 
 def home(request):
-    # Current time
     now = timezone.now()
 
     # Recent auctions
@@ -37,6 +36,7 @@ def home(request):
 
         # Auctions the user is bidding on
         auctions_bidding = Auction.objects.filter(bids__user=request.user, is_canceled=False, end_date__gte=now).distinct()
+
         # Auctions the user is watching
         watchlist_auctions = request.user.watchlist.all()
 
@@ -102,8 +102,7 @@ def auction_detail(request, pk):
             comment.auction = auction
             comment.user = request.user
             comment.save()
-            # Add the comment to the auction's related comments set
-            auction.comments.add(comment)  # Make sure this is the correct way to add
+            auction.comments.add(comment)
             messages.success(request, 'Comment added successfully!')
             return redirect('auction_detail', pk=pk)
 
@@ -138,7 +137,7 @@ def custom_login(request):
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
-                return redirect('home')  # Redirect to the home page or another page
+                return redirect('home')
     else:
         form = AuthenticationForm()
     return render(request, 'registration/login.html', {'form': form})
@@ -148,7 +147,7 @@ def custom_login(request):
 def custom_logout(request):
     if request.method == 'POST':
         logout(request)
-        return redirect('home')  # Redirect to home
+        return redirect('home')
     else:
         return redirect('home')
 
@@ -247,8 +246,8 @@ def edit_account(request):
 def create_auction(request):
     user = request.user  # Get the logged-in user
 
-    # Cast to CustomUser to help IDE recognize the 'city' field (if using a custom user model)
-    user = CustomUser.objects.get(pk=user.pk)  # This is only necessary if using a CustomUser model
+    # Cast to CustomUser to help IDE recognize the 'city' field
+    user = CustomUser.objects.get(pk=user.pk)
 
     if request.method == 'POST':
         form = AuctionForm(request.POST, request.FILES, user=user)  # Pass the user to the form
@@ -274,7 +273,7 @@ def create_auction(request):
             print(form.errors)  # Print form validation errors to the console for debugging
             messages.error(request, 'There was an error with your submission. Please check the form fields.')
     else:
-        form = AuctionForm(user=user)  # Pass the user to the form
+        form = AuctionForm(user=user)
 
     return render(request, 'auctions/create_auction.html', {'form': form})
 
@@ -385,8 +384,8 @@ def user_profile(request, user_id):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.user = user_profile  # User being commented on
-            comment.commenter = request.user  # User leaving the comment
+            comment.user = user_profile
+            comment.commenter = request.user
             comment.auction = None
             comment.save()
             messages.success(request, 'Comment and rating added successfully!')
@@ -405,5 +404,4 @@ def user_profile(request, user_id):
 
 
 
-#možnost koupit premium tím pádem bude funkční promoted pro uživatele,
 
