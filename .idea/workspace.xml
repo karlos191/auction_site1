@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="small change">
+    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="small changes">
       <change afterPath="$PROJECT_DIR$/auctions/migrations/0020_alter_comment_rating.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -12,8 +12,11 @@
       <change beforePath="$PROJECT_DIR$/auctions/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auction_search_results.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auction_search_results.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auctions_by_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auctions_by_category.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/auctions_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/auctions_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/create_auction.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/create_auction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/edit_account.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/edit_account.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/templates/auctions/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/auctions/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/templates/registration/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/templates/registration/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/auctions/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/views.py" afterDir="false" />
@@ -303,7 +306,7 @@
       <workItem from="1728822835076" duration="424000" />
       <workItem from="1728987623656" duration="8097000" />
       <workItem from="1729008856307" duration="1921000" />
-      <workItem from="1729158210846" duration="2981000" />
+      <workItem from="1729158210846" duration="3279000" />
     </task>
     <task id="LOCAL-00001" summary="uprava chyby na main site">
       <option name="closed" value="true" />
@@ -617,7 +620,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729010256400</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="small changes">
+      <option name="closed" value="true" />
+      <created>1729161540280</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1729161540280</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -664,7 +675,6 @@
     <MESSAGE value="added clickable categeroies" />
     <MESSAGE value="search bar added" />
     <MESSAGE value="added message to buy now and section in profile to contact seller when someone win auction" />
-    <MESSAGE value="small changes" />
     <MESSAGE value="added profile with comments and ratings" />
     <MESSAGE value="design change" />
     <MESSAGE value="minor changes" />
@@ -673,7 +683,8 @@
     <MESSAGE value="added comments in auction detail" />
     <MESSAGE value="added htmls and changed comments on profile" />
     <MESSAGE value="small change" />
-    <option name="LAST_COMMIT_MESSAGE" value="small change" />
+    <MESSAGE value="small changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="small changes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests.coverage" NAME="Test: auctions.tests Coverage Results" MODIFIED="1728990493230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
