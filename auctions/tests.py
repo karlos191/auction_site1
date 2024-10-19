@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+import time
 
 
 class AuctionTestCase(TestCase):
@@ -110,7 +111,6 @@ class MySeleniumTests(LiveServerTestCase):
         super().setUpClass()
 
         options = webdriver.FirefoxOptions()
-        options.add_argument('--headless')
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
         cls.selenium = webdriver.Firefox(options=options)
@@ -118,7 +118,7 @@ class MySeleniumTests(LiveServerTestCase):
         User = get_user_model()
         cls.admin_user = User.objects.create_superuser(
             username='admin',
-            password='Heslo12345',
+            password='password12345',
             email='admin@example.com'
         )
 
@@ -135,11 +135,12 @@ class MySeleniumTests(LiveServerTestCase):
         username_input = self.selenium.find_element(By.NAME, "username")
         password_input = self.selenium.find_element(By.NAME, "password")
 
-        username_input.send_keys('adam@gmail.com')
-        password_input.send_keys('Admin123456')
+        username_input.send_keys('admin@example.com')
+        password_input.send_keys('password12345')
+        time.sleep(2)
 
-        # Submit the form
         submit_input = self.selenium.find_element(By.NAME, "submit")
         submit_input.click()
-        import time
         time.sleep(2)
+
+       # self.assertIn("username: admin", self.selenium.page_source)
