@@ -4,7 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="test create auction selenium" />
+    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Auction_site.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auction_site/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auction_site/asgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auction_site/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auction_site/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auction_site/wsgi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/templates/auctions/auction_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/templates/auctions/auctions_by_category.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/templates/auctions/auctions_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/templates/auctions/categories.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/templates/auctions/home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/templates/auctions/place_bid.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/templates/logout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/templates/registration/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/auctions/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,72 +53,27 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="LOCAL">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="develop" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="wip" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;karlos191&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/karlos191/auction_site.git&quot;,
-    &quot;accountId&quot;: &quot;2bd0618c-50dc-4d5e-b57d-fc29bcc09914&quot;
-  }
-}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="2ljfeGRYBw2LDrierXeNoKIbYgT" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
     "Django Server.Auction_site.executor": "Run",
-    "Django tests.Test: auctions.tests.AuctionModelTest.executor": "Run",
-    "Django tests.Test: auctions.tests.AuctionTestCase.executor": "Run",
-    "Django tests.Test: auctions.tests.AuctionTestCase.test_create_auction.executor": "Run",
-    "Django tests.Test: auctions.tests.BidTestCase.executor": "Run",
-    "Django tests.Test: auctions.tests.CreateAuctionTestCase.executor": "Run",
-    "Django tests.Test: auctions.tests.MySeleniumTests.executor": "Run",
-    "Django tests.Test: auctions.tests.MySeleniumTests.test_create_auction.executor": "Run",
-    "Django tests.Test: auctions.tests.MySeleniumTests.test_login.executor": "Run",
-    "Django tests.Test: auctions.tests.WatchlistTestCase.executor": "Run",
-    "Django tests.Test: auctions.tests.executor": "Run",
-    "Python.tests.executor": "Run",
     "Python.views.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "74128dc1",
-    "last_opened_file_path": "C:/Users/karel/PycharmProjects/auction_site",
+    "git-widget-placeholder": "master",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -96,133 +81,17 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
     "vue.rearranger.settings.migration": "true"
-  },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql",
-      "sqlite"
-    ]
   }
 }]]></component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\karel\PycharmProjects\auction_site" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\karel\PycharmProjects\auction_site\auction_photos" />
-      <recent name="C:\Users\karel\PycharmProjects\auction_site\auctions\templates\registration" />
       <recent name="C:\Users\karel\PycharmProjects\auction_site\auctions\templates" />
+      <recent name="C:\Users\karel\PycharmProjects\auction_site\auctions\templates\registration" />
       <recent name="C:\Users\karel\PycharmProjects\auction_site\auctions\templates\auctions" />
     </key>
   </component>
-  <component name="RunManager" selected="Django tests.Test: auctions.tests.MySeleniumTests">
-    <configuration name="Test: auctions.tests.AuctionTestCase.test_create_auction" type="DjangoTestsConfigurationType" temporary="true">
-      <module name="Auction_site" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="auctions.tests.AuctionTestCase.test_create_auction" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test: auctions.tests.BidTestCase" type="DjangoTestsConfigurationType" temporary="true">
-      <module name="Auction_site" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="auctions.tests.BidTestCase" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test: auctions.tests.MySeleniumTests" type="DjangoTestsConfigurationType" temporary="true">
-      <module name="Auction_site" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="auctions.tests.MySeleniumTests" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test: auctions.tests.MySeleniumTests.test_create_auction" type="DjangoTestsConfigurationType" temporary="true">
-      <module name="Auction_site" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="auctions.tests.MySeleniumTests.test_create_auction" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test: auctions.tests.WatchlistTestCase" type="DjangoTestsConfigurationType" temporary="true">
-      <module name="Auction_site" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="TARGET" value="auctions.tests.WatchlistTestCase" />
-      <option name="SETTINGS_FILE" value="" />
-      <option name="CUSTOM_SETTINGS" value="false" />
-      <option name="USE_OPTIONS" value="false" />
-      <option name="OPTIONS" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager">
     <configuration name="Auction_site" type="Python.DjangoServer" factoryName="Django server">
       <module name="Auction_site" />
       <option name="ENV_FILES" value="" />
@@ -248,15 +117,6 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Django tests.Test: auctions.tests.MySeleniumTests" />
-        <item itemvalue="Django tests.Test: auctions.tests.WatchlistTestCase" />
-        <item itemvalue="Django tests.Test: auctions.tests.MySeleniumTests.test_create_auction" />
-        <item itemvalue="Django tests.Test: auctions.tests.AuctionTestCase.test_create_auction" />
-        <item itemvalue="Django tests.Test: auctions.tests.BidTestCase" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -276,493 +136,13 @@
       <updated>1725698501014</updated>
       <workItem from="1725698503399" duration="13718000" />
       <workItem from="1725776195323" duration="12931000" />
-      <workItem from="1726385112408" duration="4953000" />
-      <workItem from="1726562246784" duration="6861000" />
-      <workItem from="1726985209635" duration="2710000" />
-      <workItem from="1727248043817" duration="6503000" />
-      <workItem from="1727269373591" duration="3107000" />
-      <workItem from="1727349756272" duration="5751000" />
-      <workItem from="1727419578137" duration="5173000" />
-      <workItem from="1727597854313" duration="4949000" />
-      <workItem from="1727608191298" duration="2100000" />
-      <workItem from="1727698012891" duration="3351000" />
-      <workItem from="1727877260646" duration="4066000" />
-      <workItem from="1728037293776" duration="5254000" />
-      <workItem from="1728052214620" duration="3483000" />
-      <workItem from="1728192937517" duration="15094000" />
-      <workItem from="1728391245055" duration="5379000" />
-      <workItem from="1728801325665" duration="2697000" />
-      <workItem from="1728822835076" duration="424000" />
-      <workItem from="1728987623656" duration="8097000" />
-      <workItem from="1729008856307" duration="1921000" />
-      <workItem from="1729158210846" duration="5630000" />
-      <workItem from="1729168071263" duration="8243000" />
-      <workItem from="1729242939533" duration="358000" />
-      <workItem from="1729321382376" duration="6626000" />
-      <workItem from="1729416105047" duration="2205000" />
     </task>
-    <task id="LOCAL-00005" summary="added buy now button, not done">
-      <option name="closed" value="true" />
-      <created>1727267365575</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1727267365575</updated>
-    </task>
-    <task id="LOCAL-00006" summary="added buy now button">
-      <option name="closed" value="true" />
-      <created>1727271199732</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1727271199732</updated>
-    </task>
-    <task id="LOCAL-00007" summary="function: edit user added">
-      <option name="closed" value="true" />
-      <created>1727272235038</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1727272235038</updated>
-    </task>
-    <task id="LOCAL-00008" summary="function: add auction added&#10;and location on auction same as users">
-      <option name="closed" value="true" />
-      <created>1727355585047</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1727355585047</updated>
-    </task>
-    <task id="LOCAL-00009" summary="added number of visits on auction detail">
-      <option name="closed" value="true" />
-      <created>1727430220923</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1727430220923</updated>
-    </task>
-    <task id="LOCAL-00010" summary="added promotion for premium account max 10 per month">
-      <option name="closed" value="true" />
-      <created>1727431150138</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1727431150138</updated>
-    </task>
-    <task id="LOCAL-00011" summary="added promotion for premium account max 10 per month">
-      <option name="closed" value="true" />
-      <created>1727431184518</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1727431184518</updated>
-    </task>
-    <task id="LOCAL-00012" summary="on main site added right columm with categories">
-      <option name="closed" value="true" />
-      <created>1727431695174</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1727431695174</updated>
-    </task>
-    <task id="LOCAL-00013" summary="show photo under description in auction_detail">
-      <option name="closed" value="true" />
-      <created>1727432351706</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1727432351706</updated>
-    </task>
-    <task id="LOCAL-00014" summary="strating anc current price on main page change to status: Ended when its done">
-      <option name="closed" value="true" />
-      <created>1727433457485</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1727433457485</updated>
-    </task>
-    <task id="LOCAL-00015" summary="added cancel button">
-      <option name="closed" value="true" />
-      <created>1727598599397</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1727598599397</updated>
-    </task>
-    <task id="LOCAL-00016" summary="added watchlist">
-      <option name="closed" value="true" />
-      <created>1727602691472</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1727602691472</updated>
-    </task>
-    <task id="LOCAL-00017" summary="added profile with (ending_soon_auctions, user_auctions, user_bids, observed_auctions, recently_ended_auctions">
-      <option name="closed" value="true" />
-      <created>1727609820741</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1727609820741</updated>
-    </task>
-    <task id="LOCAL-00018" summary="added profile with (ending_soon_auctions, user_auctions, user_bids, observed_auctions, recently_ended_auctions">
-      <option name="closed" value="true" />
-      <created>1727610342609</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1727610342609</updated>
-    </task>
-    <task id="LOCAL-00019" summary="watchlist change">
-      <option name="closed" value="true" />
-      <created>1727698572386</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1727698572386</updated>
-    </task>
-    <task id="LOCAL-00020" summary="added clickable categeroies">
-      <option name="closed" value="true" />
-      <created>1727699053826</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1727699053826</updated>
-    </task>
-    <task id="LOCAL-00021" summary="search bar added">
-      <option name="closed" value="true" />
-      <created>1727699483536</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1727699483536</updated>
-    </task>
-    <task id="LOCAL-00022" summary="added message to buy now and section in profile to contact seller when someone win auction">
-      <option name="closed" value="true" />
-      <created>1727700538360</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1727700538360</updated>
-    </task>
-    <task id="LOCAL-00023" summary="small changes">
-      <option name="closed" value="true" />
-      <created>1727701299940</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1727701299940</updated>
-    </task>
-    <task id="LOCAL-00024" summary="small changes">
-      <option name="closed" value="true" />
-      <created>1727701315096</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1727701315096</updated>
-    </task>
-    <task id="LOCAL-00025" summary="small changes">
-      <option name="closed" value="true" />
-      <created>1727701349355</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1727701349355</updated>
-    </task>
-    <task id="LOCAL-00026" summary="design change">
-      <option name="closed" value="true" />
-      <created>1727878373306</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1727878373306</updated>
-    </task>
-    <task id="LOCAL-00027" summary="design change">
-      <option name="closed" value="true" />
-      <created>1727881255168</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1727881255168</updated>
-    </task>
-    <task id="LOCAL-00028" summary="added profile with comments and ratings">
-      <option name="closed" value="true" />
-      <created>1728042071187</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1728042071187</updated>
-    </task>
-    <task id="LOCAL-00029" summary="design change">
-      <option name="closed" value="true" />
-      <created>1728042575667</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1728042575667</updated>
-    </task>
-    <task id="LOCAL-00030" summary="minor changes">
-      <option name="closed" value="true" />
-      <created>1728053612396</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1728053612396</updated>
-    </task>
-    <task id="LOCAL-00031" summary="check for ended auctions and selecting winner">
-      <option name="closed" value="true" />
-      <created>1728055728171</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1728055728171</updated>
-    </task>
-    <task id="LOCAL-00032" summary="small detail">
-      <option name="closed" value="true" />
-      <created>1728213181399</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1728213181399</updated>
-    </task>
-    <task id="LOCAL-00033" summary="added comments in auction detail">
-      <option name="closed" value="true" />
-      <created>1728396143656</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1728396143656</updated>
-    </task>
-    <task id="LOCAL-00034" summary="added htmls and changed comments on profile">
-      <option name="closed" value="true" />
-      <created>1728996009519</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1728996009519</updated>
-    </task>
-    <task id="LOCAL-00035" summary="added htmls and changed comments on profile">
-      <option name="closed" value="true" />
-      <created>1729008939689</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1729008939689</updated>
-    </task>
-    <task id="LOCAL-00036" summary="added htmls and changed comments on profile">
-      <option name="closed" value="true" />
-      <created>1729008947760</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1729008947760</updated>
-    </task>
-    <task id="LOCAL-00037" summary="added htmls and changed comments on profile">
-      <option name="closed" value="true" />
-      <created>1729009163892</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1729009163892</updated>
-    </task>
-    <task id="LOCAL-00038" summary="small change">
-      <option name="closed" value="true" />
-      <created>1729009296797</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1729009296797</updated>
-    </task>
-    <task id="LOCAL-00039" summary="small change">
-      <option name="closed" value="true" />
-      <created>1729010256400</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1729010256400</updated>
-    </task>
-    <task id="LOCAL-00040" summary="small changes">
-      <option name="closed" value="true" />
-      <created>1729161540280</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1729161540280</updated>
-    </task>
-    <task id="LOCAL-00041" summary="small changes">
-      <option name="closed" value="true" />
-      <created>1729161555831</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1729161555831</updated>
-    </task>
-    <task id="LOCAL-00042" summary="small changes">
-      <option name="closed" value="true" />
-      <created>1729163824185</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1729163824185</updated>
-    </task>
-    <task id="LOCAL-00043" summary="small changes">
-      <option name="closed" value="true" />
-      <created>1729168595852</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1729168595852</updated>
-    </task>
-    <task id="LOCAL-00044" summary="added css for footer">
-      <option name="closed" value="true" />
-      <created>1729172605362</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1729172605362</updated>
-    </task>
-    <task id="LOCAL-00045" summary="fixed">
-      <option name="closed" value="true" />
-      <created>1729175995283</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1729175995283</updated>
-    </task>
-    <task id="LOCAL-00046" summary="fixed">
-      <option name="closed" value="true" />
-      <created>1729243293179</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1729243293179</updated>
-    </task>
-    <task id="LOCAL-00047" summary="fixed">
-      <option name="closed" value="true" />
-      <created>1729331276228</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1729331276228</updated>
-    </task>
-    <task id="LOCAL-00048" summary="feat db diagram">
-      <option name="closed" value="true" />
-      <created>1729416292355</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1729416292355</updated>
-    </task>
-    <task id="LOCAL-00049" summary="feat added db digram to readme">
-      <option name="closed" value="true" />
-      <created>1729416718152</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1729416718152</updated>
-    </task>
-    <task id="LOCAL-00050" summary="feat added db digram to readme">
-      <option name="closed" value="true" />
-      <created>1729416867452</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1729416867453</updated>
-    </task>
-    <task id="LOCAL-00051" summary="test create auction selenium">
-      <option name="closed" value="true" />
-      <created>1729419123820</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1729419123820</updated>
-    </task>
-    <task id="LOCAL-00052" summary="test create auction selenium">
-      <option name="closed" value="true" />
-      <created>1729426885577</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1729426885577</updated>
-    </task>
-    <task id="LOCAL-00053" summary="test create auction selenium">
-      <option name="closed" value="true" />
-      <created>1729427020202</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1729427020202</updated>
-    </task>
-    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="small-changes" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="added promotion for premium account max 10 per month" />
-    <MESSAGE value="on main site added right columm with categories" />
-    <MESSAGE value="show photo under description in auction_detail" />
-    <MESSAGE value="strating anc current price on main page change to status: Ended when its done" />
-    <MESSAGE value="added cancel button" />
-    <MESSAGE value="added watchlist" />
-    <MESSAGE value="added profile with (ending_soon_auctions, user_auctions, user_bids, observed_auctions, recently_ended_auctions" />
-    <MESSAGE value="watchlist change" />
-    <MESSAGE value="added clickable categeroies" />
-    <MESSAGE value="search bar added" />
-    <MESSAGE value="added message to buy now and section in profile to contact seller when someone win auction" />
-    <MESSAGE value="added profile with comments and ratings" />
-    <MESSAGE value="design change" />
-    <MESSAGE value="minor changes" />
-    <MESSAGE value="check for ended auctions and selecting winner" />
-    <MESSAGE value="small detail" />
-    <MESSAGE value="added comments in auction detail" />
-    <MESSAGE value="added htmls and changed comments on profile" />
-    <MESSAGE value="small change" />
-    <MESSAGE value="small changes" />
-    <MESSAGE value="added css for footer" />
-    <MESSAGE value="fixed" />
-    <MESSAGE value="feat db diagram" />
-    <MESSAGE value="feat added db digram to readme" />
-    <MESSAGE value="test create auction selenium" />
-    <option name="LAST_COMMIT_MESSAGE" value="test create auction selenium" />
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests.coverage" NAME="Test: auctions.tests Coverage Results" MODIFIED="1728990493230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_WatchlistTestCase.coverage" NAME="Test: auctions.tests.WatchlistTestCase Coverage Results" MODIFIED="1729426645407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_MySeleniumTests_test_login.coverage" NAME="Test: auctions.tests.MySeleniumTests.test_login Coverage Results" MODIFIED="1729321986803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/auction_site$views.coverage" NAME="views Coverage Results" MODIFIED="1725785704661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auctions" />
-    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_CreateAuctionTestCase.coverage" NAME="Test: auctions.tests.CreateAuctionTestCase Coverage Results" MODIFIED="1728993491847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_MySeleniumTests.coverage" NAME="Test: auctions.tests.MySeleniumTests Coverage Results" MODIFIED="1729426771230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_AuctionTestCase_test_create_auction.coverage" NAME="Test: auctions.tests.AuctionTestCase.test_create_auction Coverage Results" MODIFIED="1729323053642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_AuctionModelTest.coverage" NAME="Test: auctions.tests.AuctionModelTest Coverage Results" MODIFIED="1728992049999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_BidTestCase.coverage" NAME="Test: auctions.tests.BidTestCase Coverage Results" MODIFIED="1729323027240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/auction_site$tests.coverage" NAME="tests Coverage Results" MODIFIED="1728989999258" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auctions" />
-    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_MySeleniumTests_test_create_auction.coverage" NAME="Test: auctions.tests.MySeleniumTests.test_create_auction Coverage Results" MODIFIED="1729424715682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_AuctionTestCase.coverage" NAME="Test: auctions.tests.AuctionTestCase Coverage Results" MODIFIED="1728993366074" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
