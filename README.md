@@ -1,6 +1,13 @@
 
 # auction site
 
+## requirements
+- python
+- `git clone https://github.com/karlos191/auction_site1.git `
+- `cd auction_site1`
+- `pip install -r requirements.txt`
+
+
 ## User account
 - [x] login (email used for communication and notifications)
 - [x] password
