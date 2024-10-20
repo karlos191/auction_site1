@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="test create auction selenium">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/auctions/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/auctions/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-    </list>
+    <list default="true" id="e12094db-6bf7-4fcb-933d-b5fe22324cd8" name="Changes" comment="test create auction selenium" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -91,7 +87,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "3d0c24a2",
+    "git-widget-placeholder": "74128dc1",
     "last_opened_file_path": "C:/Users/karel/PycharmProjects/auction_site",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -304,22 +300,6 @@
       <workItem from="1729242939533" duration="358000" />
       <workItem from="1729321382376" duration="6626000" />
       <workItem from="1729416105047" duration="2205000" />
-    </task>
-    <task id="LOCAL-00003" summary="added CustomUser with city&#10;&#10;address (street, house number, ZIP code)&#10;&#10;account creation date">
-      <option name="closed" value="true" />
-      <created>1726568920709</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1726568920709</updated>
-    </task>
-    <task id="LOCAL-00004" summary="added CustomUser with city&#10;&#10;address (street, house number, ZIP code)&#10;&#10;account creation date">
-      <option name="closed" value="true" />
-      <created>1726569064144</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1726569064144</updated>
     </task>
     <task id="LOCAL-00005" summary="added buy now button, not done">
       <option name="closed" value="true" />
@@ -697,7 +677,23 @@
       <option name="project" value="LOCAL" />
       <updated>1729419123820</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="test create auction selenium">
+      <option name="closed" value="true" />
+      <created>1729426885577</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1729426885577</updated>
+    </task>
+    <task id="LOCAL-00053" summary="test create auction selenium">
+      <option name="closed" value="true" />
+      <created>1729427020202</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1729427020202</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -714,7 +710,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="wip" />
+                        <option value="small-changes" />
                       </list>
                     </value>
                   </entry>
@@ -761,7 +757,7 @@
     <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_MySeleniumTests_test_login.coverage" NAME="Test: auctions.tests.MySeleniumTests.test_login Coverage Results" MODIFIED="1729321986803" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/auction_site$views.coverage" NAME="views Coverage Results" MODIFIED="1725785704661" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/auctions" />
     <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_CreateAuctionTestCase.coverage" NAME="Test: auctions.tests.CreateAuctionTestCase Coverage Results" MODIFIED="1728993491847" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_MySeleniumTests.coverage" NAME="Test: auctions.tests.MySeleniumTests Coverage Results" MODIFIED="1729426711246" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_MySeleniumTests.coverage" NAME="Test: auctions.tests.MySeleniumTests Coverage Results" MODIFIED="1729426771230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_AuctionTestCase_test_create_auction.coverage" NAME="Test: auctions.tests.AuctionTestCase.test_create_auction Coverage Results" MODIFIED="1729323053642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_AuctionModelTest.coverage" NAME="Test: auctions.tests.AuctionModelTest Coverage Results" MODIFIED="1728992049999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/auction_site$Test__auctions_tests_BidTestCase.coverage" NAME="Test: auctions.tests.BidTestCase Coverage Results" MODIFIED="1729323027240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
