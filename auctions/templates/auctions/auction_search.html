@@ -1,13 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #900C3F;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #900C3F;
+            padding: 10px;
+            border-bottom: 2px solid #900C3F;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .auction-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .auction-list li {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .auction-list li:last-child {
+            border-bottom: none;
+        }
+
+        .auction-list a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .auction-list p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+
+    </style>
 </head>
 <body>
-    <h1>Search Results for "{{ query }}"</h1>
-    <ul>
+
+<header>
+    <h1>Search Results</h1>
+    <nav>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'create_auction' %}">Add Auction</a></li>
+                <li>
+                    <form method="POST" action="{% url 'custom_logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" style="background:none; border:none; color:white; cursor:pointer;">Logout</button>
+                    </form>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Search Results for "{{ query }}"</h2>
+    <ul class="auction-list">
         {% for auction in search_results %}
             <li>
                 <a href="{% url 'auction_detail' pk=auction.pk %}">{{ auction.title }}</a>
@@ -18,5 +135,44 @@
             <li>No auctions found matching your search.</li>
         {% endfor %}
     </ul>
+</div>
+
+<footer>
+    <div class="container">
+        <!-- About Us Section -->
+        <div class="about">
+            <h3>About Us</h3>
+            <p>We are the leading auction platform, connecting buyers and sellers worldwide.</p>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="quick-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'auctions_list' %}">All Auctions</a></li>
+                <li><a href="{% url 'create_auction' %}">Create Auction</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'user_profile' user_id=user.id %}">My Profile</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact">
+            <h3>Contact Us</h3>
+            <p>Email: support@auctionsite.com</p>
+            <p>Phone: +420 602877026</p>
+            <p>Address: Auction street, New York</p>
+        </div>
+
+
+    </div>
+
+    <div class="bottom-bar">
+        &copy; 2024 Auction Site - All Rights Reserved
+    </div>
+</footer>
+
 </body>
 </html>
