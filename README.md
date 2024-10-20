@@ -11,7 +11,7 @@
 - [x] logotype / thumbnail / avatar
 - [x] type (NORMAL/PREMIUM)
 
-##Auction details
+## Auction details
 - [x] title
 - [x] description
 - [x] photos (optional)
@@ -24,12 +24,12 @@
 - [x] auction end date
 - [x] number of visits (page views) 
 
-  ##Bidding
+## Bidding
 - [x] auction
 - [x] user
 - [x] amount to pay
 
- ##Purchase (the highest bid or Buy now)
+## Purchase (the highest bid or Buy now)
 - [x] auction
 - [x] user
 - [x] amount to pay
@@ -38,14 +38,14 @@
 - [x] auction
 - [x] user
 
-##Transaction (purchase) assessment
+## Transaction (purchase) assessment
 - [x] purchase
 - [x] seller rating
 - [x] seller’s comment
 - [x] buyer’s rating
 - [x] buyer's comment
 
-##Main page presentation
+## Main page presentation
 - [x] presentation of categories(main - if their structure is tree-like): e.g. a list of links in the left or right column, leading to auctions from the selected category
 - [x] presentation of a list of recently added auctions (e.g. 10)
 - [x] presentation of a list of ending auctions (e.g. 10)
@@ -54,25 +54,25 @@
 - [x] presentation of a list of observed auctions
 - [x] presentation of a list of "just ended" auctions (e.g. 10)
 
-##Auction category selection
+## Auction category selection
 - [x] a list of categories, in which auctions are placed 
 
-##User account management
+## User account management
 - [x] form to set up an account
 - [x] page (available after logging in) for editing account details
 - [x] just like on the main page, there should appear lists of auctions: observed, started, auctioned (also lost) and completed (won as well as those which did not receive the minimum amount)
 
-##Auction start
+## Auction start
 - [x] a form for starting the auction and determining its parameters
 - [x] an auction can be cancelled (if there was no bid)
 
-##Auction search
+## Auction search
 - [x] page presenting auction search results, e.g. category links from the main page lead to it
 - [x] whenever the category name is presented, it should be clickable and lead to a page with results presentation
 - [x] the mechanism must take into account premium auctions and presents them first
 
-##Bid and buy
-- [x] a logged in user can bid on an auction
+## Bid and buy
+- [x] a logged-in user can bid on an auction
 - [x] can input any amount to pay
 - [x] can immediately choose Buy now
 - [x] can only bid on ongoing auctions
@@ -81,18 +81,18 @@
 - [ ] Warning! For simplicity, you need to write a mechanism, that will be triggered each time you enter the site and will "close" auctions, that have ended (since the last visit to the site) and will select winners
 
 
-##Transaction Ratings
+## Transaction Ratings
 - [x] both the seller and the buyer can leave a rating and a comment
 
-##Auction observation
+## Auction observation
 - [x] logged-in user can add auction to the watch list
 - [x] after entering the observed auction, this fact should be marked, e.g. with an inscription or a star image
 
-##Project development
+## Project development
 - [x] in its current form, the design is quite complicated
 - [x] developing the functionality is left to the Student (inspired by existing websites and own ideas)
 
-##Additional requirements
+## Additional requirements
 - [x] it is necessary to ensure an aesthetic and functional data presentation
 - [x] data collected from users should be pre-validated
 
