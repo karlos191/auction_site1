@@ -7,6 +7,10 @@ from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
+from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 
 class AuctionTestCase(TestCase):
@@ -101,7 +105,7 @@ class WatchlistTestCase(TestCase):
         response = self.client.post(reverse('add_to_watchlist', args=[self.auction.pk]))
 
         # Check that the auction was added to the user's watchlist
-        self.assertEqual(response.status_code, 302)  # Redirects after adding to watchlist
+        self.assertEqual(response.status_code, 302)
         self.assertTrue(self.auction in self.user.watchlist.all())
 
 
@@ -120,7 +124,9 @@ class MySeleniumTests(LiveServerTestCase):
             username='admin',
             password='password12345',
             email='admin@example.com'
+
         )
+        cls.category = Category.objects.create(name='Cars')
 
     @classmethod
     def tearDownClass(cls):
@@ -128,7 +134,7 @@ class MySeleniumTests(LiveServerTestCase):
         super().tearDownClass()
 
     def test_create_auction(self):
-        # Step 1: Log in as admin
+        # Log in as admin
         self.selenium.get(f'{self.live_server_url}/accounts/login/')
 
         username_input = self.selenium.find_element(By.NAME, "username")
@@ -142,11 +148,11 @@ class MySeleniumTests(LiveServerTestCase):
         submit_input.click()
         time.sleep(2)
 
-        # Step 2: Navigate to 'Create Auction' page
+        # Navigate to 'Create Auction' page
         self.selenium.get(f'{self.live_server_url}/auction/new/')
         time.sleep(2)
 
-        # Step 3: Fill out auction form fields
+        # Fill out auction form fields
         title_input = self.selenium.find_element(By.NAME, "title")
         description_input = self.selenium.find_element(By.NAME, "description")
         starting_price_input = self.selenium.find_element(By.NAME, "starting_price")
@@ -154,6 +160,11 @@ class MySeleniumTests(LiveServerTestCase):
         buy_now_price_input = self.selenium.find_element(By.NAME, "buy_now_price")
         end_date_input = self.selenium.find_element(By.NAME, "end_date")
 
+        # Find the dropdown for category and select an option
+        select = Select(self.selenium.find_element(By.NAME, 'category'))
+        select.select_by_index(1)
+
+        # Fill in the other auction details
         title_input.send_keys("Test Auction")
         description_input.send_keys("This is a test description.")
         starting_price_input.send_keys("1000")
@@ -161,12 +172,12 @@ class MySeleniumTests(LiveServerTestCase):
         buy_now_price_input.send_keys("10000")
         end_date_input.send_keys("2024-12-31 12:00:00")
 
-        time.sleep(2)
+        time.sleep(5)
 
-        # Step 4: Submit the form
-        submit_button = self.selenium.find_element(By.XPATH, '//button[@type="submit"]')
+        # Submit the form
+        submit_button = self.selenium.find_element(By.CSS_SELECTOR, 'button[type="submit"]')
         submit_button.click()
-        time.sleep(2)
+        time.sleep(5)
 
-        # Step 5: Assert auction was created
-        self.assertIn("Title", self.selenium.page_source)
+        # Assert auction was created
+        self.assertIn("Cars", self.selenium.page_source)
