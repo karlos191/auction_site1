@@ -127,11 +127,10 @@ class MySeleniumTests(LiveServerTestCase):
         cls.selenium.quit()
         super().tearDownClass()
 
-    def test_login(self):
-        # Access the live server URL
+    def test_create_auction(self):
+        # Step 1: Log in as admin
         self.selenium.get(f'{self.live_server_url}/accounts/login/')
 
-        # Find the username and password input fields and fill them
         username_input = self.selenium.find_element(By.NAME, "username")
         password_input = self.selenium.find_element(By.NAME, "password")
 
@@ -143,4 +142,31 @@ class MySeleniumTests(LiveServerTestCase):
         submit_input.click()
         time.sleep(2)
 
-       # self.assertIn("username: admin", self.selenium.page_source)
+        # Step 2: Navigate to 'Create Auction' page
+        self.selenium.get(f'{self.live_server_url}/auction/new/')
+        time.sleep(2)
+
+        # Step 3: Fill out auction form fields
+        title_input = self.selenium.find_element(By.NAME, "title")
+        description_input = self.selenium.find_element(By.NAME, "description")
+        starting_price_input = self.selenium.find_element(By.NAME, "starting_price")
+        minimum_price_input = self.selenium.find_element(By.NAME, "minimum_amount")
+        buy_now_price_input = self.selenium.find_element(By.NAME, "buy_now_price")
+        end_date_input = self.selenium.find_element(By.NAME, "end_date")
+
+        title_input.send_keys("Test Auction")
+        description_input.send_keys("This is a test description.")
+        starting_price_input.send_keys("1000")
+        minimum_price_input.send_keys("4000")
+        buy_now_price_input.send_keys("10000")
+        end_date_input.send_keys("2024-12-31 12:00:00")
+
+        time.sleep(2)
+
+        # Step 4: Submit the form
+        submit_button = self.selenium.find_element(By.XPATH, '//button[@type="submit"]')
+        submit_button.click()
+        time.sleep(2)
+
+        # Step 5: Assert auction was created
+        self.assertIn("Title", self.selenium.page_source)
