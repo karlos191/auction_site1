@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser, Auction, Comment
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -55,6 +57,38 @@ class AuctionForm(forms.ModelForm):
         widgets = {
             'end_date': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
         }
+
+    def clean_starting_price(self):
+        starting_price = self.cleaned_data.get('starting_price')
+        if starting_price is not None and starting_price < 0:
+            raise ValidationError("The starting price cannot be negative.")
+        return starting_price
+
+    def clean_minimum_amount(self):
+        minimum_amount = self.cleaned_data.get('minimum_amount')
+        if minimum_amount is not None and minimum_amount < 0:
+            raise ValidationError("The minimum amount cannot be negative.")
+        return minimum_amount
+
+    def clean_buy_now_price(self):
+        buy_now_price = self.cleaned_data.get('buy_now_price')
+        if buy_now_price is not None and buy_now_price < 0:
+            raise ValidationError("The buy-now price cannot be negative.")
+        return buy_now_price
+
+    def clean_end_date(self):
+        end_date = self.cleaned_data.get('end_date')
+        if end_date < timezone.now():
+            raise ValidationError("The end date cannot be in the past.")
+        return end_date
+
+    def clean(self):
+        cleaned_data = super().clean()
+        starting_price = cleaned_data.get("starting_price")
+        buy_now_price = cleaned_data.get("buy_now_price")
+
+        if buy_now_price and starting_price and buy_now_price <= starting_price:
+            self.add_error('buy_now_price', "The buy-now price must be higher than the starting price.")
 
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)

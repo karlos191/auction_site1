@@ -264,7 +264,7 @@ def create_auction(request):
 
                 if promoted_auctions_count >= 10:
                     messages.error(request, 'You have already promoted the maximum of 10 auctions this month.')
-                    return redirect('create_auction')  # Redirect them back to the auction creation form
+                    return redirect('create_auction')
 
             auction.save()  # Save the auction if everything is valid
             messages.success(request, 'Auction created successfully!')
